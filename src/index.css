@@ -1,0 +1,46 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+
+/* .embla__viewport {
+  overflow: hidden;
+}
+
+.embla__container {
+  display: flex;
+  touch-action: pan-y pinch-zoom;
+}
+
+.embla__slide {
+  flex: 0 0 100%;
+  min-width: 0;
+} */
+
+/* Reset default embla styles if needed */
+.embla {
+  position: relative;
+}
+
+.embla__viewport {
+  overflow: hidden;
+}
+
+.embla__container {
+  display: flex;
+  backface-visibility: hidden;
+}
+
+.embla__slide {
+  position: relative;
+  min-width: 100%;
+  height: 100%;
+}
+
+/* Image quality optimization */
+.embla__slide img {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
