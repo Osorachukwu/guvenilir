@@ -1,34 +1,42 @@
-import { ChevronDown, Mail, MailOpen } from 'lucide-react';
+import { ChevronDown, Mail, MailOpen, LogOut } from 'lucide-react';
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../hooks/useAuth';
 
 export default function NavBar() {
+    const { isAuthenticated, user, logout } = useAuth()
+    const navigate = useNavigate()
+
     const handleItemClick = () => {
         document.activeElement.blur();
     };
+
+    const handleLogout = async () => {
+        await logout()
+        navigate('/login')
+    }
+
     return (
         <div className='relative'>
-            <div className='py-6 hidden md:block'>
-                <div className='flex justify-between items-center max-w-4xl mx-auto'>
-                    <a className="btn btn-ghost text-xl">daisyUI</a>
-                    {/*  */}
-                    <div className='flex'>
-                        <div>
-                            {/* <p className='text-xs'>Send us a mail</p> */}
-                            <div className='flex items-center gap-2'>
-                                {/* <Mail /> */}
-                                <MailOpen />
-                                <p>support@example.com</p>
+            {!isAuthenticated && (
+                <div className='py-6 hidden md:block'>
+                    <div className='flex justify-between items-center max-w-4xl mx-auto'>
+                        <a className="btn btn-ghost text-xl">CryptoInvest</a>
+                        <div className='flex'>
+                            <div>
+                                <div className='flex items-center gap-2'>
+                                    <MailOpen />
+                                    <p>support@example.com</p>
+                                </div>
+                                <p className='text-xs mt-2'>Send us a mail</p>
                             </div>
-                            <p className='text-xs mt-2'>Send us a mail</p>
-                        </div>
-                        <div className='pl-4 ml-4 border-l border-base-content/20'>
-                            <Link to="/login" className='btn btn-primary'>Login</Link>
+                            <div className='pl-4 ml-4 border-l border-base-content/20'>
+                                <Link to="/login" className='btn btn-primary'>Login</Link>
+                            </div>
                         </div>
                     </div>
-
                 </div>
-            </div>
+            )}
             {/* main nav 👇 */}
             <div className="navbar bg-base-100/50 backdrop-blur-sm shadow-sm absolute border-b border-gray-600 z-50">
                 <div className="navbar-start">
@@ -50,15 +58,24 @@ export default function NavBar() {
                                     </ul>
                                 </div>
                             </li>
-                            <li><Link to="/faq">FAQs</Link></li>
+                            <li><Link to="/faqs">FAQs</Link></li>
                             <li><Link to="/support">Support</Link></li>
                             <li><Link to="/affiliate">Affiliate</Link></li>
                             <li><Link to="/legal">Legal</Link></li>
-                            <li><Link to="/user/dashboard">Buy digital currency</Link></li>
-                            <li><Link to="/register">Signup</Link></li>
+                            {isAuthenticated && (
+                                <>
+                                    <li><Link to="/user/dashboard">Dashboard</Link></li>
+                                    <li><a onClick={handleLogout} className='cursor-pointer'>Logout</a></li>
+                                </>
+                            )}
+                            {!isAuthenticated && (
+                                <>
+                                    <li><Link to="/login">Buy digital currency</Link></li>
+                                    <li><Link to="/register">Signup</Link></li>
+                                </>
+                            )}
                         </ul>
                     </div>
-                    {/* <a className="btn btn-ghost text-xl">daisyUI</a> */}
                 </div>
                 {/* Desktop Nav */}
                 <div className="navbar-center hidden lg:flex font-semibold">
@@ -77,21 +94,36 @@ export default function NavBar() {
                             </div>
                         </li>
 
-                        <li><Link to="/faq">FAQS</Link></li>
+                        <li><Link to="/faqs">FAQS</Link></li>
                         <li><Link to="/support">SUPPORT</Link></li>
                         <li><Link to="/affiliate">AFFILIATE</Link></li>
                         <li><Link to="/legal">LEGAL</Link></li>
-                        <li><Link to="/user/dashboard">BUY DIGITAL CURRENCY</Link></li>
-                        <li><Link to="/register">SIGNUP</Link></li>
+                        {isAuthenticated && (
+                            <li><Link to="/user/dashboard">DASHBOARD</Link></li>
+                        )}
+                        {!isAuthenticated && (
+                            <li><Link to="/user/dashboard">BUY DIGITAL CURRENCY</Link></li>
+                        )}
                     </ul>
                 </div>
-                <div className="navbar-end ">
-                    <Link to="/login" className="btn btn-sm btn-primary md:hidden">Login</Link>
+                <div className="navbar-end flex gap-2">
+                    {isAuthenticated ? (
+                        <div className="dropdown dropdown-end">
+                            <div tabIndex={0} role="button" className="btn btn-sm gap-1">
+                                {user?.fullname}
+                                <ChevronDown size={16} />
+                            </div>
+                            <ul tabIndex="-1" className="dropdown-content menu bg-base-100 rounded-box z-1 w-48 p-2 shadow">
+                                <li><span className='text-xs opacity-70'>{user?.role === 'admin' ? '👑 Admin' : '👤 User'}</span></li>
+                                <li onClick={handleItemClick}><Link to="/user/profile">Edit Profile</Link></li>
+                                <li onClick={handleLogout}><a className='text-error'>Logout</a></li>
+                            </ul>
+                        </div>
+                    ) : (
+                        <Link to="/login" className="btn btn-sm btn-primary md:hidden">Login</Link>
+                    )}
                 </div>
             </div>
         </div>
     )
 }
-
-// if you want it centered with not logo or login button
-// 1. add lg:hidden to the last login button on the page and comment out the logo then uncomment the Login button under the BUY DIGITAL CURRENCY

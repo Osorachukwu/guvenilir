@@ -6,7 +6,7 @@ import Contact from '../pages/Contact'
 import NavBar from '../components/nav/NavBar'
 import Login from '../pages/Login'
 import Register from '../pages/Register'
-import AdminLayout from './UserLayout'
+import AdminLayout from './AdminLayout'
 import ActiveDeposits from '../components/user-dashboard/ActiveDeposits'
 import Dashboard from '../components/user-dashboard/Dashboard'
 import Deposit from '../components/user-dashboard/Deposit'
@@ -27,7 +27,9 @@ export default function AppRouter() {
         "/user/deposit",
         "/user/withdraw",
         "/user/active-deposit",
-        "/user/profile"
+        "/user/profile",
+        "/admin/test1",
+        "/admin/test2"
     ];
 
     return (
