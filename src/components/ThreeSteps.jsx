@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom'
 export default function ThreeSteps() {
     return (
         <div>
-            <p className='text-center text-4xl pb-8'>3 Simple Steps</p>
-            <div className='grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl w-full mx-auto px-4'>
+            <p className='text-center text-4xl pb-8 '>3 Simple Steps</p>
+            <div className='grid grid-cols-1 md:grid-cols-3 max-w-7xl w-full mx-auto px-4 sm:px-0'>
                 {[
                     {
                         title: "Create An Account",
@@ -23,7 +23,7 @@ export default function ThreeSteps() {
                         desc: "You can withdraw as soon as your investment duration is completed.",
                         icon: <Wallet size={50} />
                     }].map((step, i) => (
-                        <div key={i} className='h-96 bg-primary/30 flex-1 flex gap-4 flex-col justify-center items-center text-center px-10 group hover:text-white hover:border'>
+                        <div key={i} className={`h-96 ${i === 0 ? "bg-primary/20" : i === 1 ? "bg-primary/50": "bg-primary/70"} flex-1 flex gap-4 flex-col justify-center items-center text-center px-10 group hover:border-gray-500 hover:border w-full transition-all duration-200 ease-in-out`}>
                             {step.icon}
                             <p className='text-3xl font-semibold mt-6'>{step.title}</p>
                             <p>

@@ -9,7 +9,7 @@ import secLogo from "../assets/sec-logo.png"
 export default function Pricing() {
     return (
         <div className='space-y-32'>
-            <div className=''>
+            <div className='text-sm sm:text-base'>
                 <div className='mb-16'>
                     <img src={tfc} alt="" className='mb-8' />
                     <p className='leading-8'>
@@ -25,7 +25,7 @@ export default function Pricing() {
             </div>
             {/* <p>Investment Plans</p> */}
             <div className='text-center max-w-2xl mb-8 mx-auto'>
-                <p className='text-4xl mb-2'>Consistent Returns | 3 Offerings</p>
+                <p className='text-2xl sm:text-4xl mb-2'>Consistent Returns | 3 Offerings</p>
                 <p>Offering financial planning and wealth management services to help our clients manage their finances and achieve their long-term financial goals.</p>
             </div>
             <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-center gap-6 py-4'>

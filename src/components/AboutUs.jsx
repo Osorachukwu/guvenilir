@@ -4,9 +4,9 @@ import imgIOne from "../assets/images (1).jpg"
 
 export default function AboutUs() {
     return (
-        <div className='bg-base-100 space-y-28'>
+        <div className='bg-base-100 space-y-'>
             <div className='grid sm:grid-cols-2 lg:grid-cols-3 gap-8'>
-                <div className='group flex-1 px-8 py-8 border border-primary hover:bg-primary transition-all duration-300 shadow-md'>
+                <div className='group flex-1 px-8 py-8 border border-primary/40 hover:bg-primary transition-all duration-300 shadow-md'>
                     <p className='text-lg'>Emeral Holdings Limited</p>
                     <p className='text-4xl font-semibold my-6'>We are the best in Finance</p>
                     <p>
@@ -16,15 +16,15 @@ export default function AboutUs() {
                 </div>
 
                 {/*  */}
-                <div className='bg-primary px-8 py-16 flex-1 text-center flex flex-col justify-center items-center hover:bg-transparent hover:border border-primary shadow'>
+                <div className='bg-primary/40 px-8 py-12 flex-1 text-center flex flex-col justify-center items-center hover:bg-transparent hover:border border-primary shadow'>
                     <ChartArea size={60} />
                     <p className='text-4xl font-semibold my-6'>Trade An Asset</p>
-                    <p className='text-lg'>We offer various assets ranging from cryptocurrencies, to forex, commodities, indexes, stocks, ETFs, and the all new Pre-IPOs.</p>
+                    <p className='text-lg font-semibold'>We offer various assets ranging from cryptocurrencies, to forex, commodities, indexes, stocks, ETFs, and the all new Pre-IPOs.</p>
                 </div>
-                <div className='bg-primary px-8 py-16 flex-1 text-center flex flex-col justify-center items-center hover:bg-transparent hover:border border-primary shadow'>
+                <div className='bg-primary/40 px-8 py-12 flex-1 text-center flex flex-col justify-center items-center hover:bg-transparent hover:border border-primary shadow'>
                     <ChartArea size={60} />
-                    <p className='text-4xl font-semibold my-6'>Trade An Asset</p>
-                    <p className='text-lg'>We offer various assets ranging from cryptocurrencies, to forex, commodities, indexes, stocks, ETFs, and the all new Pre-IPOs.</p>
+                    <p className='text-4xl font-semibold my-6'>Build A Portfolio</p>
+                    <p className='text-lg font-semibold'>We also offer portfolios which allow you to invest in more than one asset class at a time. Portfolios are a great options if you want more.</p>
                 </div>
                 {/*  */}
             </div>
@@ -67,15 +67,15 @@ export default function AboutUs() {
                             <div className="flex flex-col justify-center space-y-8">
                                 {/* Heading with blue background */}
                                 <div className="relative">
-                                    <div className="w-full md:w-[120%]">
-                                        <p>About US</p>
-                                        <p className='text-4xl font-semibold'>We have been known to give investors the better choice.</p>
-                                        <p>
+                                    <div className="w-full md:w-[120%] space-y-4 mb-8">
+                                        <p className='text-xl'>About US</p>
+                                        <p className='text-4xl font-semibold leading-12'>We have been known to give investors the better choice.</p>
+                                        <p className='leading-8'>
                                             With over 153,000 investments under our management, $5 billion+ in assets under our administration, over 11 industry awards, we have made Emerald Holdings Limited the safe haven for investors who want to trust their financial partner to be capable of helping them reach their financial goals, and in due time, without the fear of disappointments.
                                         </p>
 
                                     </div>
-                                    <div className='space-y-8'>
+                                    <div className='space-y-6'>
                                         <div className='flex items-center gap-4'>
                                             <div>
                                                 <HandshakeIcon size={50} />
@@ -110,7 +110,7 @@ export default function AboutUs() {
                             </div>
 
                             {/* Images section */}
-                            <div className="relative h-[520px] ">
+                            <div className="relative h-100 sm:h-130">
                                 {/* Top image */}
                                 <div className="absolute right-0 top-0 w-[80%] h-[60%] overflow-hidden">
                                     <img

@@ -1,6 +1,10 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+@plugin "daisyui" {
+  /* If you only need the dark theme explicitly 👇 */
+  themes: light --default, dark --prefersdark;
+}
 
 /* .embla__viewport {
   overflow: hidden;

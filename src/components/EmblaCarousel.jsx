@@ -27,8 +27,9 @@ export function EmblaCarousel() {
     { 
       id: 1, 
       image: hero1,
-      title: "Hero Title 1",
-      subtitle: "Optional subtitle text here"
+      title: `To Change Your <br /> World`,
+      subtitle: "Take A Bold Step",
+      subtitle2: `You have dreams. We have a culturally diverse, forward thinking team ready to help you achieve your dreams`
     },
     { 
       id: 2, 
@@ -68,12 +69,12 @@ export function EmblaCarousel() {
               </div>
               
               {/* Optional Content Overlay */}
-              <div className="relative z-10 h-full flex flex-col items-center justify-center text-white px-4 text-center">
+              <div className="relative z-10 h-full flex flex-col items-cen justify-center text-white bg-red-300 max-w-7xl mx-auto px-4">
                 <h1 className="text-4xl md:text-6xl font-bold mb-4">
                   {slide.title}
                 </h1>
                 {slide.subtitle && (
-                  <p className="text-xl md:text-2xl max-w-2xl">
+                  <p className="text-xl md:text-2xl">
                     {slide.subtitle}
                   </p>
                 )}
@@ -85,7 +86,7 @@ export function EmblaCarousel() {
 
       {/* Navigation Buttons */}
       <button
-        className="embla__prev btn btn-square rounded-full absolute left-4 top-1/2 transform -translate-y-1/2 z-20 black/40 backdrop-blur-sm hover:bg-black/40 text-white p-3 border-none transition-all"
+        className="embla__prev btn btn-square rounded-full absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-black/40 backdrop-blur-sm hover:bg-black/40 text-white p-3 border-none transition-all"
         onClick={goToPrev}
         aria-label="Previous slide"
       >

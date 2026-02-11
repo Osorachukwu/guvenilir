@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export default function CTA() {
   return (
-    <div className="grid md:grid-cols-2 text-white bg-secondaryColor">
+    <div className="grid md:grid-cols-2 text-white bg-secondaryColor py-8">
       <div className="py-10 md:py-20 px-4 md:pl-48">
         <p className="text-3xl font-semibold">Easy setup. Optimal profit.</p>
         <p className="mt-4 mb-10 text-base">
