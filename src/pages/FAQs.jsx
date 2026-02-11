@@ -7,12 +7,12 @@ export default function FAQs() {
             <Faqs />
 
             <div className='w-1/3'>
-                <div className="card bg-base-100 card-xl shadow-sm">
+                <div className="card bg-primary card-xl shadow-sm">
                     <div className="card-body">
-                        <h2 className="card-title">Xlarge Card</h2>
-                        <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
-                        <div className="card-actions">
-                            <button className="btn btn-primary btn-lg text-base rounded-full">Buy Now</button>
+                        <h2 className="card-title">Need any help!</h2>
+                        <p>Find answers to frequently asked questions about Emerald Holdings Limited</p>
+                        <div className="card-actions mt-4">
+                            <button className="btn b btn-lg text-base rounded-3xl">Contact us</button>
                         </div>
                     </div>
                 </div>

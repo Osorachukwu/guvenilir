@@ -4,7 +4,7 @@ import { Home, AlertCircle } from 'lucide-react';
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen bg-base-200 flex items-center justify-center px-6">
+    <div className="min-h-screen w-full absolute top-0 bg-base-200 flex items-center justify-center px-6">
       <div className="max-w-md text-center">
         {/* Visual Icon */}
         <div className="flex justify-center mb-6">

@@ -2,23 +2,22 @@ import React from 'react'
 
 export default function Faqs() {
     return (
-        <div className='join join-vertical w-2/3 space-y-1'>
-            <div className="collapse collapse-arrow bg-base-100 border border-base-300">
-                <input type="radio" name="my-accordion-2" defaultChecked />
-                <div className="collapse-title font-semibold text-base">How do I create an account?</div>
-                <div className="collapse-content text-sm md:text-base">Emerald Holdings Limited our company provides a full investment service focused on the bitcoin and cryptocurrency market We are among the best platforms to invest and grow your bitcoin and other cryptocurrency.</div>
+        <div className='w-2/3 pb-8'>
+            <p className='text-3xl mb-8 leading-10'>
+                <span className='text-base'>Our FAQ</span> <br />
+                Frequently Asked Questions
+            </p>
+            <div className='join join-vertical space-y-1'>
+                {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item, i) => (
+                    <div key={i} className="join-item collapse collapse-arrow bg-base-300 border border-base-300">
+                        <input type="radio" name="my-accordion-2" defaultChecked={i === 1} />
+                        <div className="collapse-title font-semibold text-base">How do I create an account?</div>
+                        <div className="collapse-content text-sm md:text-base">Emerald Holdings Limited our company provides a full investment service focused on the bitcoin and cryptocurrency market We are among the best platforms to invest and grow your bitcoin and other cryptocurrency.</div>
+                    </div>
+                ))}
+
+
             </div>
-            <div className="collapse collapse-arrow bg-base-100 border border-base-300">
-                <input type="radio" name="my-accordion-2" defaultChecked />
-                <div className="collapse-title font-semibold text-base md:text-lg">How do I create an account?</div>
-                <div className="collapse-content text-sm md:text-lg">Emerald Holdings Limited our company provides a full investment service focused on the bitcoin and cryptocurrency market We are among the best platforms to invest and grow your bitcoin and other cryptocurrency.</div>
-            </div>
-            <div className="collapse collapse-arrow bg-base-100 border border-base-300">
-                <input type="radio" name="my-accordion-2" defaultChecked />
-                <div className="collapse-title font-semibold text-base md:text-lg">How do I create an account?</div>
-                <div className="collapse-content text-sm md:text-lg">Emerald Holdings Limited our company provides a full investment service focused on the bitcoin and cryptocurrency market We are among the best platforms to invest and grow your bitcoin and other cryptocurrency.</div>
-            </div>
-            
         </div>
         // <div className="join join-vertical bg-base-100 w-2/3">
         //     <div className="collapse collapse-arrow join-item border-base-300 border">
@@ -37,6 +36,7 @@ export default function Faqs() {
         //         <div className="collapse-content text-sm">Go to "My Account" settings and select "Edit Profile" to make changes.</div>
         //     </div>
         // </div>
+
 
     )
 }

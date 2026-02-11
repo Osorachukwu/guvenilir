@@ -12,9 +12,9 @@ export const ProgressBar = () => {
 //   }, []);
 
   return (
-    <div className="w-full mt-3 h-1.5 bg-gray-200 rounded-full overflow-hidden relative">
+    <div className="w-full mt-3 h-1 bg-gray-200 rounded-full overflow-hidden relative">
       <div 
-        className="h-full w-[90%] rounded-full transition-all duration-300"
+        className="h-full w-[100%] rounded-full transition-all duration-300"
         style={{
         //   width: `30px`,
           backgroundImage: `linear-gradient(
