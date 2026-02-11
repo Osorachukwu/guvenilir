@@ -6,7 +6,7 @@ export default function ThreeSteps() {
     return (
         <div>
             <p className='text-center text-4xl pb-8'>3 Simple Steps</p>
-            <div className='flex'>
+            <div className='grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl w-full mx-auto px-4'>
                 {[
                     {
                         title: "Create An Account",

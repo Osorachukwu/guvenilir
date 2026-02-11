@@ -28,7 +28,7 @@ export default function Pricing() {
                 <p className='text-4xl mb-2'>Consistent Returns | 3 Offerings</p>
                 <p>Offering financial planning and wealth management services to help our clients manage their finances and achieve their long-term financial goals.</p>
             </div>
-            <div className='grid grid-cols-3 justify-center gap-6 py-4'>
+            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-center gap-6 py-4'>
                 {[
                     { title: "Amature", gain: "2.8", duration: "Daily for 5 Days", minInvestment: "100", maxInvestment: "10,000" },
                     { title: "Standard", gain: "3.8", duration: "Daily for 10 Days", minInvestment: "10,001", maxInvestment: " $30,000" },
