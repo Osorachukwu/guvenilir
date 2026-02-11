@@ -52,7 +52,7 @@ export default function NavBar() {
                 </div>
             </div>
             {/* main nav 👇 */}
-            <div className="navbar bg-base-100/50 backdrop-blur-sm shadow-sm absolute border-b border-gray-600 z-50">
+            <div className="navbar bg-black/30 backdrop-blur-sm shadow-sm absolute border-b border-gray-600 z-50">
                 {/* <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden text-white">

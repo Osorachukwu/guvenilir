@@ -85,7 +85,7 @@ export function EmblaCarousel() {
 
       {/* Navigation Buttons */}
       <button
-        className="embla__prev btn btn-square rounded-full absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-base-100/40 backdrop-blur-sm hover:bg-base-100/50 text-white p-3 border-none transition-all"
+        className="embla__prev btn btn-square rounded-full absolute left-4 top-1/2 transform -translate-y-1/2 z-20 black/40 backdrop-blur-sm hover:bg-black/40 text-white p-3 border-none transition-all"
         onClick={goToPrev}
         aria-label="Previous slide"
       >
@@ -93,7 +93,7 @@ export function EmblaCarousel() {
       </button>
       
       <button
-        className="embla__next btn btn-square rounded-full border-none absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-base-100/40 backdrop-blur-sm hover:bg-base-100/50 text-white p-3 transition-all"
+        className="embla__next btn btn-square rounded-full border-none absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-black/40 backdrop-blur-sm hover:bg-black/40 text-white p-3 transition-all"
         onClick={goToNext}
         aria-label="Next slide"
       >
