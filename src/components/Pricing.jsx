@@ -8,7 +8,7 @@ import secLogo from "../assets/sec-logo.png"
 
 export default function Pricing() {
     return (
-        <div className='space-y-32'>
+        <div className='section-wrapper space-y-32'>
             <div className='text-sm sm:text-base'>
                 <div className='mb-16'>
                     <img src={tfc} alt="" className='mb-8' />

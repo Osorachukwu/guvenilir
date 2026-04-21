@@ -50,6 +50,12 @@
 }
 
 
+/* Section containers */
+.section-wrapper {
+  @apply max-w-7xl mx-auto px-4 pb-20;
+
+}
+
 /* Toast animation style*/
 @keyframes fadeIn {
   from { 
@@ -94,4 +100,13 @@
 
 .animate-fadeOut {
   animation: fadeOut 0.3s ease-out forwards;
+}
+
+/* paralx */
+.parallax {
+  background-image: url('./assets/images (1).jpg');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }

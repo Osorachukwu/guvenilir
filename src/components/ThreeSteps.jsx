@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom'
 
 export default function ThreeSteps() {
     return (
-        <div>
-            <p className='text-center text-4xl pb-8 '>3 Simple Steps</p>
-            <div className='grid grid-cols-1 md:grid-cols-3 max-w-7xl w-full mx-auto px-4 sm:px-0'>
+        <div className='pb-20'>
+            <p className='text-center text-4xl pb-8'>3 Simple Steps</p>
+            <div className='grid grid-cols-1 md:grid-cols-3 w-full mx-auto px-4 sm:px-0'>
                 {[
                     {
                         title: "Create An Account",

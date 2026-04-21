@@ -23,10 +23,12 @@ import Bitcoin from '../pages/Bitcoin'
 import OilAndGas from '../pages/OilAndGas'
 import Loan from '../pages/Loan'
 import NFP from '../pages/NFP'
+import Footer from '../components/Footer'
+import GoogleTranslateSwitcher from '../components/ui/GoogleTranslateSwitcher'
 
 export default function AppRouter() {
     let currentPath = useLocation().pathname;
-    console.log(currentPath)
+    // console.log(currentPath)
     
     const hideNavBarPaths = [
         "/login",
@@ -41,13 +43,15 @@ export default function AppRouter() {
         "/admin",
         "/admin/test1",
         "/admin/test2",
-        "/contact"
+        "/contact",
+        "*"
     ];
 
     return (
         <>
             {/* {currentPath != "/login" && currentPath != "/register" && <NavBar />} */}
             {!hideNavBarPaths.includes(currentPath) && <NavBar />}
+            <GoogleTranslateSwitcher />
             <Routes>
                 <Route path='*' element={<NotFound />} />
                 <Route path="/" element={<Home />} />
@@ -78,6 +82,7 @@ export default function AppRouter() {
 
                 </Route>
             </Routes>
+            <Footer />
         </>
     )
 }
