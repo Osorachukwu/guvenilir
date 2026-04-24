@@ -69,7 +69,7 @@ export function EmblaCarousel() {
               </div>
               
               {/* Optional Content Overlay */}
-              <div className="relative z-10 h-full flex flex-col items-cen justify-center text-white bg-red-300 max-w-7xl mx-auto px-4">
+              <div className="relative z-10 h-full flex flex-col items-cen justify-center text-white bg-red-300 max-w-5xl mx-auto px-4">
                 <h1 className="text-4xl md:text-6xl font-bold mb-4">
                   {slide.title}
                 </h1>
@@ -78,6 +78,11 @@ export function EmblaCarousel() {
                     {slide.subtitle}
                   </p>
                 )}
+                {/* buttons */}
+                <div>
+                  <button className='btn'>Get Started</button>
+                  <button className='btn'>Know More</button>
+                </div>
               </div>
             </div>
           ))}

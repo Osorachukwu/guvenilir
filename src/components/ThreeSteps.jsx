@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 export default function ThreeSteps() {
     return (
-        <div className='pb-20'>
+        <div className='py-16 md:py-20'>
             <p className='text-center text-4xl pb-8'>3 Simple Steps</p>
             <div className='grid grid-cols-1 md:grid-cols-3 w-full mx-auto px-4 sm:px-0'>
                 {[

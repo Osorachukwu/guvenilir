@@ -9,7 +9,7 @@ export default function Support() {
       <div class="grid lg:grid-cols-2 items-start gap-16 p-6 mx-2 sm:mx-auto max-w-5xl max-lg:max-w-2xl bg-base-300 rounded-md my-20 shadow-md">
         <div>
           <h2 class="text-3xl font-bold">Let's Talk</h2>
-          <p class="text-[15px] mt-4 leading-relaxed">Have some big idea or brand to develop and need help? Then reach out we'd love to hear about your project  and provide help.</p>
+          <p class="text-[15px] mt-4 leading-relaxed opacity-70">Have some big idea or brand to develop and need help? Then reach out we'd love to hear about your project  and provide help.</p>
           {/* email and location */}
           <div className='mt-6 sm:mt-8 space-y-6 sm:space-y-8'>
             <div>
@@ -19,8 +19,8 @@ export default function Support() {
                   <div class="bg-base-100 h-10 w-10 sm:h-11 sm:w-11 rounded-full flex items-center justify-center shrink-0">
                     <Mail />
                   </div>
-                  <a href="javascript:void(0)" class="text-sm ml-4">
-                    <small class="block">Mail</small>
+                  <a href="javascript:void(0)" class="ml-4">
+                    <small class="block opacity-70">Mail</small>
                     <spane class="font-semibold">info@example.com</spane>
                   </a>
                 </li>
@@ -34,8 +34,8 @@ export default function Support() {
                   <div class="bg-base-100 h-10 w-10 sm:h-11 sm:w-11 rounded-full flex items-center justify-center shrink-0">
                     <MapPin />
                   </div>
-                  <a href="javascript:void(0)" class="text-sm ml-4">
-                    <small class="block">Address</small>
+                  <a href="javascript:void(0)" class="ml-4">
+                    <small class="block opacity-70">Address</small>
                     <spane class="font-semibold">11 Tawari Street, Mount Eden, Auckland, 1024 , New Zealand</spane>
                   </a>
                 </li>

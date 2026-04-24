@@ -13,7 +13,7 @@ function PricingCrad({ title, gain, duration, minInvestment, maxInvestment }) {
                     <span className="ml-1">/ {duration}</span>
                 </div>
             </div>
-            <div className="bg-white p-6">
+            <div className="bg-gray-100 p-6">
                 {/* <p className="mb-6 text-gray-600">Everything you need for advanced projects and teams.</p> */}
                 <ul className="mb-6 space-y-4 divide-y divide-gray-300 text-gray-500">
                     <li className="flex items-center gap-4 pb-3">

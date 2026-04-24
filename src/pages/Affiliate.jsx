@@ -5,8 +5,8 @@ export default function Affiliate() {
   return (
     <div>
       <Banner title="Affiliate" />
-      <div className='mx-auto max-w-5xl py-10'>
-        <p className='text-lg font-semibold mb-4'>AFFILIATE</p>
+      <div className='mx-auto max-w-5xl py-10 md:py-16'>
+        <p className='text-lg font-bold mb-4'>AFFILIATE</p>
         <p className='mb-4 text-lg'>Emerald Holdings Limited</p>
 
         <p className='mb-10 leading-8'>
@@ -16,14 +16,14 @@ export default function Affiliate() {
         </p>
 
 
-        <p className='text-lg font-semibold mb-4'>So how does it work?</p>
+        <p className='text-lg font-bold mb-4'>So how does it work?</p>
 
-        <p className='text-lg font-semibold mb-4'>Promote Emerald Holdings Limited Investmets</p>
+        <p className='text-lg font-bold mb-4'>Promote Emerald Holdings Limited Investmets</p>
         <p className='mb-10 leading-8'>
           Not everyone is at the same level when it comes to asset management or investing in general. That’s why we offer three different levels of partnership for our investors. We aim to educate our users so that they become more familiar and comfortable with investing conditions and earn as much money as possible. Becoming a partner of ours is fast, easy and takes just a moment. Once you register you will be given your own partnership or affiliate link. You can use this link on or offline with family, friends, acquaintances, or customers. However you want to use and market your link is up to you. Many of our users have had great success finding new investors on social media, via email, word of mouth, chat, text or advertising banners. It doesn’t matter how someone finds your link so long as they click on it and sign up to be a registered user. Once they have signed up using your personal affiliate link they become one of your referrals.
         </p>
 
-        <p className='text-lg font-semibold mb-4'>Get affiliates & earn money</p>
+        <p className='text-lg font-bold mb-4'>Get affiliates & earn money</p>
         <p>
           As soon as your referral starts investing, you start earning a commission. 5% for direct referral,2.5% non direct referral and 1% for third level referral. This is considered a three tier referral program. Our goal is to reward you every step of the way and help you grow your wealth. There is no cap or end to those rewards for as long as any referral in your downline stays active and stays invested. Your commissions are received automatically and you can invest or withdraw them at any time. We want you to succeed in your investing goals and wealth creation and help all those that you come in contact with do the same thing. Let’s work together and change your future starting today.
         </p>

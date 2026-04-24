@@ -8,7 +8,6 @@ import AboutUs from '../components/AboutUs'
 import CTA from '../components/CTA'
 import Footer from '../components/Footer'
 import theImage from "../assets/images (1).jpg"
-import AboutSection from '../components/AboutSection'
 
 export default function Home() {
   return (
@@ -16,10 +15,11 @@ export default function Home() {
       <Hero />
       {/*  */}
       {/* Pricing and certificates */}
-      <div className='space-y-36'>
+      <div className='spa-36'>
         <AboutUs />
         <Pricing />
       </div>
+
       {/* Parallax */}
       
       <div className='relative parallax'>
@@ -27,15 +27,16 @@ export default function Home() {
         <div className='bg-base-300/70 absolute inset-0 w-full h-full'></div>
         
        
-        <div className='relative z-10 max-w-sm py-20 ml-5 lg:ml-28'>
+        <div className='relative left-40 z-10 max-w-sm py-20'>
           <p className='text-xl'>
             Welcome to Emerald Holdings Limited
           </p>
-          <p className='text-4xl font-bold mt-4 mb-6'>
-            We are your trustworthy financial partner. We're trusted by over 49,666 successful investors from across the world. We want you to be on that list.
+          <p className='text-5xl font-bold mt-4 mb-6 leading-14'>
+            You can trust us to help make your financial dream come true
           </p>
           <p>
-            You can trust us to help make your financial dream come true
+             We are your trustworthy financial partner. We're trusted by over 49,666 successful investors from across the world. We want you to be on that list.
+            
           </p>
         </div>
 

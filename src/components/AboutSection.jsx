@@ -50,7 +50,7 @@ const AboutSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="w-full py-16 md:py-24 lg:py-32"
+      className="w-full py-16 md:py-20"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16 xl:gap-24">
@@ -66,7 +66,7 @@ const AboutSection = () => {
               <span className="text-primary">better choice</span>.
             </h2>
             
-            <p className="mb-8 text-base leading-relaxed sm:text-lg">
+            <p className="mb-8 text-base leading-relaxed sm:text-lg text-base-content/70">
               With over 153,000 investments under our management, $5 billion+ in assets under our administration, 
               over 11 industry awards, we have made Emerald Holdings Limited the safe haven for investors who want 
               to trust their financial partner to be capable of helping them reach their financial goals, and in due time, 
@@ -122,7 +122,7 @@ const AboutSection = () => {
 
               {/* Overlapping Small Image - Handshake */}
               <div className="relative -mt-16 ml-4 mr-4 sm:ml-8 sm:mr-0 sm:-mt-20 sm:max-w-xs lg:-mt-24 lg:ml-auto lg:mr-8">
-                <div className="overflow-hidden rounded-xl border-4 border-white shadow-xl">
+                <div className="overflow-hidden rounded-xl border-4 border-gray-300 shadow-xl">
                   <img
                     src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=500&h=350&fit=crop"
                     alt="Business professionals shaking hands over signed documents"

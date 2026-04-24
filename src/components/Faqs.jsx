@@ -13,7 +13,7 @@ export default function Faqs() {
                         <div key={i} className="join-item collapse collapse-arrow bg-base-300 border border-base-300">
                             <input type="radio" name="my-accordion-2" defaultChecked={i === 1} />
                             <div className="collapse-title font-semibold text-base">How do I create an account?</div>
-                            <div className="collapse-content text-sm md:text-base">Emerald Holdings Limited our company provides a full investment service focused on the bitcoin and cryptocurrency market We are among the best platforms to invest and grow your bitcoin and other cryptocurrency.</div>
+                            <div className="collapse-content text-sm md:text-base opacity-70">Emerald Holdings Limited our company provides a full investment service focused on the bitcoin and cryptocurrency market We are among the best platforms to invest and grow your bitcoin and other cryptocurrency.</div>
                         </div>
                     ))}
 

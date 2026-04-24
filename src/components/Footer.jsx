@@ -7,7 +7,7 @@ export default function Footer() {
         <footer className='relative'>
             <img src={bgImage} alt="" className='absolute h-full w-full inset-0 -z-30' />
             <div className='bg-base-300/90 absolute inset-0 w-full h-full -z-10'></div>
-            <div className="px-4 pt-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
+            <div className="px-4 pt-16 md:pt-28 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl ">
                 <div className="grid gap-10 row-gap-6 mb-8 sm:grid-cols-2 lg:grid-cols-4">
                     <div className="sm:col-span-2">
                         <a
@@ -16,30 +16,16 @@ export default function Footer() {
                             title="Company"
                             className="inline-flex items-center"
                         >
-                            {/* <svg
-                            className="w-8 text-deep-purple-accent-400"
-                            viewBox="0 0 24 24"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeMiterlimit="10"
-                            stroke="currentColor"
-                            fill="none"
-                        >
-                            <rect x="3" y="1" width="7" height="12" />
-                            <rect x="3" y="17" width="7" height="6" />
-                            <rect x="14" y="1" width="7" height="6" />
-                            <rect x="14" y="11" width="7" height="12" />
-                        </svg> */}
+
                             <span className="ml-2 text-xl font-bold tracking-wide uppercase">
                                 Company
                             </span>
                         </a>
                         <div className="mt-6 lg:max-w-sm">
                             <p className=" leading-6">
-                               We are everything a traditional financial institution is not. We set out to give investors better, simpler and more profitable ways to become financially successful and secure.
+                                We are everything a traditional financial institution is not. We set out to give investors better, simpler and more profitable ways to become financially successful and secure.
                             </p>
-                            
+
                         </div>
                     </div>
                     <div className="space-y-2 text-sm">
@@ -86,7 +72,7 @@ export default function Footer() {
                         <p className="text-base font-bold tracking-wide mb-2">
                             Social
                         </p>
-                       
+
                         <nav>
                             <ul className='space-y-2'>
                                 <li>
