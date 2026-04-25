@@ -49,8 +49,8 @@ export default function AppRouter() {
 
     return (
         <>
-            {/* {currentPath != "/login" && currentPath != "/register" && <NavBar />} */}
-            {!hideNavBarPaths.includes(currentPath) && <NavBar />}
+            {currentPath != "/login" && currentPath != "/register" && <NavBar />}
+            {/* {!hideNavBarPaths.includes(currentPath) && <NavBar />} */}
             <GoogleTranslateSwitcher />
             <Routes>
                 <Route path='*' element={<NotFound />} />

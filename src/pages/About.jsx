@@ -11,39 +11,41 @@ export default function About() {
       <Banner />
       <AboutSection />
 
-      <div class="max-w-screen-xl max-lg:max-w-screen-sm mx-auto p-4">
-        <div class="grid lg:grid-cols-2 gap-x-8 gap-y-16 items-center">
-          <div class="max-lg:-order-1">
-            <div class="w-full aspect-4/3">
-              {/* <img src="https://readymadeui.com/images/about-us-img.svg" class="w-full h-full object-contain rounded-md" /> */}
-              <img src="https://readymadeui.com/images/about-image-1.webp" class="w-full h-full object-contain rounded-md" />
-            </div>
-          </div>
-
-          <div>
-            <div class="max-lg:text-center">
-              <h2 class="md:text-4xl text-3xl font-bold md:!leading-[45px] leading-[40px]">Why choose Us?</h2>
-              <p class="text-[15px] mt-6 leading-relaxed text-base-content/70">We are an international financial company engaged in investment activities, which are related to trading on financial markets and cryptocurrency exchanges, Oil & Gas investment, stock and gold. All performed by qualified professional traders.</p>
+      <div className='bg-base-300 py-16'>
+        <div class="max-w-screen-xl max-lg:max-w-screen-sm mx-auto p-4">
+          <div class="grid lg:grid-cols-2 gap-x-8 gap-y-16 items-center">
+            <div class="max-lg:-order-1">
+              <div class="w-full aspect-4/3">
+                {/* <img src="https://readymadeui.com/images/about-us-img.svg" class="w-full h-full object-contain rounded-md" /> */}
+                <img src="https://readymadeui.com/images/about-image-1.webp" class="w-full h-full object-contain rounded-md" />
+              </div>
             </div>
 
-            <hr class="my-10 border-gray-600" />
-
-            <div class="grid sm:grid-cols-2 gap-x-6 gap-y-10 max-lg:text-center">
-              <div>
-                <UserCheck size={40} className='text-primary' />
-
-                <h3 class="text-base font-semibold my-3">Our Legality</h3>
-                <p class="text-[15px] leading-relaxed text-base-content/70">
-                  Our company conducts absolutely legal activities in the legal field. We are certified to operate investment business, we are legal and safe.</p>
+            <div>
+              <div class="max-lg:text-center">
+                <h2 class="md:text-4xl text-3xl font-bold md:!leading-[45px] leading-[40px]">Why choose Us?</h2>
+                <p class="text-[15px] mt-6 leading-relaxed text-base-content/70">We are an international financial company engaged in investment activities, which are related to trading on financial markets and cryptocurrency exchanges, Oil & Gas investment, stock and gold. All performed by qualified professional traders.</p>
               </div>
 
-              <div>
-                <ShieldCheck size={40} className='text-primary' />
-                <h3 class="text-base font-semibold my-3">Our Reliability</h3>
-                <p class="text-[15px] leading-relaxed text-base-content/70">
-                  We are trusted by a huge number of people. We are working hard constantly to improve the level of our security system and minimize possible risks..</p>
-              </div>
+              <hr class="my-10 border-gray-800" />
 
+              <div class="grid sm:grid-cols-2 gap-x-6 gap-y-10 max-lg:text-center">
+                <div>
+                  <UserCheck className='h-10 w-10 text-primary' />
+
+                  <h3 class="text-base font-semibold my-3">Our Legality</h3>
+                  <p class="text-[15px] leading-relaxed text-base-content/70">
+                    Our company conducts absolutely legal activities in the legal field. We are certified to operate investment business, we are legal and safe.</p>
+                </div>
+
+                <div>
+                  <ShieldCheck className='h-10 w-10 text-primary' />
+                  <h3 class="text-base font-semibold my-3">Our Reliability</h3>
+                  <p class="text-[15px] leading-relaxed text-base-content/70">
+                    We are trusted by a huge number of people. We are working hard constantly to improve the level of our security system and minimize possible risks..</p>
+                </div>
+
+              </div>
             </div>
           </div>
         </div>

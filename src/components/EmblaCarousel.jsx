@@ -27,21 +27,23 @@ export function EmblaCarousel() {
     { 
       id: 1, 
       image: hero1,
-      title: `To Change Your <br /> World`,
-      subtitle: "Take A Bold Step",
-      subtitle2: `You have dreams. We have a culturally diverse, forward thinking team ready to help you achieve your dreams`
+      title: `Take A Bold Step`,
+      subtitle: `To Change Your World`,
+      desc: `You have dreams. We have a culturally diverse, forward thinking team ready to help you achieve your dreams`
     },
     { 
       id: 2, 
       image: hero2,
-      title: "Hero Title 2",
-      subtitle: "Optional subtitle text here"
+      title: "Secure Cryptocurrency Investment",
+      subtitle: "Trade With Confidence",
+      desc: `Invest in digital assets with industry-leading security and transparent trading practices. Your wealth, your future.`
     },
     { 
       id: 3, 
       image: hero3,
-      title: "Hero Title 3",
-      subtitle: "Optional subtitle text here"
+      title: "Grow Your Portfolio",
+      subtitle: "Smart Investment Strategies",
+      desc: `Diversify your investments across multiple cryptocurrency opportunities and maximize your returns with our expert guidance.`
     }
   ];
 
@@ -65,23 +67,26 @@ export function EmblaCarousel() {
                   decoding="async"
                 />
                 {/* Optional overlay for better text contrast */}
-                <div className="absolute inset-0 bg-black/30"></div>
+                <div className="absolute inset-0 bg-black/60"></div>
               </div>
               
-              {/* Optional Content Overlay */}
-              <div className="relative z-10 h-full flex flex-col items-cen justify-center text-white bg-red-300 max-w-5xl mx-auto px-4">
-                <h1 className="text-4xl md:text-6xl font-bold mb-4">
-                  {slide.title}
-                </h1>
-                {slide.subtitle && (
-                  <p className="text-xl md:text-2xl">
+              {/* Content Overlay */}
+              <div className="relative z-10 h-full w-full flex flex-col items-center justify-center text-white px-4 sm:px-6 lg:px-8">
+                <div className="max-w-3xl w-full text-center">
+                  <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 leading-tight">
+                    {slide.title}
+                  </h1>
+                  <p className="text-lg sm:text-xl md:text-2xl font-semibold mb-3 sm:mb-4 opacity-95">
                     {slide.subtitle}
                   </p>
-                )}
-                {/* buttons */}
-                <div>
-                  <button className='btn'>Get Started</button>
-                  <button className='btn'>Know More</button>
+                  <p className="text-sm sm:text-base md:text-lg mb-6 sm:mb-8 opacity-90 leading-relaxed max-w-2xl mx-auto">
+                    {slide.desc}
+                  </p>
+                  {/* Buttons */}
+                  <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+                    <button className='btn btn-primary'>Get Started</button>
+                    <button className='btn btn-outline btn-white'>Know More</button>
+                  </div>
                 </div>
               </div>
             </div>

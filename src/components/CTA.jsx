@@ -5,20 +5,20 @@ import { Link } from "react-router-dom";
 
 export default function CTA() {
   return (
-    <div class="section-wrapper">
+    <div className="section-wrapper">
       {/* max-w-screen-lg */}
-      <div class="grid md:grid-cols-2 gap-x-8 gap-y-14 min-h-72 px-8 md:px-16 py-12 bg-gradient-to-br from-blue-700 via-blue-500 to-blue-800 rounded-lg overflow-hidden">
-        <div class="md:max-w-md flex flex-col justify-center">
-          <h2 class="text-3xl font-semibold text-white leading-tight">Elevate Your Experience with Modern Elegance</h2>
-          <p class="text-base text-gray-200 leading-relaxed mt-4">Laboris qui Lorem ad tempor ut reprehenderit. Nostrud anim nulla officia ea sit deserunt.</p>
-          <button type="button" class="btn w-max mt-6">
+      <div className="grid md:grid-cols-2 gap-x-8 gap-y-14 min-h-72 px-8 md:px-16 py-12 bg-gradient-to-br from-blue-700 via-blue-500 to-blue-800 rounded-lg overflow-hidden" data-aos="zoom-in">
+        <div className="md:max-w-md flex flex-col justify-center" data-aos="fade-right">
+          <h2 className="text-3xl font-semibold text-white leading-tight">Elevate Your Experience with Modern Elegance</h2>
+          <p className="text-base text-gray-200 leading-relaxed mt-4">Laboris qui Lorem ad tempor ut reprehenderit. Nostrud anim nulla officia ea sit deserunt.</p>
+          <button type="button" className="btn w-max mt-6">
             Get started
           </button>
         </div>
-        <div class="relative h-full">
+        <div className="relative h-full" data-aos="fade-left">
           <div>
             <img src="https://readymadeui.com/images/payment-img.webp" alt="Banner Image"
-              class="w-full aspect-[6/4] md:right-0 md:top-0 max-lg:bottom-0 m-auto md:absolute object-contain object-center rounded-lg" />
+              className="w-full aspect-[6/4] md:right-0 md:top-0 max-lg:bottom-0 m-auto md:absolute object-contain object-center rounded-lg" />
           </div>
         </div>
       </div>

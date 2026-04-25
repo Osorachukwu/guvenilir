@@ -9,7 +9,7 @@ export default function Footer() {
             <div className='bg-base-300/90 absolute inset-0 w-full h-full -z-10'></div>
             <div className="px-4 pt-16 md:pt-28 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl ">
                 <div className="grid gap-10 row-gap-6 mb-8 sm:grid-cols-2 lg:grid-cols-4">
-                    <div className="sm:col-span-2">
+                    <div className="sm:col-span-2" data-aos="fade-up">
                         <a
                             href="/"
                             aria-label="Go home"
@@ -28,7 +28,7 @@ export default function Footer() {
 
                         </div>
                     </div>
-                    <div className="space-y-2 text-sm">
+                    <div className="space-y-2 text-sm" data-aos="fade-up" data-aos-delay="100">
                         <p className="text-base font-bold tracking-wide">
                             Contacts
                         </p>
@@ -68,7 +68,7 @@ export default function Footer() {
                             </a>
                         </div>
                     </div>
-                    <div>
+                    <div data-aos="fade-up" data-aos-delay="200">
                         <p className="text-base font-bold tracking-wide mb-2">
                             Social
                         </p>
@@ -92,7 +92,7 @@ export default function Footer() {
 
                     </div>
                 </div>
-                <div className='my-8 space-y-4'>
+                <div className='my-8 space-y-4' data-aos="fade-up">
                     <p className='text-2xl font-semibold'>RISK DISCLAIMER</p>
                     <p className='text-sm leading-6'>
                         Nothing contained in this website should be construed as a solicitation or offer, or recommendation, to acquire or dispose of any investment or to engage in any other transaction. The information provided herein is not intended for distribution to, or use by, any person or entity in any jurisdiction or country where such distribution or use would be contrary to law or regulation. Some services may not be available to certain investors due to regulatory or other constraints either in UK, the United States or elsewhere. It is advised that most services are only available following completion of the Customer Agreement and/or any other relevant documentation as required. Investments in securities or financial instruments (including digital currencies, futures, options, contracts for differences, spot and forward foreign exchange contracts) can fluctuate in value. Accordingly, you should be aware that you might not realise the initial amount invested and indeed may incur additional liabilities as investments in securities or financial instruments may entail above average risk. You must therefore carefully consider whether your financial circumstances permit you to invest. Emerald Holdings Limited strongly suggests that you seek the advice of an independent financial advisor in this regard.
