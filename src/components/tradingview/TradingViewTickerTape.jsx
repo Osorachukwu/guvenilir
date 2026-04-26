@@ -28,7 +28,7 @@ export default function TradingViewTicker() {
   }, []);
 
   return (
-    <div className=" max-w-6xl z-40 h-16 py-4 rounded-lg flex items-center bg-black/50">
+    <div className="min-w-full z-40  py-1 m-0 flex items-center bg-black/50">
       <div
         ref={container}
         className="tradingview-widget-container overflow-hidden"

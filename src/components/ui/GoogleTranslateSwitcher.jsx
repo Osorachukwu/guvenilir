@@ -276,7 +276,7 @@ export default function GoogleTranslateSwitcher() {
       <div className="text-sm inline-block fixed top-0 z-50">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="btn btn-sm btn-neutral text-sm"
+          className="btn btn-sm btn-base text-sm"
           title="Change language"
         >
           <Globe size={18} />

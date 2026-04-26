@@ -8,6 +8,8 @@ import hero1 from "../assets/clear/images (1).jpg"
 import hero2 from "../assets/clear/images (2).jpg"
 import hero3 from "../assets/clear/images (3).jpg"
 import { ChevronRight, ChevronLeft } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import Buttons from './ui/Buttons';
 
 export function EmblaCarousel() {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [
@@ -24,22 +26,22 @@ export function EmblaCarousel() {
 
   // Hero slides data
   const slides = [
-    { 
-      id: 1, 
+    {
+      id: 1,
       image: hero1,
       title: `Take A Bold Step`,
       subtitle: `To Change Your World`,
       desc: `You have dreams. We have a culturally diverse, forward thinking team ready to help you achieve your dreams`
     },
-    { 
-      id: 2, 
+    {
+      id: 2,
       image: hero2,
       title: "Secure Cryptocurrency Investment",
       subtitle: "Trade With Confidence",
       desc: `Invest in digital assets with industry-leading security and transparent trading practices. Your wealth, your future.`
     },
-    { 
-      id: 3, 
+    {
+      id: 3,
       image: hero3,
       title: "Grow Your Portfolio",
       subtitle: "Smart Investment Strategies",
@@ -48,12 +50,12 @@ export function EmblaCarousel() {
   ];
 
   return (
-    <div className="embla relative h-[90vh] w-full overflow-hidden">
+    <div className="embla relative h-[85vh] w-full overflow-hidden">
       <div className="embla__viewport h-full" ref={emblaRef}>
         <div className="embla__container h-full flex">
           {slides.map((slide) => (
-            <div 
-              className="embla__slide flex-[0_0_100%] min-w-0 relative h-full" 
+            <div
+              className="embla__slide flex-[0_0_100%] min-w-0 relative h-full"
               key={slide.id}
             >
               {/* Image Container - CRITICAL FOR QUALITY */}
@@ -67,13 +69,23 @@ export function EmblaCarousel() {
                   decoding="async"
                 />
                 {/* Optional overlay for better text contrast */}
-                <div className="absolute inset-0 bg-black/60"></div>
+                <div className="absolute inset-0"
+                  style={{
+                    background: `linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.92) 0%,
+            rgba(0, 0, 0, 0.75) 30%,
+            rgba(0, 0, 0, 0.50) 60%,
+            rgba(0, 0, 0, 0.30) 100%
+          )`,
+                  }}
+                ></div>
               </div>
-              
+
               {/* Content Overlay */}
               <div className="relative z-10 h-full w-full flex flex-col items-center justify-center text-white px-4 sm:px-6 lg:px-8">
                 <div className="max-w-3xl w-full text-center">
-                  <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 leading-tight">
+                  <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 leading-tight">
                     {slide.title}
                   </h1>
                   <p className="text-lg sm:text-xl md:text-2xl font-semibold mb-3 sm:mb-4 opacity-95">
@@ -85,7 +97,13 @@ export function EmblaCarousel() {
                   {/* Buttons */}
                   <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
                     <button className='btn btn-primary'>Get Started</button>
-                    <button className='btn btn-outline btn-white'>Know More</button>
+                    <Link>
+                      {/* <Buttons btnText="Login" btnStyle="btn btn-outline" /> */}
+                      <button className='btn bg-primary/15 hover:bg-primary text-white hover:text-white border-0 shadow-none'>Know More</button>
+                      {/* <button className="px-4 py-2 rounded-md bg-[#422ad5]/10 text-[#422ad5] font-medium hover:bg-[#422ad5] hover:text-white transition-colors duration-200 cursor-pointer">
+                        Primary
+                      </button> */}
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -95,7 +113,7 @@ export function EmblaCarousel() {
       </div>
 
       {/* Navigation Buttons */}
-      <button
+      {/* <button
         className="embla__prev btn btn-square rounded-full absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-black/40 backdrop-blur-sm hover:bg-black/40 text-white p-3 border-none transition-all"
         onClick={goToPrev}
         aria-label="Previous slide"
@@ -109,10 +127,10 @@ export function EmblaCarousel() {
         aria-label="Next slide"
       >
         <ChevronRight />
-      </button>
+      </button> */}
 
       {/* Optional Dots Indicator */}
-      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
+      {/* <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
         {slides.map((_, index) => (
           <button
             key={index}
@@ -125,7 +143,7 @@ export function EmblaCarousel() {
             aria-label={`Go to slide ${index + 1}`}
           />
         ))}
-      </div>
+      </div> */}
     </div>
   );
 }

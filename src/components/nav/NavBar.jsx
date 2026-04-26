@@ -3,6 +3,8 @@ import React, { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom';
 import MobileNav from './MobileNav';
 import { useAuth } from '../../hooks/useAuth';
+import ThemeSwitcher from '../ui/ThemeSwitcher';
+import Buttons from '../ui/Buttons';
 
 export default function NavBar() {
     const { token, logout } = useAuth();
@@ -43,7 +45,10 @@ export default function NavBar() {
                                     Logout
                                 </button>
                                 :
-                                <Link to="/login" className='btn btn-primary'>Login</Link>
+                                // <Link to="/login" className='btn btn-primary'>Login</Link>  
+                                <Link to="/login">
+                                    <Buttons btnText="Login" />
+                                </Link>  
                             }
 
 
@@ -52,10 +57,10 @@ export default function NavBar() {
                 </div>
             </div>
             {/* main nav 👇 */}
-            <div className="navbar bg-black/30 backdrop-blur-sm shadow-sm absolute border-b border-gray-600 z-50 ">
+            <div className="navbar bg-base-300/50 backdrop-blur-sm shadow-sm absolute border-b border-gray-600 z-50 ">
                 <MobileNav />
                 {/* Desktop Nav */}
-                <div className="navbar-center hidden lg:flex font-semibold">
+                <div className="navbar-center hidden lg:flex font-semibold items-center">
                     <ul className="menu menu-horizontal px-1">
                         <li><Link to="/" className={`${currentRoute === "/" && "text-primary"}`}>HOME</Link></li>
                         <li><Link to="/about" className={`${currentRoute === "/about" && "text-primary"}`}>ABOUT</Link></li>
@@ -78,6 +83,9 @@ export default function NavBar() {
                         <li><Link to="/legal">LEGAL</Link></li>
                         <li><Link to="/user">BUY DIGITAL CURRENCY</Link></li>
                         <li><Link to="/register">SIGNUP</Link></li>
+                        <li>
+                            <ThemeSwitcher />
+                        </li>
                     </ul>
                 </div>
                 <div className="navbar-end flex gap-2"></div>

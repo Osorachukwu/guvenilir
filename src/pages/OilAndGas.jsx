@@ -7,9 +7,9 @@ export default function OilAndGas() {
       <Banner />
 
       <div className='mx-auto max-w-7xl'>
-        <div className='pt-20 grid grid-cols-3'>
+        <div className='pt-20 grid grid-cols-3 mb-10'>
           {[1, 2, 3].map(() => (
-            <div className="card bg-base-100 w-96 shadow-sm rounded-none">
+            <div className="card bg-base-100 w-96 rounded-none">
               <figure>
                 <img
                   src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
