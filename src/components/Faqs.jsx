@@ -40,8 +40,8 @@ export default function Faqs() {
         },
     ]
     return (
-        <div className='flex gap-6 mt-20 max-w-7xl mx-auto p-2'>
-            <div className='w-2/3 pb-8' data-aos="fade-right">
+        <div className='flex flex-col-reverse gap-16 md:flex-row md:gap-6 mt-20 max-w-7xl mx-auto p-2'>
+            <div className='md:w-2/3 pb-8' data-aos="fade-right">
                 <p className='text-3xl mb-8 leading-10'>
                     <span className='text-base'>Our FAQ</span> <br />
                     Frequently Asked Questions
@@ -59,7 +59,7 @@ export default function Faqs() {
                 </div>
             </div>
 
-            <div className='w-1/3' data-aos="fade-left">
+            <div className='md:w-1/3' data-aos="fade-left">
                 <div className="card bg-primary card-xl shadow-sm">
                     <div className="card-body">
                         <h2 className="card-title">Need any help!</h2>
@@ -71,24 +71,5 @@ export default function Faqs() {
                 </div>
             </div>
         </div>
-        // <div className="join join-vertical bg-base-100 w-2/3">
-        //     <div className="collapse collapse-arrow join-item border-base-300 border">
-        //         <input type="radio" name="my-accordion-4" defaultChecked />
-        //         <div className="collapse-title font-semibold">How do I create an account?</div>
-        //         <div className="collapse-content text-sm">Click the "Sign Up" button in the top right corner and follow the registration process.</div>
-        //     </div>
-        //     <div className="collapse collapse-arrow join-item border-base-300 border">
-        //         <input type="radio" name="my-accordion-4" />
-        //         <div className="collapse-title font-semibold">I forgot my password. What should I do?</div>
-        //         <div className="collapse-content text-sm">Click on "Forgot Password" on the login page and follow the instructions sent to your email.</div>
-        //     </div>
-        //     <div className="collapse collapse-arrow join-item border-base-300 border">
-        //         <input type="radio" name="my-accordion-4" />
-        //         <div className="collapse-title font-semibold">How do I update my profile information?</div>
-        //         <div className="collapse-content text-sm">Go to "My Account" settings and select "Edit Profile" to make changes.</div>
-        //     </div>
-        // </div>
-
-
     )
 }

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export default function CTA() {
   return (
-    <div className="section-wrapper">
+    <div className="section-wrapper pb-20">
       {/* max-w-screen-lg */}
       <div className="grid md:grid-cols-2 gap-x-8 gap-y-14 min-h-72 px-8 md:px-16 py-12 bg-gradient-to-br from-blue-700 via-blue-500 to-blue-800 rounded-lg overflow-hidden" data-aos="zoom-in">
         <div className="md:max-w-md flex flex-col justify-center" data-aos="fade-right">

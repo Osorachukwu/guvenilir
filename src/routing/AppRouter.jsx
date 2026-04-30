@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom'
 import Home from '../pages/Home'
 import About from '../pages/About'
 import Contact from '../pages/Contact'
-import NavBar from '../components/nav/NavBar'
+// import NavBar from '../components/nav/NavBar'
 import Login from '../pages/Login'
 import Register from '../pages/Register'
 import AdminLayout from './AdminLayout'
@@ -25,11 +25,12 @@ import Loan from '../pages/Loan'
 import NFP from '../pages/NFP'
 import Footer from '../components/Footer'
 import GoogleTranslateSwitcher from '../components/ui/GoogleTranslateSwitcher'
+import { NavBar } from '../components/ui/nav/NavBar'
 
 export default function AppRouter() {
     let currentPath = useLocation().pathname;
     // console.log(currentPath)
-    
+
     const hideNavBarPaths = [
         "/login",
         "/register",
@@ -49,9 +50,11 @@ export default function AppRouter() {
 
     return (
         <>
-            {currentPath != "/login" && currentPath != "/register" && <NavBar />}
-            {/* {!hideNavBarPaths.includes(currentPath) && <NavBar />} */}
-            <GoogleTranslateSwitcher />
+            {/* {currentPath != "/login" && currentPath != "/register" && <NavBar />} */}
+            {!hideNavBarPaths.includes(currentPath) && <NavBar />}
+            {/* <div className='hidden md:block'> */}
+                {/* <GoogleTranslateSwitcher /> */}
+            {/* </div> */}
             <Routes>
                 <Route path='*' element={<NotFound />} />
                 <Route path="/" element={<Home />} />

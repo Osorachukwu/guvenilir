@@ -30,16 +30,16 @@ export default function About() {
               <hr class="my-10 border-gray-800" />
 
               <div class="grid sm:grid-cols-2 gap-x-6 gap-y-10 max-lg:text-center">
-                <div>
-                  <UserCheck className='h-10 w-10 text-primary' />
+                <div className='text-center flex justify-center flex-col items-center'>
+                  <UserCheck className='md:h-8 md:w-8 text-primary' />
 
                   <h3 class="text-base font-semibold my-3">Our Legality</h3>
                   <p class="text-[15px] leading-relaxed text-base-content/70">
                     Our company conducts absolutely legal activities in the legal field. We are certified to operate investment business, we are legal and safe.</p>
                 </div>
 
-                <div>
-                  <ShieldCheck className='h-10 w-10 text-primary' />
+                <div className='text-center flex justify-center flex-col items-center'>
+                  <ShieldCheck className='md:h-8 md:w-8 text-primary' />
                   <h3 class="text-base font-semibold my-3">Our Reliability</h3>
                   <p class="text-[15px] leading-relaxed text-base-content/70">
                     We are trusted by a huge number of people. We are working hard constantly to improve the level of our security system and minimize possible risks..</p>

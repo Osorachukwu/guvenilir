@@ -9,6 +9,7 @@ import CTA from '../components/CTA'
 import Footer from '../components/Footer'
 import theImage from "../assets/images (1).jpg"
 import TradingViewTicker from '../components/tradingview/TradingViewTickerTape'
+import OurServices from '../components/OurServices'
 
 export default function Home() {
   return (
@@ -42,6 +43,7 @@ export default function Home() {
         </div>
       </div>
       {/* Parallax */}
+      <OurServices />
 
       <ThreeSteps />
       <CTA />

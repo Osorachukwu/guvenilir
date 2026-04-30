@@ -273,20 +273,20 @@ export default function GoogleTranslateSwitcher() {
     <>
       <div id="google_translate_element" style={{ display: 'none' }}></div>
 
-      <div className="text-sm inline-block fixed top-0 z-50">
+      <div className="text-sm inline-block fixed top-4 right-5 md:left-0 md:top-0 z-50">
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="btn btn-sm btn-base text-sm"
           title="Change language"
         >
           <Globe size={18} />
-          <span className='border-r border-base-100 pr-2 py-1'>Translator</span>
+          <span className='border-r border-base-100 pr-2 py-1 '>Translator</span>
           <span className="hidden sm:inline">{currentLanguage.toUpperCase()}</span>
           <ChevronDown size={14} className={`transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
         </button>
 
         {isOpen && (
-          <div className="absolute mt-2 w-56 shadow-lg z-50 bg-base-100/80 backdrop-blur-sm max-h-96 overflow-y-auto">
+          <div className="absolute mt-2 w-56 shadow-lg z-50 bg-base-100 backdrop-blur-sm max-h-96 overflow-y-auto">
             <div className="p-1">
               {ALL_LANGUAGES.map((lang) => (
                 <button
@@ -322,3 +322,4 @@ export default function GoogleTranslateSwitcher() {
     </>
   );
 }
+

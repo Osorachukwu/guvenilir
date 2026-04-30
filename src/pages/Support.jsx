@@ -56,7 +56,7 @@ export default function Support() {
 
           <textarea className="textarea sm:textarea-md w-full" rows={9} placeholder="Bio" required></textarea>
           <button type='button'
-            class="btn btn-lg btn-bloc text-base btn-primary">Send message</button>
+            class="btn btn-bloc text-base btn-primary">Send message</button>
         </form>
       </div>
     </div>

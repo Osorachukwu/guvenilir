@@ -70,7 +70,7 @@ export default function NavBar() {
                                 <ul tabIndex="-1" className="dropdown-content mt-2 menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
                                     {dropDownItems.map((item) => (
                                         <li key={item.page}>
-                                            <Link to={item.linkUrl} className={`${currentRoute === "/oil-and-gas" && "border-b border-primary"}`}>{item.page}</Link>
+                                            <Link to={item.linkUrl} className={`${currentRoute === item.linkUrl && "text-primary"}`}>{item.page}</Link>
                                         </li>
                                     ))}
                                 </ul>
