@@ -21,8 +21,9 @@ export default function Home() {
       <Plans />
 
 
+      <OurServices />
+      
       {/* Parallax */}
-
       <div className="relative parallax w-full overflow-hidden">
         {/* Overlay */}
         <div className="bg-base-300/70 absolute inset-0 w-full h-full"></div>
@@ -43,7 +44,6 @@ export default function Home() {
         </div>
       </div>
       {/* Parallax */}
-      <OurServices />
 
       <ThreeSteps />
       <CTA />

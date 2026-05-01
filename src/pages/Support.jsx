@@ -16,7 +16,7 @@ export default function Support() {
               <h2 class="text-base font-semibold">Email</h2>
               <ul class="mt-4">
                 <li class="flex items-center">
-                  <div class="bg-base-100 h-10 w-10 sm:h-11 sm:w-11 rounded-full flex items-center justify-center shrink-0">
+                  <div class="h-10 w-10 sm:h-11 sm:w-11 rounded-full flex items-center justify-center shrink-0 bg-primary/10 text-primary">
                     <Mail />
                   </div>
                   <a href="javascript:void(0)" class="ml-4">
@@ -31,7 +31,7 @@ export default function Support() {
               <h2 class="text-base font-semibold">Visit Us</h2>
               <ul class="mt-4">
                 <li class="flex items-center">
-                  <div class="bg-base-100 h-10 w-10 sm:h-11 sm:w-11 rounded-full flex items-center justify-center shrink-0">
+                  <div class="h-10 w-10 sm:h-11 sm:w-11 rounded-full flex items-center justify-center shrink-0 bg-primary/10 text-primary">
                     <MapPin />
                   </div>
                   <a href="javascript:void(0)" class="ml-4">

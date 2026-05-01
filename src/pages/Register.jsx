@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { Home } from 'lucide-react';
+import ThemeSwitcher from '../components/ui/ThemeSwitcher';
 
 export default function Register() {
     const navigate = useNavigate();
@@ -72,23 +73,6 @@ export default function Register() {
                 }
             });
 
-
-            // if (response.data.user.role === 'admin') {
-            //     navigate('/login', {
-            //         state: {
-            //             message: 'Register successful',
-            //             type: 'success' 
-            //         }
-            //     });
-            // } else {
-            //     navigate('/login', {
-            //         state: {
-            //             message: 'Register successful',
-            //             type: 'success' 
-            //         }
-            //     });
-            // }
-
         } catch (error) {
             // Handle errors
             if (error.response) {
@@ -108,12 +92,29 @@ export default function Register() {
     }
 
     return (
-        <div className=''>
+        <div className='relative min-h-screen flex justify-center items-center'>
+            <div className='hidden'>
+                <ThemeSwitcher />
+            </div>
             {/* <Link to="/" className='btn btn-square m-4 absolute'><Home size={16} /></Link> */}
-            <div className='flex justify-center items-center h-screen'>
+            {/* Video Background md:min-h-[90vh] */}
+            <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="absolute inset-0 w-full h-full object-cover"
+            >
+                <source src="/vid-2.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
+            {/* Oavrlay */}
+            <div className='bg-base-300/50 backdrop-blur-xs absolute inset-0 w-full h-full'></div>
+
+            <div className='relative px-2 sm:px-3'>
                 <form
                     onSubmit={handleSubmit}
-                    className="fieldset bg-base-300 border-base-300 rounded-box w-lg border p-4 space-y-3"
+                    className="bg-base-300/50 backdrop-blur-sm border-base-300 rounded-box border p-4 space-y-3 shadow-2xl max-w-lg"
                 >
                     <div className='space-y-6 mb-8'>
                         <div>
@@ -227,23 +228,22 @@ export default function Register() {
                             required
                             className="checkbox checkbox-primary checkbox-sm validator" />
                         <p className='text-sm'>I agree to the
-                            <Link to="#" className="link link-hover link-primary"> terms and conditions</Link>
+                            <Link to="#" className="link link-hover font-medium link-primary"> terms and conditions</Link>
                         </p>
                     </div>
                     <p className="validator-hint hidden text-xs -mt-3">You must agree to the terms and conditions</p>
-                    {/* <p className='text-xs font-extralight'>jdjdj</p> */}
 
                     {/* Buttons */}
                     <div className='flex flex-col'>
                         <button
-                            className="btn btn-neutral font-normal text-base"
+                            className="btn btn-primary font-normal text-base"
                             type="submit"
                             disabled={isLoading}
                         >
                             {isLoading ? 'Creating Account...' : 'Create Account'}
                         </button>
                         <Link to="/login" className='text-sm btn btn-ghost font-normal'>Already have an account?
-                            <span className="link link-hover link-primary"> Login</span>
+                            <span className="link link-hover link-primary font-medium"> Login</span>
                         </Link>
                     </div>
                 </form>

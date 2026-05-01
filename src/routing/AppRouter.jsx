@@ -6,13 +6,13 @@ import Contact from '../pages/Contact'
 // import NavBar from '../components/nav/NavBar'
 import Login from '../pages/Login'
 import Register from '../pages/Register'
-import AdminLayout from './AdminLayout'
+import AdminLayout from '../../previously/AdminLayout'
 import ActiveDeposits from '../components/user-dashboard/ActiveDeposits'
 import Deposit from '../components/user-dashboard/Deposit'
 import Withdrawer from '../components/user-dashboard/Withdrawer'
 import NotFound from '../pages/NotFound'
 import FAQs from '../pages/FAQs'
-import UserLayout from './UserLayout'
+import UserLayout from '../../previously/UserLayout'
 import UserProfile from '../components/user-dashboard/UserProfile'
 import Dashboard from '../components/user-dashboard/Dashboard'
 import Test1 from '../components/admin-dashboard/Test1'
@@ -26,6 +26,15 @@ import NFP from '../pages/NFP'
 import Footer from '../components/Footer'
 import GoogleTranslateSwitcher from '../components/ui/GoogleTranslateSwitcher'
 import { NavBar } from '../components/ui/nav/NavBar'
+import ForexTrading from '../pages/services/ForexTrading'
+import GoldInvestments from '../pages/services/GoldInvestments'
+import RealEstate from '../pages/services/RealEstate'
+import RetirmentPlanning from '../pages/services/RetirmentPlanning'
+import CannabisInvestments from '../pages/services/CannabisInvestments'
+import Cryptocurrency from '../pages/services/Cryptocurrency'
+import FinancialPlanning from '../pages/services/FinancialPlanning'
+import LoansAndGrants from '../pages/services/LoansAndGrants'
+import ScrollToTop from '../components/ui/ScrollToTop'
 
 export default function AppRouter() {
     let currentPath = useLocation().pathname;
@@ -53,8 +62,9 @@ export default function AppRouter() {
             {/* {currentPath != "/login" && currentPath != "/register" && <NavBar />} */}
             {!hideNavBarPaths.includes(currentPath) && <NavBar />}
             {/* <div className='hidden md:block'> */}
-                {/* <GoogleTranslateSwitcher /> */}
+            {/* <GoogleTranslateSwitcher /> */}
             {/* </div> */}
+            <ScrollToTop />
             <Routes>
                 <Route path='*' element={<NotFound />} />
                 <Route path="/" element={<Home />} />
@@ -69,6 +79,17 @@ export default function AppRouter() {
                 <Route path="/oil-and-gas" element={<OilAndGas />} />
                 <Route path="/loan" element={<Loan />} />
                 <Route path="/nfp" element={<NFP />} />
+                {/* SErvices */}
+                <Route path="/forex-trading" element={<ForexTrading />} />
+                <Route path="/real-estate-investments" element={<RealEstate />} />
+                <Route path="/gold-investments" element={<GoldInvestments />} />
+                <Route path="/retirement-planning" element={<RetirmentPlanning />} />
+                <Route path="/medical-cannabis" element={<CannabisInvestments />} />
+                <Route path="/cryptocurrencies" element={<Cryptocurrency />} />
+                <Route path="/financial-planning" element={<FinancialPlanning />} />
+                <Route path="/oil-and-gas" element={<OilAndGas />} />
+                <Route path="/loans-and-grants" element={<LoansAndGrants />} />
+                
 
                 {/* User Dashboard Layout */}
                 <Route path='/user' element={<UserLayout />}>
@@ -85,7 +106,8 @@ export default function AppRouter() {
 
                 </Route>
             </Routes>
-            <Footer />
+
+            {!hideNavBarPaths.includes(currentPath) && <Footer />}
         </>
     )
 }

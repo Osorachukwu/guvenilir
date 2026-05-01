@@ -135,9 +135,9 @@ export function NavBar() {
     { navItem: "FAQS", navUrl: "/faqs" },
     { navItem: "Support", navUrl: "/support" },
     { navItem: "Affiliate", navUrl: "/affiliate" },
-    { navItem: "Legal", navUrl: "/legal" },
-    { navItem: "Buy Digital currency", navUrl: "/buy" },
-    { navItem: "Signup", navUrl: "/buy" }
+    // { navItem: "Legal", navUrl: "/legal" },
+    // { navItem: "Buy Digital currency", navUrl: "/buy" },
+    { navItem: "Signup", navUrl: "/register" }
   ];
 
   const investmentDropdownItems = [
@@ -175,7 +175,7 @@ export function NavBar() {
       </div>
 
       {/* Main Navigation */}
-      <nav className={` w-full absolute z-40 transition-all duration-300 ${scrolled ? 'shadow-lg' : ''}`}>
+      <nav className={`w-full absolute z-40 transition-all duration-300 ${scrolled ? 'shadow-lg' : ''}`}>
         {/* className='bg-base-300/50 backdrop-blur-sm border-b border-gray-600 absolute z-50 py-4' */}
         <div className={`bg-base-300/50 backdrop-blur-md border-b border-base-content/10 w-full py-4 transition-all duration-300 ${scrolled ? 'bg-base-300/80' : ''}`}>
           

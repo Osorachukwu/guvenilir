@@ -1,8 +1,8 @@
 import { Ban, CheckCircle2, ChevronDown, ChevronRight, CopyIcon, Hourglass, TriangleAlert, UserRound, X } from 'lucide-react'
 import React, { useState } from 'react'
 import { Link, Outlet } from 'react-router-dom';
-import { useAuth } from '../hooks/useAuth';
-import { CopyableText } from '../components/ui/CopyableText';
+import { useAuth } from '../src/hooks/useAuth';
+import { CopyableText } from '../src/components/ui/CopyableText';
 
 
 export default function AdminLayout() {

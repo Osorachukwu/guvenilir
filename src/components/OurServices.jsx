@@ -11,13 +11,14 @@ import img9 from "../assets/9.jpg"
 import atmCard from "../assets/card.png"
 // import CryptoPrices from './CryptoPrices'
 import atmCard2 from "../assets/atm-card-2.jpg"
+import { Link } from 'react-router-dom'
 
 
 
 
 export default function OurServices() {
     return (
-        <div>
+        <div className="bg-base-300">
             {/* <div className="pb-16 lg:py-20 px-4 sm:px-10 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl" data-aos="fade-right">
                 <div className="grid lg:gap-10 md:grid-cols-2">
 
@@ -43,7 +44,7 @@ export default function OurServices() {
                 </div>
             </div> */}
 
-            <div className='max-w-6xl px-1 sm:px-4 shadow-2xl mx-auto py-20' data-aos="fade-up">
+            <div className='max-w-6xl px-1 sm:px-4 shadow-2xl mx-auto py-20 bg-base-100' data-aos="fade-up">
                 <h2
                     class="mt-1 text-3xl md:text-4xl font-bold text-center mb-4 sm:tracking-tight">
                     Our
@@ -52,46 +53,55 @@ export default function OurServices() {
                 <div className='grid sm:grid-cols-2 gap-4 md:gap-2 lg:gap-4 px-4'>
                     {[
                         {
+                            serviceUrl: "/forex-trading",
                             title: "Forex Trading",
                             desc: "Forex is a portmanteau of foreign currency and exchange. Foreign exchange is the process of changing one currency into another currency for a variety of reasons, usually for commerce, trading, or tourism. According to a recent triennial report...",
                             image: img8
                         },
                         {
+                            serviceUrl: "/real-estate-investments",
                             title: "Real Estate Investments",
                             desc: "Real estate investments involves the purchase, ownership, management, rental and/or sale of real estate for profit. Improvement of realty property as part of a real estate investment strategy is generally considered to be a sub-specialty of real estate investing...",
                             image: img5
                         },
                         {
+                            serviceUrl: "/gold-investments",
                             title: "Gold Investments",
                             desc: "Commonly seen as a great store of wealth, this precious metal is also known as a reliable safe-haven asset. With a rich history amongst almost all global cultures, gold remains a highly popular...",
                             image: img9
                         },
                         {
+                            serviceUrl: "/retirement-planning",
                             title: "Retirement Planning",
                             desc: "Saving for retirement can be a daunting task, but with a sound strategy, it’s well within reach. Güvenilir-varlıklar  is here to bring clarity to retirement...",
                             image: img1
                         },
                         {
+                            serviceUrl: "/medical-cannabis",
                             title: "Medical Cannabis",
                             desc: "For many years we have been working conscientiously and with the most diverse technologies and means. We have constantly successfully completed our projects...",
                             image: img2
                         },
                         {
+                            serviceUrl: "/cryptocurrencies",
                             title: "Cryptocurrencies",
                             desc: "Güvenilir-varlıklar  now offers all traders the opportunity to trade a wide range of the top ranked digital coins 24/7*. Today cryptocurrencies have become known to most people...",
                             image: img3
                         },
                         {
+                            serviceUrl: "/financial-planning",
                             title: "Financial Planning",
                             desc: "A financial plan is a comprehensive evaluation of an investor’s current and future financial state by using currently known variables to predict future cash flows, asset values and withdrawal..",
                             image: img4
                         },
                         {
+                            serviceUrl: "/oil-and-gas",
                             title: "Oil and Gas",
                             desc: "Surprising as it might be, anyone can invest in the oil market to make a profit. Indeed, the development of online trading platforms has allowed individuals to use their savings to speculate on rising or falling oil prices...",
                             image: img6
                         },
                         {
+                            serviceUrl: "/loans-and-grants",
                             title: "Loans and Grants",
                             desc: "Getting a loan doesn’t have to be intimidating, with the right lender it can be a simple process. You only need a lender committed to taking the mystery out of the mortgage loan process...",
                             image: img7
@@ -106,7 +116,9 @@ export default function OurServices() {
                                     <p className='font-semibold text-xl card-title mb-1'>{item.title}</p>
                                     <p className='mb-6 text-base-content/60'>{item.desc}</p>
                                     {/* <Buttons btnTitle="Learn More" btnStyles="bg-primary text-black" withArrow={true} /> */}
-                                    <button className='btn btn-primary'>Learn More</button>
+                                    <div>
+                                        <Link to={item.serviceUrl} className='btn btn-primary btn-sm'>Learn More</Link>
+                                    </div>
                                 </div>
                             </div>
                         </div>

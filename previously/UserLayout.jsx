@@ -1,7 +1,7 @@
 import { Banknote, BanknoteArrowDown, BanknoteArrowUpIcon, ChevronDown, ChevronsLeft, ChevronsRight, ClipboardClock, Handshake, Home, LayoutDashboard, UserRound } from 'lucide-react';
 import React, { useEffect, useState } from 'react'
 import { Link, Outlet, useNavigate } from 'react-router-dom';
-import { useAuth } from '../hooks/useAuth';
+import { useAuth } from '../src/hooks/useAuth';
 
 export default function UserLayout() {
     const navigate = useNavigate();

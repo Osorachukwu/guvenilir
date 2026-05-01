@@ -4,6 +4,7 @@ import axios from 'axios'
 import { useAuth } from '../hooks/useAuth'
 import { CheckCircle, CheckCircle2, ChevronLeft, KeyRound, Mail, XCircle } from 'lucide-react'
 import TimedAlert from '../components/ui/TimedAlert'
+import ThemeSwitcher from '../components/ui/ThemeSwitcher'
 
 
 export default function Login() {
@@ -94,7 +95,10 @@ export default function Login() {
 
 
     return (
-        <div className=''>
+        <div className='relative min-h-screen flex justify-center items-center'>
+            <div className='hidden'>
+                <ThemeSwitcher />
+            </div>
 
             {alert &&
                 <TimedAlert
@@ -102,97 +106,93 @@ export default function Login() {
                     type={alert.type}
                 />
             }
+            {/* Video Background md:min-h-[90vh] */}
+            <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="absolute inset-0 w-full h-full object-cover"
+            >
+                <source src="/vid-2.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
+            {/* Oavrlay */}
+            <div className='bg-base-300/50 absolute inset-0 w-full h-full'></div>
 
-            <div className='flex justify-center items-center h-screen'>
-                <div className='w-lg'>
+            <div className='relative px-2 sm:px-3 border'>
 
-                    <form
-                        onSubmit={handleSubmit}
-                        className="fieldset bg-base-300 border-base-300 rounded-box border p-4 space-y-3 mt-4"
-                    >
+                <form
+                    onSubmit={handleSubmit}
+                    className="h-full bg-base-300/50 backdrop-blur-sm border-base-300 rounded-box border p-4 shadow-2xl space-y-3 max-w-lg"
+                >
 
-                        <div className='space-y-6 mb-8'>
-                            <div>
-                                <Link to="/" className="btn btn-primary text-xl">Crypto-Invest</Link>
-                            </div>
-                            <p className="text-lg font-semibold pl-3">
-                                Get Started! <br />
-                                <span className='text-sm font-normal line-clamp-2'>It's free to signup and only takes a minute.</span>
-                            </p>
+                    <div className='space-y-6 mb-8'>
+                        <div>
+                            <Link to="/" className="btn btn-primary text-xl">Crypto-Invest</Link>
                         </div>
-
-
-                        {/* Email Field */}
-                        <label className="input validator w-full">
-                            <Mail size={17} className='text-base-content/60' />
-                            <input
-                                type="email"
-                                name="email"
-                                required
-                                placeholder="Email"
-                                autoComplete="email"
-                                value={formData.email}
-                                onChange={handleChange}
-                            />
-                        </label>
-                        <p className="validator-hint hidden -mt-4">
-                            Enter a valid email address
+                        <p className="text-lg font-semibold pl-3">
+                            Get Started! <br />
+                            <span className='text-sm font-normal line-clamp-2'>It's free to signup and only takes a minute.</span>
                         </p>
+                    </div>
 
-                        {/* Password Field */}
-                        <label className="input w-full validator">
-                            <KeyRound size={17} className='text-base-content/60' />
-                            <input
-                                type="password"
-                                name="password"
-                                required
-                                placeholder="Password"
-                                autoComplete="current-password"
-                                minLength="6"
-                                value={formData.password}
-                                onChange={handleChange}
-                            />
-                        </label>
-                        <p className="validator-hint hidden text-xs -mt-4">
-                            Must be at least 6 characters
+
+                    {/* Email Field */}
+                    <label className="input validator w-full">
+                        <Mail size={17} className='text-base-content/60' />
+                        <input
+                            type="email"
+                            name="email"
+                            required
+                            placeholder="Email"
+                            autoComplete="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                        />
+                    </label>
+                    <p className="validator-hint hidden -mt-4">
+                        Enter a valid email address
+                    </p>
+
+                    {/* Password Field */}
+                    <label className="input w-full validator">
+                        <KeyRound size={17} className='text-base-content/60' />
+                        <input
+                            type="password"
+                            name="password"
+                            required
+                            placeholder="Password"
+                            autoComplete="current-password"
+                            minLength="6"
+                            value={formData.password}
+                            onChange={handleChange}
+                        />
+                    </label>
+                    <p className="validator-hint hidden text-xs -mt-4">
+                        Must be at least 6 characters
+                    </p>
+
+                    {/* Register Link */}
+                    <div className='flex items-center gap-2'>
+                        <p className='text-sm'>Don't have an account?
+                            <Link to="/register" className="link link-hover link-primary font-medium"> Register</Link>
                         </p>
+                    </div>
 
-                        {/* Register Link */}
-                        <div className='flex items-center gap-2'>
-                            <p className='text-sm'>Don't have an account?
-                                <Link to="/register" className="link link-hover link-primary"> Register</Link>
-                            </p>
-                        </div>
-
-                        {/* Submit Buttons */}
-                        <div className='flex flex-col'>
-                            <button
-                                className="btn btn-neutral font-normal text-base"
-                                type="submit"
-                                disabled={isLoading}
-                            >
-                                {isLoading ? 'Logging in...' : 'Login'}
-                            </button>
-                            <Link to="/forgot-password" className="btn btn-ghost font-normal text-base">Forgot Password</Link>
-                        </div>
-                    </form>
-                </div>
+                    {/* Submit Buttons */}
+                    <div className='flex flex-col'>
+                        <button
+                            className="btn btn-neutral font-normal text-base"
+                            type="submit"
+                            disabled={isLoading}
+                        >
+                            {isLoading ? 'Logging in...' : 'Login'}
+                        </button>
+                        <Link to="/forgot-password" className="btn btn-ghost font-normal text-base">Forgot Password</Link>
+                    </div>
+                </form>
             </div >
         </div >
     )
 }
-
-// Admin User
-// admin
-// admin@email.com
-// @adminUser123
-
-// Random person
-// random
-// person1@email.com @personUser123
-
-
-// Second User
-// user2
-// user2@email.com
-// @anotherUser123
