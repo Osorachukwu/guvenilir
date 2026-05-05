@@ -68,7 +68,7 @@ const AboutSection = () => {
             
             <p className="mb-8 text-base leading-relaxed sm:text-lg text-base-content/70">
               With over 153,000 investments under our management, $5 billion+ in assets under our administration, 
-              over 11 industry awards, we have made Emerald Holdings Limited the safe haven for investors who want 
+              over 11 industry awards, we have made Glassdoor Holdingsings Limited the safe haven for investors who want 
               to trust their financial partner to be capable of helping them reach their financial goals, and in due time, 
               without the fear of disappointments.
             </p>

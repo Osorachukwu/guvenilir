@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import bgImage from "../assets/images (5).jpg"
+import bgImage from "../assets/footer.png"
 
 export default function Footer() {
     return (
@@ -95,12 +95,12 @@ export default function Footer() {
                 <div className='my-8 space-y-4' data-aos="fade-up">
                     <p className='text-2xl font-semibold'>RISK DISCLAIMER</p>
                     <p className='text-sm leading-6'>
-                        Nothing contained in this website should be construed as a solicitation or offer, or recommendation, to acquire or dispose of any investment or to engage in any other transaction. The information provided herein is not intended for distribution to, or use by, any person or entity in any jurisdiction or country where such distribution or use would be contrary to law or regulation. Some services may not be available to certain investors due to regulatory or other constraints either in UK, the United States or elsewhere. It is advised that most services are only available following completion of the Customer Agreement and/or any other relevant documentation as required. Investments in securities or financial instruments (including digital currencies, futures, options, contracts for differences, spot and forward foreign exchange contracts) can fluctuate in value. Accordingly, you should be aware that you might not realise the initial amount invested and indeed may incur additional liabilities as investments in securities or financial instruments may entail above average risk. You must therefore carefully consider whether your financial circumstances permit you to invest. Emerald Holdings Limited strongly suggests that you seek the advice of an independent financial advisor in this regard.
+                        Nothing contained in this website should be construed as a solicitation or offer, or recommendation, to acquire or dispose of any investment or to engage in any other transaction. The information provided herein is not intended for distribution to, or use by, any person or entity in any jurisdiction or country where such distribution or use would be contrary to law or regulation. Some services may not be available to certain investors due to regulatory or other constraints either in UK, the United States or elsewhere. It is advised that most services are only available following completion of the Customer Agreement and/or any other relevant documentation as required. Investments in securities or financial instruments (including digital currencies, futures, options, contracts for differences, spot and forward foreign exchange contracts) can fluctuate in value. Accordingly, you should be aware that you might not realise the initial amount invested and indeed may incur additional liabilities as investments in securities or financial instruments may entail above average risk. You must therefore carefully consider whether your financial circumstances permit you to invest. Glassdoor Holdingsings Limited strongly suggests that you seek the advice of an independent financial advisor in this regard.
                     </p>
                 </div>
                 <div className="flex flex-col-reverse justify-between pt-6 pb-10 border-t border-base-100 lg:flex-row">
                     <p className="text-sm">
-                        © Copyright 2020 Company Name. All rights reserved.
+                        © Copyright 2020 Glassdoor Holdings. All rights reserved.
                     </p>
                     <ul className="flex flex-col mb-3 space-y-2 lg:mb-0 sm:space-y-0 sm:space-x-5 sm:flex-row">
                         <li>

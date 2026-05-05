@@ -27,10 +27,10 @@ export default function LoansAndGrants() {
                             </div>
                             <div>
                                 <p className='text-lg sm:text-2xl font-semibold mb-3'>
-                                    Easy with CompanyName
+                                    Easy with Glassdoor Holdingse
                                 </p>
                                 <p>
-                                    Getting a loan doesn’t have to be intimidating, with the right lender it can be a simple process. You only need a lender committed to taking the mystery out of the mortgage loan process! At CompanyName, we understand! Our investors want simple facts, honest answers and competitive products. DGS automatically offers loan services to investors with over $50,000 investment either in our normal CompanyName financial Services packages or the NFP plans. Investors over $50,000 are entitled to loans of $200,000-1millon dollars yearly with 5% paid monthly, or the investor could wish to compound the interest till the time limit, provided all required information and identity of the investor are duly confirmed by CompanyName loan board. Every investor above $50,000 is provided with a personal account manager and the investor has a direct communication with the manager in order to see that our loan offers are secured. GREAT INVESTING WITH CompanyName FAMILY.
+                                    Getting a loan doesn’t have to be intimidating, with the right lender it can be a simple process. You only need a lender committed to taking the mystery out of the mortgage loan process! At Glassdoor Holdingse, we understand! Our investors want simple facts, honest answers and competitive products. DGS automatically offers loan services to investors with over $50,000 investment either in our normal Glassdoor Holdingse financial Services packages or the NFP plans. Investors over $50,000 are entitled to loans of $200,000-1millon dollars yearly with 5% paid monthly, or the investor could wish to compound the interest till the time limit, provided all required information and identity of the investor are duly confirmed by Glassdoor Holdingse loan board. Every investor above $50,000 is provided with a personal account manager and the investor has a direct communication with the manager in order to see that our loan offers are secured. GREAT INVESTING WITH Glassdoor Holdingse FAMILY.
                                 </p>
                             </div>
                         </div>

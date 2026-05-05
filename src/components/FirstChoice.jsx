@@ -10,7 +10,7 @@ export default function FirstChoice() {
                         <span className='text-3xl font-semibold'>
                             Investors #1 Choice
                         </span> <br />
-                        CompanyName
+                        Glassdoor Holdingse
                     </p>
                 </div>
                 <Link to="/register" className='btn btn-neutral px-8 py-4'>

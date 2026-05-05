@@ -3,8 +3,8 @@ import React from 'react'
 export default function Faqs() {
     let questionsAndAnswers = [
         {
-            question: "What is Company name?",
-            answer: "Emerald Holdings Limited our company provides a full investment service focused on the bitcoin and cryptocurrency market We are among the best platforms to invest and grow your bitcoin and other cryptocurrency",
+            question: "What is Glassdoor Holdings?",
+            answer: "Glassdoor Holdingsings Limited our company provides a full investment service focused on the bitcoin and cryptocurrency market We are among the best platforms to invest and grow your bitcoin and other cryptocurrency",
         },
         {
             question: "How do I create my account?",
@@ -63,7 +63,7 @@ export default function Faqs() {
                 <div className="card bg-primary card-xl shadow-sm">
                     <div className="card-body">
                         <h2 className="card-title">Need any help!</h2>
-                        <p>Find answers to frequently asked questions about Emerald Holdings Limited</p>
+                        <p>Find answers to frequently asked questions about Glassdoor Holdingsings Limited</p>
                         <div className="card-actions mt-4">
                             <button className="btn b btn-lg text-base rounded-3xl">Contact us</button>
                         </div>

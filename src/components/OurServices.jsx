@@ -18,16 +18,16 @@ import { Link } from 'react-router-dom'
 
 export default function OurServices() {
     return (
-        <div className="bg-base-300">
+        <div className="bg-base-200 py-20">
             {/* <div className="pb-16 lg:py-20 px-4 sm:px-10 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl" data-aos="fade-right">
                 <div className="grid lg:gap-10 md:grid-cols-2">
 
                     <div className="lg:px-10">
                         <h5 className="mb-4 text-2xl md:text-4xl font-extrabold leading-none">
-                           CompanyName offer Card to investors on Ultimate plan
+                           Glassdoor Holdingse offer Card to investors on Ultimate plan
                         </h5>
                         <p className="mb-6 text-base-content/60 md:text-lg">
-                            The partnership aims to fill a gap in the traditional financial system that has left many without access to essential banking products. According to a 2017 survey by the FDIC, 25 percent of U.S. households are unbanked or underbanked, while global numbers have reached a staggering 1.7 billion, according to data released by the World Bank. Through BlockCard, CompanyName investors can have a virtual card issued to them while a physical card is mailed to them. The card has a minimum of $1000 balance needed. It can be used at over 45 million merchants and ATMs – anywhere in the world where major credit cards are accepted.
+                            The partnership aims to fill a gap in the traditional financial system that has left many without access to essential banking products. According to a 2017 survey by the FDIC, 25 percent of U.S. households are unbanked or underbanked, while global numbers have reached a staggering 1.7 billion, according to data released by the World Bank. Through BlockCard, Glassdoor Holdingse investors can have a virtual card issued to them while a physical card is mailed to them. The card has a minimum of $1000 balance needed. It can be used at over 45 million merchants and ATMs – anywhere in the world where major credit cards are accepted.
                         </p>
 
                     </div>
@@ -44,7 +44,7 @@ export default function OurServices() {
                 </div>
             </div> */}
 
-            <div className='max-w-6xl px-1 sm:px-4 shadow-2xl mx-auto py-20 bg-base-100' data-aos="fade-up">
+            <div className='max-w-6xl px-1 sm:px-4 shadow-2xl mx-auto py-20 bg-base-300' data-aos="fade-up">
                 <h2
                     class="mt-1 text-3xl md:text-4xl font-bold text-center mb-4 sm:tracking-tight">
                     Our

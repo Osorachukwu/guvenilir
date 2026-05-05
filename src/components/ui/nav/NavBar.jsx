@@ -2,6 +2,7 @@ import { MailOpen, Menu, X, ChevronDown } from 'lucide-react'
 import React, { useState, useRef, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import ThemeSwitcher from '../ThemeSwitcher';
+import Logo from '../Logo';
 
 // Desktop Dropdown Component (Hover-based)
 const DesktopDropdown = ({ trigger, children }) => {
@@ -151,10 +152,11 @@ export function NavBar() {
     <div className='relative'>
       {/* Top Bar - Desktop Only */}
       <div className='py-6 hidden md:block z-50 relative'>
-        <div className='flex justify-between items-center max-w-4xl mx-auto px-4'>
-          <Link to="/" className="btn btn-ghost text-xl font-bold">
-            <span className="text-primary">Crypto</span>Invest
-          </Link>
+        <div className='flex justify-between items-center max-w-6xl mx-auto px-4'>
+          {/* <Link to="/" className="btn btn-ghost text-xl font-bold"> */}
+          <Logo />
+          {/* <span className="text-primary">Crypto</span>Invest */}
+          {/* </Link> */}
           <div className='flex items-center gap-6'>
             <div className='flex items-center gap-2 text-sm'>
               <div className="p-2 bg-primary/10 rounded-full">
@@ -178,7 +180,7 @@ export function NavBar() {
       <nav className={`w-full absolute z-40 transition-all duration-300 ${scrolled ? 'shadow-lg' : ''}`}>
         {/* className='bg-base-300/50 backdrop-blur-sm border-b border-gray-600 absolute z-50 py-4' */}
         <div className={`bg-base-300/50 backdrop-blur-md border-b border-base-content/10 w-full py-4 transition-all duration-300 ${scrolled ? 'bg-base-300/80' : ''}`}>
-          
+
           {/* Desktop Navigation */}
           <div className='hidden md:flex justify-center items-center gap-1 max-w-6xl mx-auto px-4'>
             {navItems.map((item, i) => (
@@ -194,9 +196,8 @@ export function NavBar() {
                 ) : (
                   <Link
                     to={item.navUrl}
-                    className={`px-3 py-1.5 rounded-lg font-medium transition-all duration-200 hover:bg-primary/20 ${
-                      currentLocation === item.navUrl ? "text-primary bg-primary/10" : ""
-                    }`}
+                    className={`px-3 py-1.5 rounded-lg font-medium transition-all duration-200 hover:bg-primary/20 ${currentLocation === item.navUrl ? "text-primary bg-primary/10" : ""
+                      }`}
                   >
                     {item.navItem}
                   </Link>
@@ -218,9 +219,10 @@ export function NavBar() {
 
           {/* Mobile Navigation Header */}
           <div className='flex md:hidden justify-between items-center px-4'>
-            <Link to="/" className="text-xl font-bold">
+            {/* <Link to="/" className="text-xl font-bold">
               <span className="text-primary">Crypto</span>Invest
-            </Link>
+            </Link> */}
+            <Logo />
             <div className='flex items-center gap-3'>
               <ThemeSwitcher />
               <button
@@ -237,24 +239,23 @@ export function NavBar() {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 bg-black/50 backdrop-blur-sm z-40 md:hidden transition-opacity duration-300 ${
-          mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-        }`}
+        className={`fixed inset-0 bg-black/50 backdrop-blur-sm z-40 md:hidden transition-opacity duration-300 ${mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+          }`}
         onClick={() => setMobileMenuOpen(false)}
       />
 
       {/* Mobile Menu Drawer */}
       <div
         ref={mobileMenuRef}
-        className={`fixed top-0 right-0 h-full w-[80%] max-w-sm bg-base-100 z-50 md:hidden shadow-2xl transform transition-transform duration-300 ease-out ${
-          mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}
+        className={`fixed top-0 right-0 h-full w-[80%] max-w-sm bg-base-100 z-50 md:hidden shadow-2xl transform transition-transform duration-300 ease-out ${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
       >
         {/* Mobile Menu Header */}
         <div className="flex items-center justify-between p-4 border-b border-base-content/10">
-          <span className="text-xl font-bold">
+          {/* <span className="text-xl font-bold">
             <span className="text-primary">Crypto</span>Invest
-          </span>
+          </span> */}
+          <Logo />
           <button
             onClick={() => setMobileMenuOpen(false)}
             className="p-2 rounded-lg hover:bg-base-content/10 transition-colors"
@@ -296,11 +297,10 @@ export function NavBar() {
                   <Link
                     to={item.navUrl}
                     onClick={() => setMobileMenuOpen(false)}
-                    className={`flex items-center px-4 py-3 rounded-lg font-medium transition-colors ${
-                      currentLocation === item.navUrl
-                        ? "bg-primary/10 text-primary"
-                        : "hover:bg-base-200"
-                    }`}
+                    className={`flex items-center px-4 py-3 rounded-lg font-medium transition-colors ${currentLocation === item.navUrl
+                      ? "bg-primary/10 text-primary"
+                      : "hover:bg-base-200"
+                      }`}
                   >
                     {item.navItem}
                   </Link>

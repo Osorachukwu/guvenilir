@@ -27,7 +27,7 @@ export default function RealEstate() {
                             </div>
                             <div>
                                 <p className='text-lg sm:text-2xl font-semibold mb-3'>
-                                    Trading Forex on CompanyName
+                                    Trading Forex on Glassdoor Holdingse
                                 </p>
                                 <p>
                                     Real estate investment involves the purchase, ownership, management, rental and/or sale of real estate for profit. Improvement of realty property as part of a real estate investment strategy is generally considered to be a sub-specialty of real estate investing called real estate development. Real estate is an asset form with limited liquidity relative to other investments (such as stocks or bonds that openly trade on financial markets). It is also capital intensive (although capital may be gained through mortgage leverage) and is highly cash flow dependent. If these factors are not well understood and managed by the investor, real estate becomes a risky investment.

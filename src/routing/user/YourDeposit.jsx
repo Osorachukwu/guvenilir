@@ -1,3 +1,4 @@
+import { BookLock } from 'lucide-react';
 import React from 'react'
 
 export default function YourDeposit() {
@@ -11,6 +12,11 @@ export default function YourDeposit() {
 
     return (
         <div>
+             {/* Header */}
+                <div className="flex items-center gap-3 mb-4">
+                    <BookLock className="h-6 w-6 text-primary" />
+                    <h1 className="text-lg sm:text-xl font-semibold">Your Deposits</h1>
+                </div>
             <div className='space-y-4 sm:space-y-6'>
                 {plans.map((plan) => (
                     <div

@@ -26,12 +26,12 @@ export default function Home() {
       {/* Parallax */}
       <div className="relative parallax w-full overflow-hidden">
         {/* Overlay */}
-        <div className="bg-base-300/70 absolute inset-0 w-full h-full"></div>
+        <div className="bg-base-300/40 absolute inset-0 w-full h-full"></div>
 
         {/* Content Container */}
         <div className="relative z-10 px-6 py-12 md:py-20 md:left-20 lg:left-40 max-w-sm md:max-w-md lg:max-w-lg">
           <p className="text-lg md:text-xl">
-            Welcome to Emerald Holdings Limited
+            Welcome to Glassdoor Holdingsings Limited
           </p>
 
           <p className="text-3xl md:text-4xl lg:text-5xl font-bold mt-4 mb-6 leading-tight md:leading-14">

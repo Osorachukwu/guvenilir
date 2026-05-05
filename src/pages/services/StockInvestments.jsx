@@ -27,7 +27,7 @@ export default function StockInvestments() {
                             </div>
                             <div>
                                 <p className='text-lg sm:text-2xl font-semibold mb-3'>
-                                    Trading Stock or Share on CompanyName
+                                    Trading Stock or Share on Glassdoor Holdingse
                                 </p>
                                 <p>
                                     A stock or share (also known as a company's "equity") is a financial instrument that represents ownership in a company or corporation and represents a proportionate claim on its assets (what it owns) and earnings (what it generates in profits). Stock ownership implies that the shareholder owns a slice of the company equal to the number of shares held as a proportion of the company's total outstanding shares. For instance, an individual or entity that owns 100,000 shares of a company with one million outstanding shares would have a 10% ownership stake in it. Most companies have outstanding shares that run into the millions or billions.

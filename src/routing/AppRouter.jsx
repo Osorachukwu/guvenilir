@@ -6,15 +6,10 @@ import Contact from '../pages/Contact'
 // import NavBar from '../components/nav/NavBar'
 import Login from '../pages/Login'
 import Register from '../pages/Register'
-import AdminLayout from '../../previously/AdminLayout'
 import ActiveDeposits from '../components/user-dashboard/ActiveDeposits'
-import Deposit from '../components/user-dashboard/Deposit'
-import Withdrawer from '../components/user-dashboard/Withdrawer'
 import NotFound from '../pages/NotFound'
 import FAQs from '../pages/FAQs'
-import UserLayout from '../../previously/UserLayout'
 import UserProfile from '../components/user-dashboard/UserProfile'
-import Dashboard from '../components/user-dashboard/Dashboard'
 import Test1 from '../components/admin-dashboard/Test1'
 import Test2 from '../components/admin-dashboard/Test2'
 import Support from '../pages/Support'
@@ -35,6 +30,16 @@ import Cryptocurrency from '../pages/services/Cryptocurrency'
 import FinancialPlanning from '../pages/services/FinancialPlanning'
 import LoansAndGrants from '../pages/services/LoansAndGrants'
 import ScrollToTop from '../components/ui/ScrollToTop'
+import UserLayout from './user/UserLayout'
+import Dashboard from './user/Dashboard'
+import ConfirmDeposit from './user/ConfirmDeposit'
+import Deposit from './user/Deposit'
+import Account from './user/Account'
+import Withdraw from './user/Withdraw'
+import Referals from './user/Referals'
+import AdminLayout from './admin/AdminLayout'
+import { ProtectedAdminRoute, ProtectedUserRoute } from '../components/ProtectedRoute'
+import ThemeSwitcher from '../components/ui/ThemeSwitcher'
 
 export default function AppRouter() {
     let currentPath = useLocation().pathname;
@@ -54,13 +59,30 @@ export default function AppRouter() {
         "/admin/test1",
         "/admin/test2",
         "/contact",
-        "*"
+        "*",
+        "/user/account",
+        "/user/deposit",
+        "/user/withdraw",
+        "/user/active-deposit",
+        "/user/profile",
+        "/admin",
+        "/account",
+        "/account/confirm-deposit",
+        "/account/deposit",
+        "/account/your-deposit",
+        "/account/withdraw",
+        "/account/edit-account",
+        "/account/referrals",
     ];
 
     return (
         <>
             {/* {currentPath != "/login" && currentPath != "/register" && <NavBar />} */}
             {!hideNavBarPaths.includes(currentPath) && <NavBar />}
+            <div className='flex justify-between items-center py-1 px-4 md:px-4 bg-base-100 border-b border-base-300 pb-2'>
+                <div className='pt-2'><GoogleTranslateSwitcher /></div>
+                <div><ThemeSwitcher /></div>
+            </div>
             {/* <div className='hidden md:block'> */}
             {/* <GoogleTranslateSwitcher /> */}
             {/* </div> */}
@@ -89,21 +111,29 @@ export default function AppRouter() {
                 <Route path="/financial-planning" element={<FinancialPlanning />} />
                 <Route path="/oil-and-gas" element={<OilAndGas />} />
                 <Route path="/loans-and-grants" element={<LoansAndGrants />} />
-                
 
-                {/* User Dashboard Layout */}
-                <Route path='/user' element={<UserLayout />}>
-                    <Route index element={<Dashboard />} />
-                    <Route path="deposit" element={<Deposit />} />
-                    <Route path="withdraw" element={<Withdrawer />} />
-                    <Route path="active-deposit" element={<ActiveDeposits />} />
-                    <Route path="profile" element={<UserProfile />} />
-                </Route>
-                {/* Admin Dashboard Layout */}
-                <Route path='/admin' element={<AdminLayout />}>
-                    <Route path='test1' element={<Test1 />} />
-                    <Route path='test2' element={<Test2 />} />
 
+                {/* ────────── Protected Admin Routes 🎫💥 ────────── */}
+                <Route
+                    path="/new-a"
+                    element={
+                        <ProtectedAdminRoute>
+                            <AdminLayout />
+                        </ProtectedAdminRoute>
+                    }
+                />
+
+                {/* ────────── Protected User Routes 👤💥 ────────── */}
+                <Route element={<ProtectedUserRoute />}>
+                    <Route path="/account" element={<UserLayout />}>
+                        <Route index element={<Dashboard />} />
+                        <Route path="confirm-deposit" element={<ConfirmDeposit />} />
+                        <Route path="deposit" element={<Deposit />} />
+                        {/* <Route path="your-deposit" element={<YourDeposit />} /> */}
+                        <Route path="edit-account" element={<Account />} />
+                        <Route path="withdraw" element={<Withdraw />} />
+                        <Route path="referrals" element={<Referals />} />
+                    </Route>
                 </Route>
             </Routes>
 

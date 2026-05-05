@@ -55,7 +55,7 @@ export default function About() {
         {[
           {
             title: "OUR MISSION",
-            desc: "Empowering investors by providing them an avenue for controlling their financial future by providing outstanding service, innovation, and expertise in the custody of alternative and traditional assets. Emerald Holdings Limited is dedicated to helping investors around the world reach their desired investment goals and broaden their financial horizons. We provide investment products and solutions to our clients across the world. Our breadth of investment capabilities is extensive and among the most innovative within the market.",
+            desc: "Empowering investors by providing them an avenue for controlling their financial future by providing outstanding service, innovation, and expertise in the custody of alternative and traditional assets. Glassdoor Holdingsings Limited is dedicated to helping investors around the world reach their desired investment goals and broaden their financial horizons. We provide investment products and solutions to our clients across the world. Our breadth of investment capabilities is extensive and among the most innovative within the market.",
             // icon: <Users2Icon size={50} />
           },
           {

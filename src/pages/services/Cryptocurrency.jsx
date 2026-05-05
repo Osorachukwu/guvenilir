@@ -32,7 +32,7 @@ export default function Cryptocurrency() {
 
                   </p>
                   <p>
-                    CompanyName now offers all traders the opportunity to trade a wide range of the top ranked digital coins 24/7*. Today cryptocurrencies have become known to most people as a conventional and popular investment option. The main purpose of this new technology is to allow people to buy, trade, and invest without the need for banks or any other financial institution. Cryptocurrencies are highly volatile and can be profitable to any trader’s portfolio. Cryptocurrencies are not physical coins they are electronic, a digital asset that remains as data. The technology behind the cryptocurrency controls a large part of its value which holds new technology on the secure way to identify and transfer money. The first digital coin introduced was the Bitcoin and today it remains as the standard that all other coins compare themselves to. Following in its steps came Litecoin, so to date they stand as the top 2 highly valued coins on the market. There are several other coins also reaching a high-level market share such as Bitcoin and Bitcoin Cash, Dash, Ripple, Ethereum and Ethereum Classic.
+                    Glassdoor Holdingse now offers all traders the opportunity to trade a wide range of the top ranked digital coins 24/7*. Today cryptocurrencies have become known to most people as a conventional and popular investment option. The main purpose of this new technology is to allow people to buy, trade, and invest without the need for banks or any other financial institution. Cryptocurrencies are highly volatile and can be profitable to any trader’s portfolio. Cryptocurrencies are not physical coins they are electronic, a digital asset that remains as data. The technology behind the cryptocurrency controls a large part of its value which holds new technology on the secure way to identify and transfer money. The first digital coin introduced was the Bitcoin and today it remains as the standard that all other coins compare themselves to. Following in its steps came Litecoin, so to date they stand as the top 2 highly valued coins on the market. There are several other coins also reaching a high-level market share such as Bitcoin and Bitcoin Cash, Dash, Ripple, Ethereum and Ethereum Classic.
                   </p>
                 </div>
               </div>
@@ -44,10 +44,10 @@ export default function Cryptocurrency() {
                 </div>
                 <div>
                   <p className='text-lg sm:text-2xl font-semibold mb-3'>
-                    Why trade Cryptocurrencies with CompanyName
+                    Why trade Cryptocurrencies with Glassdoor Holdingse
                   </p>
                   <p>
-                    Cryptocurrencies could potentially be the currency of the future with more people gaining interest and price value going up. CompanyName offers competitive spreads, with no commissions charged on transactions making it more profitable. When trading with CompanyName you are trading on the price changes of the digital coin, and not physically purchasing it. Trading with CompanyName ensures that you will trade with a 100% reputable broker.
+                    Cryptocurrencies could potentially be the currency of the future with more people gaining interest and price value going up. Glassdoor Holdingse offers competitive spreads, with no commissions charged on transactions making it more profitable. When trading with Glassdoor Holdingse you are trading on the price changes of the digital coin, and not physically purchasing it. Trading with Glassdoor Holdingse ensures that you will trade with a 100% reputable broker.
                   </p>
                 </div>
               </div>

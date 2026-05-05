@@ -94,7 +94,7 @@ export default function Referals() {
         <div>
             <div className='flex items-center gap-2 mb-4 sm:mb-6'>
                 <Users className="h-6 w-6 text-primary" />
-                <h2 className='text-lg sm:text-xl font-bold'>Referral Statistics</h2>
+                <h2 className='text-lg sm:text-xl font-semibold'>Referral Statistics</h2>
             </div>
 
             {/* Responsive Grid */}

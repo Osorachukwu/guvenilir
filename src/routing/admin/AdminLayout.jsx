@@ -4,7 +4,8 @@ import {
     User, LogOut, PanelLeftOpen, LayoutDashboard, Search,
     X, Check, Clock, AlertTriangle, Settings, Key, Lock, Save, Eye, EyeClosed,
     ArrowUp,
-    ArrowDown
+    ArrowDown,
+    Ban
 } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
@@ -41,7 +42,7 @@ const StatusBadge = ({ status }) => {
         pending: { bg: "badge-warning", text: "Pending" },
         rejected: { bg: "badge-error", text: "Rejected" },
     };
-    const c = config[status] || { bg: "badge-ghost", text: status };
+    const c = config[status] || { bg: "badge-error", text: status };
     return <span className={`badge ${c.bg} badge-sm font-medium`}>{c.text}</span>;
 };
 
@@ -58,7 +59,7 @@ const TransactionActions = ({ status, onAction }) => {
                     <Check size={12} />
                 </button>
                 <button
-                    onClick={() => onAction("rejected")}
+                    onClick={() => onAction("cancelled")}
                     className="btn btn-xs btn-error btn-outline"
                     title="Reject"
                     type="button"
@@ -99,7 +100,7 @@ const TransactionCard = ({ item, userName, type, onAction }) => {
     );
 };
 
-const UserCard = ({ user, onSuspend }) => (
+const UserCard = ({ user, onClick }) => (
     <div className="card bg-base-100 border border-base-300 shadow-sm">
         <div className="card-body p-4">
             <div className="flex items-center gap-3 mb-3">
@@ -118,7 +119,8 @@ const UserCard = ({ user, onSuspend }) => (
                 <p>Joined: {formatDate(user.date_created)}</p>
             </div>
             <button
-                onClick={() => onSuspend(user)}
+                onClick={onClick}
+                id={`${user.userStatus === "suspended" ? "active_" + user.id : "suspended_" + user.id}`}
                 className={`btn btn-xs w-full ${user.userStatus === "suspended" ? "btn-outline btn-success" : "btn-outline btn-error"}`}
                 type="button"
             >
@@ -137,6 +139,48 @@ export default function AdminLayout() {
     const [confirmModal, setConfirmModal] = useState(null);
     const [alert, setAlert] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [accountData, setAccoutData] =useState({
+        tid: "",
+        action: "",
+        whichAction: "",
+        domainKey: "254342"
+    });
+    // COllect admin acctions
+    const handleAccountAction =(e)=> {
+        let btnId = e.currentTarget.id
+        let btnIdSplite = btnId.split("_")
+        let whichActionData = btnIdSplite[0] //eg suspended
+        let tidData = btnIdSplite[1]
+        
+        dashboardData.userList.map((data) => {
+            if (data.id == tidData) {
+                setConfirmModal(data)
+            }
+        })
+        setAccoutData({...accountData, tid:tidData, action: "account", whichAction:whichActionData})
+    }
+
+    //Submt account data from modal
+    const handleSubmiteAccountAction = async () => {
+        try {
+            const response = await axios.post("https://invest.esbatech.org/action.php", accountData);
+            if (response.status === 200) {
+                setActionValue("true")
+                setConfirmModal(null)
+                setTimeout(() => {
+                    setActionValue("false");
+                },300)
+            }
+            else {
+                setActionValue("false");
+                
+                //ADD ALERT FOR FAILED ACTION
+            }
+        } catch(err) {
+            setActionValue("false");
+            //ADD ALERT FOR FAILED ACTION
+        }
+    }
 
     // Dashboard data from backend
     const [dashboardData, setDashboardData] = useState({
@@ -167,11 +211,12 @@ export default function AdminLayout() {
     });
     const [saving, setSaving] = useState(false);
 
+    const [actionValue, setActionValue] = useState("");
+
     // Fetch dashboard data
     useEffect(() => {
-        fetchDashboardData();
-    }, []);
-
+        actionValue === "" ? fetchDashboardData() : actionValue == "true" ? fetchDashboardData() : null
+    }, [actionValue]);
     const fetchDashboardData = async () => {
         try {
             setLoading(true);
@@ -183,7 +228,7 @@ export default function AdminLayout() {
                 setDashboardData(response.data);
             }
         } catch (err) {
-            console.error("Error fetching dashboard:", err);
+            // console.error("Error fetching dashboard:", err);
             setAlert({ text: "Failed to load dashboard data", type: "error" });
         } finally {
             setLoading(false);
@@ -194,7 +239,7 @@ export default function AdminLayout() {
     const users = dashboardData.userList || [];
     const deposits = dashboardData.depositList || [];
     const withdrawals = dashboardData.withdrawList || [];
-    
+
     const totalDeposited = dashboardData.totlDeposit || deposits.reduce((sum, d) => sum + (parseFloat(d.amount) || 0), 0);
     const totalWithdrawn = dashboardData.totalWithdraw || withdrawals.reduce((sum, w) => sum + (parseFloat(w.amount) || 0), 0);
     const pendingDeposits = deposits.filter(d => d.payStatus === "pending").length;
@@ -208,14 +253,61 @@ export default function AdminLayout() {
     );
 
     // Action handlers
-    const handleDepositAction = (id, status) => {
-        console.log(`Deposit ${id} → ${status}`);
+    const handleDepositAction = async (id, status) => {
+        // console.log(`Deposit ${id} → ${status}`);
         // Backend integration point
+        let backendData = {
+            tid: id,
+            action: "deposit",
+            whichAction: status,
+            domainKey: "254342"
+        }
+
+        try {
+            const response = await axios.post("https://invest.esbatech.org/action.php", backendData);
+            // console.log(response.data);
+            if (response.status === 200) {
+                setActionValue("true");
+                setTimeout(() => {
+                    setActionValue("false");
+                },300)
+            }
+            else {
+                setActionValue("false");
+                //ADD ALERT FOR FAILED ACTION
+            }
+        } catch(err) {
+            setActionValue("false");
+            //ADD ALERT FOR FAILED ACTION
+        }   
     };
 
-    const handleWithdrawalAction = (id, status) => {
-        console.log(`Withdrawal ${id} → ${status}`);
+    const handleWithdrawalAction = async (id, status) => {
+        // console.log(`Withdrawal ${id} → ${status}`);
         // Backend integration point
+        let backendData = {
+            tid: id,
+            action: "withdraw",
+            whichAction: status,
+            domainKey: "254342"
+        }
+
+        try {
+            const response = await axios.post("https://invest.esbatech.org/action.php", backendData);
+            if (response.status === 200) {
+                setActionValue("true");
+                setTimeout(() => {
+                    setActionValue("false");
+                },300)
+            }
+            else {
+                setActionValue("false");
+                //ADD ALERT FOR FAILED ACTION
+            }
+        } catch(err) {
+            setActionValue("false");
+            //ADD ALERT FOR FAILED ACTION
+        }    
     };
 
     const handleSuspendUser = (user) => {
@@ -382,7 +474,7 @@ export default function AdminLayout() {
                                     { label: "Total Users", value: dashboardData.totalUsers, sub: `${dashboardData.totalAcive} active`, color: "text-primary", bg: "bg-primary/10", icon: <Users size={20} /> },
                                     { label: "Total Deposited", value: `$${totalDeposited.toLocaleString()}`, sub: `${pendingDeposits} pending`, color: "text-success", bg: "bg-success/10", icon: <ArrowUp size={20} /> },
                                     { label: "Total Withdrawn", value: `$${totalWithdrawn.toLocaleString()}`, sub: `${pendingWithdrawals} pending`, color: "text-warning", bg: "bg-warning/10", icon: <ArrowDown size={20} /> },
-                                    { label: "Suspended", value: dashboardData.totalSuspend, sub: "accounts", color: "text-error", bg: "bg-error/10", icon: "⛔" },
+                                    { label: "Suspended", value: dashboardData.totalSuspend, sub: "accounts", color: "text-error", bg: "bg-error/10", icon: <Ban /> },
                                 ].map((stat) => (
                                     <div key={stat.label} className="stat-card group card bg-gradient-to-br from-base-200 to-base-300 border border-base-300/50 shadow-md hover:shadow-lg hover:border-primary/30 transition-all duration-300">
                                         <div className="card-body p-5">
@@ -479,7 +571,7 @@ export default function AdminLayout() {
                                     <div className="text-center py-12 text-base-content/30 text-sm">No users found</div>
                                 ) : (
                                     filteredUsers.map((user) => (
-                                        <UserCard key={user.id} user={user} onSuspend={(u) => setConfirmModal({ user: u })} />
+                                        <UserCard key={user.id} user={user} onClick={handleAccountAction} />
                                     ))
                                 )}
                             </div>
@@ -517,7 +609,8 @@ export default function AdminLayout() {
                                                     <td><StatusBadge status={user.userStatus} /></td>
                                                     <td>
                                                         <button
-                                                            onClick={() => setConfirmModal({ user })}
+                                                            id={`${user.userStatus === "suspended" ? "active_" + user.id : "suspended_" + user.id}`}
+                                                            onClick={handleAccountAction}
                                                             className={`btn btn-xs ${user.userStatus === "suspended" ? "btn-outline btn-success" : "btn-outline btn-error"}`}
                                                             type="button"
                                                         >
@@ -552,6 +645,7 @@ export default function AdminLayout() {
                                         userName={d.username}
                                         type="deposit"
                                         onAction={(status) => handleDepositAction(d.id, status)}
+                                        // onAction={handleDepositAction}
                                     />
                                 ))}
                             </div>
@@ -843,7 +937,7 @@ export default function AdminLayout() {
                     <div className="modal-box">
                         <h3 className="font-bold text-lg">Confirm Action</h3>
                         <p className="py-4">
-                            Are you sure you want to {confirmModal.user.userStatus === "suspended" ? "unsuspend" : "suspend"} <strong>{confirmModal.user.fullname}</strong>?
+                            Are you sure you want to {confirmModal.userStatus === "suspended" ? "unsuspend" : "suspend"} <strong>{confirmModal.fullname}</strong>?
                         </p>
                         <div className="modal-action">
                             <button
@@ -854,11 +948,11 @@ export default function AdminLayout() {
                                 Cancel
                             </button>
                             <button
-                                className={`btn ${confirmModal.user.userStatus === "suspended" ? "btn-success" : "btn-error"}`}
-                                onClick={() => handleSuspendUser(confirmModal.user)}
+                                className={`btn ${confirmModal.userStatus === "suspended" ? "btn-success" : "btn-error"}`}
+                                onClick={handleSubmiteAccountAction}
                                 type="button"
                             >
-                                {confirmModal.user.userStatus === "suspended" ? "Unsuspend" : "Suspend"}
+                                {confirmModal.userStatus === "suspended" ? "Unsuspend.." : "Suspend"}
                             </button>
                         </div>
                     </div>

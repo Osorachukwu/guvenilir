@@ -1,32 +1,33 @@
+import { ArrowDownCircle, User } from 'lucide-react';
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 export default function Deposit() {
     const plans = [
-        { id: 'Plan A', label: 'Plan A', range: '$30 - $499',          profit: '15.00%', minAmount: '30.00'    },
-        { id: 'Plan B', label: 'Plan B', range: '$500 - $999',         profit: '30.00%', minAmount: '500.00'   },
-        { id: 'Plan C', label: 'Plan C', range: '$1,000 - $4,999',     profit: '50.00%', minAmount: '1000.00'  },
-        { id: 'Plan D', label: 'Plan D', range: '$5,000 - $19,000',    profit: '75.00%', minAmount: '5000.00'  },
+        { id: 'Plan A', label: 'Plan A', range: '$30 - $499', profit: '15.00%', minAmount: '30.00' },
+        { id: 'Plan B', label: 'Plan B', range: '$500 - $999', profit: '30.00%', minAmount: '500.00' },
+        { id: 'Plan C', label: 'Plan C', range: '$1,000 - $4,999', profit: '50.00%', minAmount: '1000.00' },
+        { id: 'Plan D', label: 'Plan D', range: '$5,000 - $19,000', profit: '75.00%', minAmount: '5000.00' },
         { id: 'Plan E', label: 'Plan E', range: '$20,000 - Unlimited', profit: '100.00%', minAmount: '20000.00' }
     ];
 
     // spendOptions now carry both the display label and the API shortcode (payMethod)
     const spendOptions = [
-        { value: 'Bitcoin',     payMethod: 'btc',  label: 'BITCOIN',     bg: true  },
-        { value: 'Ethereum',    payMethod: 'eth',  label: 'Ethereum',    bg: false },
-        { value: 'USDT(TRC20)', payMethod: 'usdt', label: 'USDT(TRC20)', bg: true  },
-        { value: 'SOLANA',      payMethod: 'sol',  label: 'SOLANA',      bg: false },
-        { value: 'XRP',         payMethod: 'xrp',  label: 'XRP',         bg: true  },
-        { value: 'TRX',         payMethod: 'trx',  label: 'TRX',         bg: false },
-        { value: 'LTC',         payMethod: 'ltc',  label: 'LTC',         bg: true  },
-        { value: 'Dogecoin',    payMethod: 'doge', label: 'Dogecoin',    bg: false },
+        { value: 'Bitcoin', payMethod: 'btc', label: 'BITCOIN', bg: true },
+        { value: 'Ethereum', payMethod: 'eth', label: 'Ethereum', bg: false },
+        { value: 'USDT(TRC20)', payMethod: 'usdt', label: 'USDT(TRC20)', bg: true },
+        { value: 'SOLANA', payMethod: 'sol', label: 'SOLANA', bg: false },
+        { value: 'XRP', payMethod: 'xrp', label: 'XRP', bg: true },
+        { value: 'TRX', payMethod: 'trx', label: 'TRX', bg: false },
+        { value: 'LTC', payMethod: 'ltc', label: 'LTC', bg: true },
+        { value: 'Dogecoin', payMethod: 'doge', label: 'Dogecoin', bg: false },
     ];
 
     const [formData, setFormData] = useState({
-        plan:       'Plan A',
-        spendFrom:  spendOptions[0].value,      // display name  — "Bitcoin"
-        payMethod:  spendOptions[0].payMethod,  // API shortcode — "btc"
-        amount:     plans[0].minAmount,
+        plan: 'Plan A',
+        spendFrom: spendOptions[0].value,      // display name  — "Bitcoin"
+        payMethod: spendOptions[0].payMethod,  // API shortcode — "btc"
+        amount: plans[0].minAmount,
     });
 
     const handleChange = (e) => {
@@ -36,14 +37,14 @@ export default function Deposit() {
             const selected = plans.find(p => p.id === value);
             setFormData(prev => ({
                 ...prev,
-                plan:   value,
+                plan: value,
                 amount: selected ? selected.minAmount : prev.amount,
             }));
 
         } else if (name === 'amount') {
             const selectedPlan = plans.find(p => p.id === formData.plan);
-            const min          = selectedPlan ? parseFloat(selectedPlan.minAmount) : 0;
-            const entered      = parseFloat(value);
+            const min = selectedPlan ? parseFloat(selectedPlan.minAmount) : 0;
+            const entered = parseFloat(value);
             setFormData(prev => ({
                 ...prev,
                 amount: (!isNaN(entered) && entered < min) ? selectedPlan.minAmount : value,
@@ -72,8 +73,8 @@ export default function Deposit() {
 
         navigate("/account/confirm-deposit", {
             state: {
-                plan:      planLetter,        // "A" | "B" | "C" | "D" | "E"
-                amount:    formData.amount,   // e.g. "30.00"
+                plan: planLetter,        // "A" | "B" | "C" | "D" | "E"
+                amount: formData.amount,   // e.g. "30.00"
                 payMethod: formData.payMethod // e.g. "btc"
             }
         });
@@ -81,6 +82,11 @@ export default function Deposit() {
 
     return (
         <div>
+            {/* Header */}
+            <div className="flex items-center gap-3 mb-4">
+                <ArrowDownCircle className="h-6 w-6 text-primary" />
+                <h1 className="text-lg sm:text-xl font-semibold">Deposit</h1>
+            </div>
             <form className='space-y-4 sm:space-y-6' onSubmit={handleSubmit}>
                 {/* Plan Cards */}
                 {plans.map((plan) => (

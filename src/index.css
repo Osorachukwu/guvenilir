@@ -5,10 +5,10 @@
   /* If you only need the dark theme explicitly 👇 */
   themes: light --default, dark --prefersdark;
 }
-body, html {
+/* body, html {
   overflow-x: hidden;
   width: 100%;
-}
+} */
 /* .embla__viewport {
   overflow: hidden;
 }
@@ -107,9 +107,10 @@ body, html {
 
 /* paralx */
 .parallax {
-  background-image: url('./assets/images (1).jpg');
+  background-image: url('./assets/trust-us.png');
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
+/* ./assets/images (1).jpg */

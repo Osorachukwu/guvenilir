@@ -13,10 +13,12 @@ export default function Account() {
         username: '',
         email: '',
         registrationDate: '',
-        bitcoinWallet: '',
-        ethereumWallet: '',
-        usdtWallet: '',
-        trxWallet: ''
+        btcAd: '',
+        ethAd: '',
+        bnbSmartAd: '',
+        bnbAd: '',
+        usdtTrcAd: '',
+        usdtErcAd: ''
     })
 
     const [passwordData, setPasswordData] = useState({
@@ -27,51 +29,45 @@ export default function Account() {
 
     const [editMode, setEditMode] = useState({
         fullname: false,
-        email: false,
         wallets: false
     })
 
     useEffect(() => {
-        fetchProfileData()
+        loadProfileFromStorage()
     }, [])
 
-    const fetchProfileData = async () => {
+    const loadProfileFromStorage = () => {
         const username = localStorage.getItem("username")
-        
+        const fullname = localStorage.getItem("fullname")
+        const email = localStorage.getItem("email")
+        const date = localStorage.getItem("regDate")
+        const btcAd = localStorage.getItem("btcAd")
+        const ethAd = localStorage.getItem("ethAd")
+        const bnbSmartAd = localStorage.getItem("bnbSmartAd")
+        const bnbAd = localStorage.getItem("bnbAd")
+        const usdtTrcAd = localStorage.getItem("usdtTrcAd")
+        const usdtErcAd = localStorage.getItem("usdtErcAd")
+
         if (!username) {
             setAlert({ text: "Please login to view account details", type: "error" })
             setLoading(false)
             return
         }
 
-        try {
-            setLoading(true)
-            // You'll need to provide the correct endpoint for fetching profile
-            const response = await axios.post("https://invest.esbatech.org/getprofile.php", {
-                username,
-                biz: "bank"
-            })
-            
-            console.log("Profile data:", response.data)
-            
-            if (response.data) {
-                setProfileData({
-                    fullname: response.data.fullname || '',
-                    username: response.data.username || username,
-                    email: response.data.email || '',
-                    registrationDate: response.data.registrationDate || 'N/A',
-                    bitcoinWallet: response.data.bitcoin || '',
-                    ethereumWallet: response.data.ethereum || '',
-                    usdtWallet: response.data.usdt || '',
-                    trxWallet: response.data.trx || ''
-                })
-            }
-        } catch (err) {
-            console.error("Error fetching profile:", err)
-            setAlert({ text: "Failed to load profile data", type: "error" })
-        } finally {
-            setLoading(false)
-        }
+        setProfileData({
+            fullname: fullname || '',
+            username: username || '',
+            email: email || '',
+            registrationDate: date || 'N/A',
+            btcAd: btcAd || '',
+            ethAd: ethAd || '',
+            bnbSmartAd: bnbSmartAd || '',
+            bnbAd: bnbAd || '',
+            usdtTrcAd: usdtTrcAd || '',
+            usdtErcAd: usdtErcAd || ''
+        })
+
+        setLoading(false)
     }
 
     const handleProfileChange = (e) => {
@@ -101,14 +97,16 @@ export default function Account() {
         try {
             setSaving(true)
             const response = await axios.post("https://invest.esbatech.org/updateaccount.php", {
-                username,
+                username: username,
                 fullname: profileData.fullname,
                 biz: "bank"
             })
-            
+            console.log(profileData.fullname)
             console.log("Update fullname response:", response.data)
             
             if (response.data.code === 200) {
+                // Update localStorage with new fullname
+                localStorage.setItem("fullname", profileData.fullname)
                 setAlert({ text: "Fullname updated successfully", type: "success" })
                 setEditMode(prev => ({ ...prev, fullname: false }))
             } else {
@@ -181,19 +179,28 @@ export default function Account() {
         
         try {
             setSaving(true)
-            // Note: Adjust this based on your actual update endpoint for wallets
             const response = await axios.post("https://invest.esbatech.org/updatewallets.php", {
                 username,
-                bitcoin: profileData.bitcoinWallet,
-                ethereum: profileData.ethereumWallet,
-                usdt: profileData.usdtWallet,
-                trx: profileData.trxWallet,
+                btcAd: profileData.btcAd,
+                ethAd: profileData.ethAd,
+                bnbSmartAd: profileData.bnbSmartAd,
+                bnbAd: profileData.bnbAd,
+                usdtTrcAd: profileData.usdtTrcAd,
+                usdtErcAd: profileData.usdtErcAd,
                 biz: "bank"
             })
-            
+
             console.log("Update wallets response:", response.data)
             
             if (response.data.code === 200) {
+                // Update localStorage with new wallet addresses
+                localStorage.setItem("btcAd", profileData.btcAd)
+                localStorage.setItem("ethAd", profileData.ethAd)
+                localStorage.setItem("bnbSmartAd", profileData.bnbSmartAd)
+                localStorage.setItem("bnbAd", profileData.bnbAd)
+                localStorage.setItem("usdtTrcAd", profileData.usdtTrcAd)
+                localStorage.setItem("usdtErcAd", profileData.usdtErcAd)
+                
                 setAlert({ text: "Wallet addresses updated successfully", type: "success" })
                 setEditMode(prev => ({ ...prev, wallets: false }))
             } else {
@@ -232,8 +239,8 @@ export default function Account() {
 
             {/* Header */}
             <div className="flex items-center gap-3">
-                <User className="h-7 w-7 text-primary" />
-                <h1 className="text-2xl font-bold">Account Settings</h1>
+                <User className="h-6 w-6 text-primary" />
+                <h1 className="text-lg sm:text-xl font-semibold">Account Settings</h1>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -260,7 +267,7 @@ export default function Account() {
                                     <span className="font-semibold">{profileData.registrationDate}</span>
                                 </div>
                                 
-                                {/* Email (Read-only for now) */}
+                                {/* Email (Read-only) */}
                                 <div className="flex items-center justify-between py-2 border-b border-base-300/50">
                                     <span className="text-sm font-medium text-base-content/70">Email Address</span>
                                     <div className="flex items-center gap-3">
@@ -307,7 +314,7 @@ export default function Account() {
                                                     type="button"
                                                     onClick={() => {
                                                         setEditMode(prev => ({ ...prev, fullname: false }))
-                                                        fetchProfileData() // Reset to original
+                                                        loadProfileFromStorage() // Reset to original
                                                     }}
                                                     className="btn btn-ghost btn-sm"
                                                 >
@@ -417,8 +424,8 @@ export default function Account() {
                                 </label>
                                 <input
                                     type="text"
-                                    name="bitcoinWallet"
-                                    value={profileData.bitcoinWallet}
+                                    name="btcAd"
+                                    value={profileData.btcAd}
                                     onChange={handleProfileChange}
                                     disabled={!editMode.wallets}
                                     className="input input-bordered w-full font-mono text-sm"
@@ -433,8 +440,8 @@ export default function Account() {
                                 </label>
                                 <input
                                     type="text"
-                                    name="ethereumWallet"
-                                    value={profileData.ethereumWallet}
+                                    name="ethAd"
+                                    value={profileData.ethAd}
                                     onChange={handleProfileChange}
                                     disabled={!editMode.wallets}
                                     className="input input-bordered w-full font-mono text-sm"
@@ -442,35 +449,67 @@ export default function Account() {
                                 />
                             </div>
                             
-                            {/* USDT */}
+                            {/* BNB Smart Chain */}
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text font-medium">BNB Smart Chain (BSC)</span>
+                                </label>
+                                <input
+                                    type="text"
+                                    name="bnbSmartAd"
+                                    value={profileData.bnbSmartAd}
+                                    onChange={handleProfileChange}
+                                    disabled={!editMode.wallets}
+                                    className="input input-bordered w-full font-mono text-sm"
+                                    placeholder="Enter BSC wallet address"
+                                />
+                            </div>
+                            
+                            {/* BNB */}
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text font-medium">BNB</span>
+                                </label>
+                                <input
+                                    type="text"
+                                    name="bnbAd"
+                                    value={profileData.bnbAd}
+                                    onChange={handleProfileChange}
+                                    disabled={!editMode.wallets}
+                                    className="input input-bordered w-full font-mono text-sm"
+                                    placeholder="Enter BNB wallet address"
+                                />
+                            </div>
+                            
+                            {/* USDT TRC20 */}
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text font-medium">USDT (TRC20)</span>
                                 </label>
                                 <input
                                     type="text"
-                                    name="usdtWallet"
-                                    value={profileData.usdtWallet}
+                                    name="usdtTrcAd"
+                                    value={profileData.usdtTrcAd}
                                     onChange={handleProfileChange}
                                     disabled={!editMode.wallets}
                                     className="input input-bordered w-full font-mono text-sm"
-                                    placeholder="Enter USDT wallet address"
+                                    placeholder="Enter USDT TRC20 wallet address"
                                 />
                             </div>
                             
-                            {/* TRX */}
+                            {/* USDT ERC20 */}
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text font-medium">TRON (TRX)</span>
+                                    <span className="label-text font-medium">USDT (ERC20)</span>
                                 </label>
                                 <input
                                     type="text"
-                                    name="trxWallet"
-                                    value={profileData.trxWallet}
+                                    name="usdtErcAd"
+                                    value={profileData.usdtErcAd}
                                     onChange={handleProfileChange}
                                     disabled={!editMode.wallets}
                                     className="input input-bordered w-full font-mono text-sm"
-                                    placeholder="Enter TRX wallet address"
+                                    placeholder="Enter USDT ERC20 wallet address"
                                 />
                             </div>
                             
@@ -489,7 +528,7 @@ export default function Account() {
                                         type="button"
                                         onClick={() => {
                                             setEditMode(prev => ({ ...prev, wallets: false }))
-                                            fetchProfileData() // Reset to original
+                                            loadProfileFromStorage() // Reset to original
                                         }}
                                         className="btn btn-ghost"
                                     >

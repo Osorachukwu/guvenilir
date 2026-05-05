@@ -22,10 +22,10 @@ export default function AboutUs() {
             {/* Oavrlay */}
             <div className='bg-base-300/50 backdrop-blur-xs absolute inset-0 w-full h-full'></div>
 
-            <div className='section-wrapper relative z-50 py-16 md:py-20'>
+            <div className='section-wrapper relative z-40 py-16 md:py-20'>
                 <div className='grid sm:grid-cols-2 lg:grid-cols-3 gap-0 lg:gap-8'>
                     <div className='group flex-1 px-8 py-8 border border-primary/40 hover:bg-primary transition-all duration-300 shadow-md' data-aos="fade-up">
-                        <p className='text-lg'>Emeral Holdings Limited</p>
+                        <p className='text-lg'>Glassdoor Holdings Limited</p>
                         <p className='text-4xl font-semibold my-6'>We are the best in Finance</p>
                         <p className='font-bold'>
                             We are everything a traditional financial institution is not. We set out to give investors better, simpler and more profitable ways to become financially successful and secure.

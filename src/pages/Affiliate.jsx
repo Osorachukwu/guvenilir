@@ -7,10 +7,10 @@ export default function Affiliate() {
       <Banner title="Affiliate" />
       <div className='mx-auto max-w-5xl py-10 md:py-16'>
         <p className='text-lg font-bold mb-4'>AFFILIATE</p>
-        <p className='mb-4 text-lg'>Emerald Holdings Limited</p>
+        <p className='mb-4 text-lg'>Glassdoor Holdingsings Limited</p>
 
         <p className='mb-10 leading-8'>
-          Strategy matters. Emerald Holdings Limited's approach to managing investments on behalf of our clients is to combine an in-depth appreciation of their unique circumstances and objectives with the investment capacity of a large-scale institutional investor. That means knowing when to apply traditional strategies and when to deviate to ensure consistent, strong risk-adjusted returns.
+          Strategy matters. Glassdoor Holdingsings Limited's approach to managing investments on behalf of our clients is to combine an in-depth appreciation of their unique circumstances and objectives with the investment capacity of a large-scale institutional investor. That means knowing when to apply traditional strategies and when to deviate to ensure consistent, strong risk-adjusted returns.
 
           We offer national and international long-term investing for our users. We know that the asset investment space is going to bring together international investors of all levels and so we have worked to build a platform that will attract investors and capital from all over the world.
         </p>
@@ -18,7 +18,7 @@ export default function Affiliate() {
 
         <p className='text-lg font-bold mb-4'>So how does it work?</p>
 
-        <p className='text-lg font-bold mb-4'>Promote Emerald Holdings Limited Investmets</p>
+        <p className='text-lg font-bold mb-4'>Promote Glassdoor Holdingsings Limited Investmets</p>
         <p className='mb-10 leading-8'>
           Not everyone is at the same level when it comes to asset management or investing in general. That’s why we offer three different levels of partnership for our investors. We aim to educate our users so that they become more familiar and comfortable with investing conditions and earn as much money as possible. Becoming a partner of ours is fast, easy and takes just a moment. Once you register you will be given your own partnership or affiliate link. You can use this link on or offline with family, friends, acquaintances, or customers. However you want to use and market your link is up to you. Many of our users have had great success finding new investors on social media, via email, word of mouth, chat, text or advertising banners. It doesn’t matter how someone finds your link so long as they click on it and sign up to be a registered user. Once they have signed up using your personal affiliate link they become one of your referrals.
         </p>

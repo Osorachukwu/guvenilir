@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { Wallet, ArrowUpCircle, AlertTriangle, CheckCircle, X } from 'lucide-react'
+import { Wallet, ArrowUpCircle, AlertTriangle, CheckCircle, X, ChevronDown } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import TimedAlert from '../../components/ui/TimedAlert'
 
 export default function Withdraw() {
@@ -8,23 +9,23 @@ export default function Withdraw() {
     const [loading, setLoading] = useState(true)
     const [withdrawing, setWithdrawing] = useState(false)
     const [alert, setAlert] = useState(null)
-    
+
     const [selectedCurrency, setSelectedCurrency] = useState(null)
     const [amount, setAmount] = useState('')
     const [address, setAddress] = useState('')
 
-    // Map currency codes to display names
+    // Map currency codes to display names and localStorage keys
     const currencyMap = {
-        'btc': { name: 'Bitcoin', symbol: 'BTC', icon: '₿' },
-        'eth': { name: 'Ethereum', symbol: 'ETH', icon: 'Ξ' },
-        'usdt': { name: 'USDT (TRC20)', symbol: 'USDT', icon: '₮' },
-        'trx': { name: 'TRON', symbol: 'TRX', icon: 'TRX' },
-        'xrp': { name: 'Ripple', symbol: 'XRP', icon: 'XRP' },
-        'sol': { name: 'Solana', symbol: 'SOL', icon: 'SOL' },
-        'doge': { name: 'Dogecoin', symbol: 'DOGE', icon: 'Ð' },
-        'ltc': { name: 'Litecoin', symbol: 'LTC', icon: 'Ł' },
-        'bnb': { name: 'Binance Coin', symbol: 'BNB', icon: 'BNB' },
-        'matic': { name: 'Polygon', symbol: 'MATIC', icon: 'MATIC' },
+        'btc': { name: 'Bitcoin', symbol: 'BTC', icon: '₿', walletKey: 'btcAd' },
+        'eth': { name: 'Ethereum', symbol: 'ETH', icon: 'Ξ', walletKey: 'ethAd' },
+        'usdt': { name: 'USDT (TRC20)', symbol: 'USDT', icon: '₮', walletKey: 'usdtTrcAd' },
+        'trx': { name: 'TRON', symbol: 'TRX', icon: 'TRX', walletKey: 'bnbAd' }, // Adjust if needed
+        'xrp': { name: 'Ripple', symbol: 'XRP', icon: 'XRP', walletKey: 'bnbSmartAd' }, // Adjust if needed
+        'sol': { name: 'Solana', symbol: 'SOL', icon: 'SOL', walletKey: '' },
+        'doge': { name: 'Dogecoin', symbol: 'DOGE', icon: 'Ð', walletKey: '' },
+        'ltc': { name: 'Litecoin', symbol: 'LTC', icon: 'Ł', walletKey: '' },
+        'bnb': { name: 'Binance Coin', symbol: 'BNB', icon: 'BNB', walletKey: 'bnbAd' },
+        'matic': { name: 'Polygon', symbol: 'MATIC', icon: 'MATIC', walletKey: '' },
     }
 
     useEffect(() => {
@@ -33,7 +34,7 @@ export default function Withdraw() {
 
     const fetchBalances = async () => {
         const username = localStorage.getItem("username")
-        
+
         if (!username) {
             setAlert({ text: "Please login to view balances", type: "error" })
             setLoading(false)
@@ -46,9 +47,9 @@ export default function Withdraw() {
                 username,
                 biz: "bank"
             })
-            
+
             console.log("Balance data:", response.data)
-            
+
             if (Array.isArray(response.data)) {
                 setBalances(response.data)
             } else if (response.data && Array.isArray(response.data.balances)) {
@@ -66,17 +67,39 @@ export default function Withdraw() {
     }
 
     const getCurrencyInfo = (currencyCode) => {
-        return currencyMap[currencyCode?.toLowerCase()] || { 
-            name: currencyCode?.toUpperCase() || 'Unknown', 
+        return currencyMap[currencyCode?.toLowerCase()] || {
+            name: currencyCode?.toUpperCase() || 'Unknown',
             symbol: currencyCode?.toUpperCase() || '???',
-            icon: ''
+            icon: '',
+            walletKey: ''
         }
+    }
+
+    // Get wallet address from localStorage for a specific currency
+    const getWalletAddress = (currencyCode) => {
+        const currencyInfo = getCurrencyInfo(currencyCode)
+        if (!currencyInfo.walletKey) return null
+        const address = localStorage.getItem(currencyInfo.walletKey)
+        return address && address.trim() ? address.trim() : null
+    }
+
+    // Check if user has any wallet addresses saved
+    const hasAnyWalletAddress = () => {
+        const keys = ['btcAd', 'ethAd', 'bnbSmartAd', 'bnbAd', 'usdtTrcAd', 'usdtErcAd']
+        return keys.some(key => {
+            const val = localStorage.getItem(key)
+            return val && val.trim()
+        })
     }
 
     const openModal = (currency) => {
         setSelectedCurrency(currency)
         setAmount('')
-        setAddress('')
+        
+        // Auto-fill wallet address from localStorage if available
+        const savedAddress = getWalletAddress(currency.currency)
+        setAddress(savedAddress || '')
+        
         document.getElementById('withdraw_modal').showModal()
     }
 
@@ -89,8 +112,8 @@ export default function Withdraw() {
 
     const handleWithdraw = async () => {
         const username = localStorage.getItem("username")
-        const token = localStorage.getItem("token") // Assuming token is stored
-        
+        const token = localStorage.getItem("token")
+
         if (!username || !token) {
             setAlert({ text: "Please login to withdraw", type: "error" })
             return
@@ -102,8 +125,8 @@ export default function Withdraw() {
             return
         }
 
-        if (!address.trim()) {
-            setAlert({ text: "Please enter a wallet address", type: "warning" })
+        if (!address || !address.trim()) {
+            setAlert({ text: "Please select a wallet address", type: "warning" })
             return
         }
 
@@ -125,13 +148,13 @@ export default function Withdraw() {
                 payMethod: currencyInfo.symbol,
                 biz: "bank"
             })
-            
+
             console.log("Withdraw response:", response.data)
-            
+
             if (response.data.code === "200") {
                 setAlert({ text: response.data.msg || "Withdrawal submitted successfully", type: "success" })
                 closeModal()
-                fetchBalances() // Refresh balances
+                fetchBalances()
             } else {
                 setAlert({ text: response.data.msg || "Withdrawal failed", type: "error" })
             }
@@ -166,21 +189,37 @@ export default function Withdraw() {
         <div className='text-base-content min-h-screen'>
             {/* Alert */}
             {alert && (
-                <TimedAlert 
-                    text={alert.text} 
-                    type={alert.type} 
-                    onClose={() => setAlert(null)} 
+                <TimedAlert
+                    text={alert.text}
+                    type={alert.type}
+                    onClose={() => setAlert(null)}
                 />
+            )}
+
+            {/* Header */}
+            <div className="flex items-center gap-3 mb-4">
+                <ArrowUpCircle className="h-6 w-6 text-primary" />
+                <h1 className="text-lg sm:text-xl font-semibold">Withdraw Funds</h1>
+            </div>
+
+            {/* No wallet warning */}
+            {!hasAnyWalletAddress() && (
+                    <div className="alert alert-warning shadow-md mb-4">
+                        <AlertTriangle className="h-5 w-5 flex-shrink-0" />
+                        <div className="flex-1">
+                            <p className="font-medium">No wallet addresses found</p>
+                            <p className="text-xs">
+                                You need to add at least one wallet address before making a withdrawal.
+                            </p>
+                        </div>
+                        <Link to="/account/edit-account" className="btn btn-sm btn-outline">
+                            Add Wallet
+                        </Link>
+                    </div>
             )}
 
             <div className='py-4 sm:py-6'>
                 <div className='p-3 sm:p-6 bg-gradient-to-br from-base-200 to-base-300 border border-base-300/50 shadow-xl rounded-2xl'>
-
-                    {/* Header */}
-                    <div className="flex items-center gap-3 mb-4">
-                        <ArrowUpCircle className="h-7 w-7 text-primary" />
-                        <h1 className="text-xl sm:text-2xl font-bold">Withdraw Funds</h1>
-                    </div>
 
                     {/* Account Balance */}
                     <div className='flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-6 px-4 py-4 bg-gradient-to-r from-primary/10 to-transparent border border-primary/20 rounded-xl'>
@@ -213,7 +252,8 @@ export default function Withdraw() {
                                 const currencyInfo = getCurrencyInfo(currency.currency)
                                 const hasBalance = currency.amount > 0
                                 const hasPending = currency.pendingAmount > 0
-                                
+                                const walletAddress = getWalletAddress(currency.currency)
+
                                 return (
                                     <div
                                         key={index}
@@ -307,13 +347,15 @@ export default function Withdraw() {
                     {selectedCurrency && (() => {
                         const currencyInfo = getCurrencyInfo(selectedCurrency.currency)
                         const insufficientFunds = amount && parseFloat(amount) > selectedCurrency.amount
-                        
+                        const savedAddress = getWalletAddress(selectedCurrency.currency)
+
                         return (
                             <>
                                 {/* Close button */}
-                                <button 
+                                <button
                                     className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
                                     onClick={closeModal}
+                                    type="button"
                                 >
                                     <X className="h-4 w-4" />
                                 </button>
@@ -342,21 +384,58 @@ export default function Withdraw() {
                                     </div>
                                 </div>
 
-                                {/* Wallet Address */}
+                                {/* Wallet Address - Dropdown or Input */}
                                 <div className='form-control mb-4'>
                                     <label className='label'>
                                         <span className='label-text font-medium'>Wallet Address</span>
                                     </label>
-                                    <input
-                                        type='text'
-                                        placeholder={`Enter your ${currencyInfo.symbol} wallet address`}
-                                        className='input input-bordered w-full font-mono text-sm'
-                                        value={address}
-                                        onChange={(e) => setAddress(e.target.value)}
-                                    />
-                                    {!address && (
+                                    
+                                    {savedAddress ? (
+                                        // Has saved address - show dropdown
+                                        <div className="space-y-2">
+                                            <select
+                                                className="select select-bordered w-full font-mono text-sm"
+                                                value={address}
+                                                onChange={(e) => setAddress(e.target.value)}
+                                            >
+                                                <option value={savedAddress}>
+                                                    {savedAddress.length > 40 
+                                                        ? `${savedAddress.substring(0, 20)}...${savedAddress.substring(savedAddress.length - 10)}`
+                                                        : savedAddress
+                                                    }
+                                                </option>
+                                                <option value="">Use a different address (type below)</option>
+                                            </select>
+                                            
+                                            {address === '' && (
+                                                <input
+                                                    type='text'
+                                                    placeholder={`Enter ${currencyInfo.symbol} wallet address`}
+                                                    className='input input-bordered w-full font-mono text-sm'
+                                                    value={address}
+                                                    onChange={(e) => setAddress(e.target.value)}
+                                                />
+                                            )}
+                                        </div>
+                                    ) : (
+                                        // No saved address - show warning with link
+                                        <div className="space-y-3">
+                                            <div className="alert alert-warning text-sm py-2">
+                                                <AlertTriangle className="h-4 w-4 flex-shrink-0" />
+                                                <span>No {currencyInfo.symbol} wallet address saved.</span>
+                                            </div>
+                                            <Link 
+                                                to="/account/edit-account" 
+                                                className="btn btn-outline btn-sm w-full"
+                                            >
+                                                Go to Account Settings to add wallet
+                                            </Link>
+                                        </div>
+                                    )}
+                                    
+                                    {savedAddress && !address && (
                                         <label className='label'>
-                                            <span className='label-text-alt text-warning'>Wallet address is required</span>
+                                            <span className='label-text-alt text-warning'>Please select or enter a wallet address</span>
                                         </label>
                                     )}
                                 </div>
@@ -366,7 +445,7 @@ export default function Withdraw() {
                                     <label className='label'>
                                         <span className='label-text font-medium'>Amount (USD)</span>
                                         <span className='label-text-alt'>
-                                            <button 
+                                            <button
                                                 type="button"
                                                 className='text-primary text-xs hover:underline font-semibold'
                                                 onClick={() => setAmount(selectedCurrency.amount.toString())}
@@ -401,14 +480,14 @@ export default function Withdraw() {
 
                                 {/* Actions */}
                                 <div className='flex gap-3 mt-2'>
-                                    <button 
-                                        className='btn btn-ghost flex-1' 
+                                    <button
+                                        className='btn btn-ghost flex-1'
                                         onClick={closeModal}
                                         type="button"
                                     >
                                         Cancel
                                     </button>
-                                    <button 
+                                    <button
                                         className='btn btn-primary flex-1'
                                         disabled={!amount || parseFloat(amount) <= 0 || !address.trim() || insufficientFunds || withdrawing}
                                         onClick={handleWithdraw}

@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import { CopyableText } from '../../components/ui/CopyableText'
-import Buttons from '../../components/Buttons'
+// import Buttons from '../../components/Buttons'
 import { BanknoteArrowDown, BanknoteArrowUp, Calendar, Clock, Coins, Home, LayoutDashboard, LogOut, Menu, PanelLeftOpen, User, Users } from 'lucide-react'
 
 import ChartTransaction from '../../components/ChartTransaction'
@@ -30,13 +30,13 @@ export default function UserLayout() {
         { to: "/account", label: "Dashboard", icon: LayoutDashboard, tip: "Dashboard" },
         { to: "/account/deposit", label: "Make Deposit", icon: BanknoteArrowUp, tip: "Make Deposit" },
         { to: "/account/withdraw", label: "Withdrawal", icon: BanknoteArrowDown, tip: "Withdrawal" },
-        { 
-            to: "/account/your-deposit", 
-            label: "Your Deposit", 
-            icon: null, 
-            customIcon: true,
-            tip: "Your Deposit" 
-        },
+        // { 
+        //     to: "/account/your-deposit", 
+        //     label: "Your Deposit", 
+        //     icon: null, 
+        //     customIcon: true,
+        //     tip: "Your Deposit" 
+        // },
         { to: "/account/edit-account", label: "Account", icon: User, tip: "Account" },
         { to: "/account/referrals", label: "Your Referrals", icon: Users, tip: "Your Referrals" },
     ];
@@ -45,6 +45,8 @@ export default function UserLayout() {
         <div className="drawer lg:drawer-open text-base-content">
             <input id="my-drawer-4" type="checkbox" className="drawer-toggle" ref={drawerToggleRef} />
             <div className="drawer-content">
+                
+
                 {/* Navbar */}
                 <nav className="navbar w-full bg-gradient-to-r from-base-200 to-base-300 border-b border-base-300/50 sticky top-0 z-40 flex justify-between pr-4 shadow-sm">
                     <label htmlFor="my-drawer-4" aria-label="open sidebar" className="btn btn-sm btn-square btn-ghost lg:hidden">
@@ -58,7 +60,7 @@ export default function UserLayout() {
                         <Link to="/account/edit-account" title='My account'>
                             <div className='flex items-center space-x-2 md:space-x-3 text-sm hover:bg-base-300/50 px-3 py-1.5 rounded-lg transition-colors'>
                                 <div className="avatar avatar-online avatar-placeholder">
-                                    <div className="bg-primary text-primary-content w-8 rounded-full">
+                                    <div className="bg-primary/20 text-primary font-bold w-8 rounded-full border border-primary/20">
                                         <span className="text-sm font-bold">J</span>
                                     </div>
                                 </div>
@@ -94,7 +96,7 @@ export default function UserLayout() {
                     <ul className="menu w-full grow px-3 py-4 gap-1">
                         {sidebarItems.map((item, index) => {
                             const active = isActive(item.to);
-                            
+
                             return (
                                 <li key={index}>
                                     <Link
@@ -103,8 +105,8 @@ export default function UserLayout() {
                                         className={`
                                             flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium
                                             transition-all duration-200
-                                            ${active 
-                                                ? 'bg-primary/10 text-primary border border-primary/20 shadow-sm' 
+                                            ${active
+                                                ? 'bg-primary/10 text-primary border border-primary/20 shadow-sm'
                                                 : 'hover:bg-base-300/50 text-base-content/70'
                                             }
                                         `}

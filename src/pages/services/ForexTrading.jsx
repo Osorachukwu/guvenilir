@@ -26,7 +26,7 @@ export default function ForexTrading() {
                                 <Menu />
                             </div>
                             <div>
-                                <p className='text-lg sm:text-2xl font-semibold mb-3'>Trading Forex on CompanyName </p>
+                                <p className='text-lg sm:text-2xl font-semibold mb-3'>Trading Forex on Glassdoor Holdingse </p>
                                 <p>Forex is a portmanteau of foreign currency and exchange. Foreign exchange is the process of changing one currency into another currency for a variety of reasons, usually for commerce, trading, or tourism. According to a recent triennial report from the Bank for International Settlements (a global bank for national central banks), the average was more than $5.1 trillion in daily forex trading volume. Because of the worldwide reach of trade, commerce, and finance, forex markets tend to be the largest and most liquid asset markets in the world. Market participants use forex to hedge against international currency and interest rate risk, to speculate on geopolitical events, and to diversify portfolios, among several other reasons.</p>
                             </div>
                         </div>
