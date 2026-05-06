@@ -96,14 +96,12 @@ export function EmblaCarousel() {
                   </p>
                   {/* Buttons */}
                   <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-                    <button className='btn btn-primary'>Get Started</button>
-                    <Link>
+                    <Link to="/register" className='btn btn-primary'>Get Started</Link>
                       {/* <Buttons btnText="Login" btnStyle="btn btn-outline" /> */}
-                      <button className='btn bg-primary/15 hover:bg-primary text-white hover:text-white border-0 shadow-none w-full'>Know More</button>
+                      <Link to="/about" className='btn btn-primary btn-outline'>Know More</Link>
                       {/* <button className="px-4 py-2 rounded-md bg-[#422ad5]/10 text-[#422ad5] font-medium hover:bg-[#422ad5] hover:text-white transition-colors duration-200 cursor-pointer">
                         Primary
                       </button> */}
-                    </Link>
                   </div>
                 </div>
               </div>

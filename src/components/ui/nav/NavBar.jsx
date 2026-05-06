@@ -131,10 +131,12 @@ export function NavBar() {
 
   const navItems = [
     { navItem: "Home", navUrl: "/" },
-    { navItem: "About", navUrl: "/about" },
+    // { navItem: "About", navUrl: "/about" },
     { navItem: "Investments", navUrl: "/investments", hasDropdown: true },
-    { navItem: "FAQS", navUrl: "/faqs" },
-    { navItem: "Support", navUrl: "/support" },
+    // { navItem: "FAQS", navUrl: "/faqs" },
+    // { navItem: "Support", navUrl: "/support" },
+    { navItem: "Our Services", navUrl: "/services" },
+    { navItem: "Plans", navUrl: "/plans" },
     { navItem: "Affiliate", navUrl: "/affiliate" },
     // { navItem: "Legal", navUrl: "/legal" },
     // { navItem: "Buy Digital currency", navUrl: "/buy" },
@@ -142,10 +144,10 @@ export function NavBar() {
   ];
 
   const investmentDropdownItems = [
-    { label: "Investment Plans", to: "/investments/plans" },
-    { label: "Portfolio", to: "/investments/portfolio" },
-    { label: "Performance", to: "/investments/performance" },
-    { label: "Calculator", to: "/investments/calculator" },
+    { label: "About Us", to: "/about" },
+    { label: "Contact Us", to: "/support" },
+    { label: "FAQ's", to: "/faqs" }
+
   ];
 
   return (
@@ -163,12 +165,20 @@ export function NavBar() {
                 <MailOpen className="w-4 h-4 text-primary" />
               </div>
               <div>
-                <p className="font-medium">support@example.com</p>
+                <a
+                  href="mailto:support@glassdoorholding.com"
+                  aria-label="Our email"
+                  title="Our email"
+                  className="transition-colors duration-300 text-deep-purple-accent-400 font-medium hover:text-d"
+                >
+                  support@glassdoorholding.com
+                </a>
+                {/* <p className="font-medium">support@glassdoorholding.com</p> */}
                 <p className='text-xs opacity-60'>Send us a mail</p>
               </div>
             </div>
             <div className='pl-6 border-l border-base-content/20'>
-              <Link to="/register" className='btn btn-primary btn-sm'>
+              <Link to="/login" className='btn btn-primary btn-sm'>
                 Login
               </Link>
             </div>
@@ -316,7 +326,15 @@ export function NavBar() {
                 <MailOpen className="w-5 h-5 text-primary" />
               </div>
               <div>
-                <p className="font-medium text-sm">support@example.com</p>
+                {/* <p className="font-medium text-sm">support@glassdoorholding.com</p> */}
+                <a
+                  href="mailto:support@glassdoorholding.com"
+                  aria-label="Our email"
+                  title="Our email"
+                  className="transition-colors duration-300 text-deep-purple-accent-400 hover:text-d"
+                >
+                  support@glassdoorholding.com
+                </a>
                 <p className="text-xs opacity-60">Send us a mail anytime</p>
               </div>
             </div>

@@ -8,8 +8,12 @@ import { Link, Outlet, useLocation } from 'react-router-dom'
 import LogoutButton from '../../components/LogoutButton'
 import CurrentDate from '../../components/ui/CurrentDate'
 import Icon from './Icon'
+import useInactivityLogout from '../../hooks/useInactivityLogout'
 
 export default function UserLayout() {
+    // Auto logout after 15 minutes of inactivity
+    useInactivityLogout();
+
     const drawerToggleRef = useRef(null);
     const location = useLocation();
 

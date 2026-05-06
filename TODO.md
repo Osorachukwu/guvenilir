@@ -4,3 +4,6 @@ The only change to make in the ui are:
 
 
 In the services page package the texts in one div and add padding use the retirement plannning page for example... consider changing the color of the menu icon inside the boxes and work on their Banner
+
+
+what about we do it this way, the timer continues.. so that if they come back tomorow or next tommorow the code simply checks the timmer and logs them out because the timer must have finished by then

@@ -5,7 +5,7 @@ import { Mail, MailOpen, MapPin, Phone } from 'lucide-react'
 export default function Support() {
   return (
     <div>
-      <Banner />
+      <Banner title="Support" />
       <div class="grid lg:grid-cols-2 items-start gap-16 p-6 mx-2 sm:mx-auto max-w-5xl max-lg:max-w-2xl bg-base-300 rounded-md my-20 shadow-md">
         <div>
           <h2 class="text-3xl font-bold">Let's Talk</h2>
@@ -21,7 +21,7 @@ export default function Support() {
                   </div>
                   <a href="javascript:void(0)" class="ml-4">
                     <small class="block opacity-70">Mail</small>
-                    <spane class="font-semibold">info@example.com</spane>
+                    <spane class="font-semibold">support@glassdoorholding.com</spane>
                   </a>
                 </li>
               </ul>

@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import PricingCrad from './PricingCrad'
 import { ChartArea, Check } from 'lucide-react'
 import tfc from "../assets/tfc-icon.png"
 import secLogo from "../assets/sec-logo.png"
+import { Database, Server } from 'lucide-react'
+import axios from 'axios'
+import { Link } from 'react-router-dom'
+import { BASE_URL, DOMAIN_KEY } from '../utils/constants'
 
 
 
@@ -29,31 +33,119 @@ export function FinancialCommisionAndSecurities() {
 }
 
 export function Plans() {
+    const [plans, setPlans] = useState([])
+    const [loading, setLoading] = useState(true)
+
+    useEffect(() => {
+        fetchPlans()
+    }, [])
+
+    const fetchPlans = async () => {
+        try {
+            setLoading(true)
+            const response = await axios.post(`${BASE_URL}/getplan.php`, {
+                domainKey: DOMAIN_KEY
+            })
+            console.log("Plans data:", response.data)
+            
+            // Handle both array and single object responses
+            if (Array.isArray(response.data)) {
+                setPlans(response.data)
+            } else if (response.data && typeof response.data === 'object') {
+                // If single plan returned, wrap in array
+                setPlans([response.data])
+            } else {
+                setPlans([])
+            }
+        } catch (err) {
+            console.error("Error fetching plans:", err)
+            setPlans([])
+        } finally {
+            setLoading(false)
+        }
+    }
+
+    // Helper to format maturity/duration text
+    const formatDuration = (maturity) => {
+        const hours = parseInt(maturity)
+        if (!hours) return `${maturity} Hours`
+        if (hours < 24) return `After ${hours} Hours`
+        const days = Math.floor(hours / 24)
+        const remainingHours = hours % 24
+        if (remainingHours === 0) {
+            return days === 1 ? `${days} Day` : `${days} Days`
+        }
+        return `${days} Day${days > 1 ? 's' : ''} ${remainingHours} Hour${remainingHours > 1 ? 's' : ''}`
+    }
+
+    // Format currency with commas
+    const formatCurrency = (val) => {
+        const num = parseInt(val)
+        if (isNaN(num)) return val
+        return num.toLocaleString()
+    }
+
+    // Loading skeleton
+    if (loading) {
+        return (
+            <div className='section-wrapper py-16 md:py-20'>
+                <div className='text-center max-w-2xl mb-8 mx-auto' data-aos="fade-up">
+                    <div className="skeleton h-12 w-96 mx-auto mb-4 bg-base-300/50"></div>
+                    <div className="skeleton h-20 w-full max-w-2xl mx-auto bg-base-300/50"></div>
+                </div>
+                <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-center gap-2 md:gap-6 py-4'>
+                    {[...Array(3)].map((_, index) => (
+                        <div key={index} className='animate-pulse'>
+                            <div className='bg-base-300 rounded-xl p-6'>
+                                <div className="skeleton h-8 w-3/4 mb-4 bg-base-200/50"></div>
+                                <div className="space-y-3 mb-6">
+                                    <div className="skeleton h-6 w-full bg-base-200/50"></div>
+                                    <div className="skeleton h-6 w-full bg-base-200/50"></div>
+                                    <div className="skeleton h-6 w-full bg-base-200/50"></div>
+                                    <div className="skeleton h-6 w-full bg-base-200/50"></div>
+                                </div>
+                                <div className="skeleton h-10 w-32 bg-base-200/50"></div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        )
+    }
+
     return (
         <div>
             {/* <p>Investment Plans</p> */}
             <div className='section-wrapper py-16 md:py-20'>
                 <div className='text-center max-w-2xl mb-8 mx-auto' data-aos="fade-up">
-                    <p className='text-2xl sm:text-4xl mb-2'>Consistent Returns | 3 Offerings</p>
+                    <p className='text-2xl sm:text-4xl mb-2'>Consistent Returns | {plans.length} Offering{plans.length !== 1 ? 's' : ''}</p>
                     <p>Offering financial planning and wealth management services to help our clients manage their finances and achieve their long-term financial goals.</p>
                 </div>
                 <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-center gap-2 md:gap-6 py-4'>
-                    {[
-                        { title: "Amature", gain: "2.8", duration: "Daily for 5 Days", minInvestment: "100", maxInvestment: "10,000" },
-                        { title: "Standard", gain: "3.8", duration: "Daily for 10 Days", minInvestment: "10,001", maxInvestment: " $30,000" },
-                        { title: "Premuin", gain: "5", duration: "Daily for 15 Days", minInvestment: " $30,001", maxInvestment: "Unlimited" }
-                    ].map((investment, i) => (
-                        <div key={i} data-aos="zoom-in" data-aos-delay={i * 100}>
-                            <PricingCrad
-                                title={investment.title}
-                                gain={investment.gain}
-                                duration={investment.duration}
-                                minInvestment={investment.minInvestment}
-                                maxInvestment={investment.maxInvestment} />
+                    {plans.length > 0 ? (
+                        plans.map((plan, index) => (
+                            <div key={plan.id || index} data-aos="zoom-in" data-aos-delay={index * 100}>
+                                <PricingCrad
+                                    title={`Plan ${plan.plan}`}
+                                    gain={plan.dailyProfit}
+                                    duration={formatDuration(plan.maturity)}
+                                    minInvestment={formatCurrency(plan.minVal)}
+                                    maxInvestment={plan.maxVal === 19900 || parseInt(plan.maxVal) >= 19900 ? 'Unlimited' : `$${formatCurrency(plan.maxVal)}`}
+                                    referralBonus={plan.referralBonus}
+                                />
+                            </div>
+                        ))
+                    ) : (
+                        <div className="col-span-full text-center py-12 text-base-content/50">
+                            <p className="text-lg font-medium">No investment plans available</p>
+                            <p className="text-sm">Please check back later</p>
                         </div>
-                    ))}
+                    )}
                 </div>
             </div>
         </div>
     )
 }
+
+// Note: You'll need to update your PricingCrad component to accept and display the referralBonus prop
+// If you don't want to change PricingCrad, you can remove referralBonus from the props above

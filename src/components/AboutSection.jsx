@@ -87,7 +87,7 @@ const AboutSection = () => {
               ))}
             </div>
 
-            <button
+            {/* <button
               className="group inline-flex items-center gap-2 rounded-lg bg-emerald-600 px-8 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-emerald-700 hover:shadow-lg hover:shadow-emerald-600/25 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 active:scale-95 sm:text-base"
             >
               Read More
@@ -104,7 +104,7 @@ const AboutSection = () => {
                   d="M17 8l4 4m0 0l-4 4m4-4H3"
                 />
               </svg>
-            </button>
+            </button> */}
           </div>
 
           {/* Right Images */}

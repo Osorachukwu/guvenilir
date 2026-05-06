@@ -11,8 +11,10 @@ export default function App() {
 
   return (
     <BrowserRouter>
-      <AppRouter />
-    </BrowserRouter> 
+      <div className="w-full overflow-x-hidden">
+        <AppRouter />
+      </div>
+    </BrowserRouter>
 
   )
 }

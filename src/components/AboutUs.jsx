@@ -2,6 +2,7 @@ import { ChartArea, HandshakeIcon } from 'lucide-react'
 import React from 'react'
 import imgIOne from "../assets/images (1).jpg"
 import AboutSection from './AboutSection'
+import { Link } from 'react-router-dom'
 
 export default function AboutUs() {
     return (
@@ -30,7 +31,7 @@ export default function AboutUs() {
                         <p className='font-bold'>
                             We are everything a traditional financial institution is not. We set out to give investors better, simpler and more profitable ways to become financially successful and secure.
                         </p>
-                        <button className='btn btn-primary btn-lg text-base rounded-full my-4 group-hover:btn-neutral transition-colors'>Read More</button>
+                        <Link to="/about" className='btn btn-primary btn-lg text-base rounded-full my-4 group-hover:btn-neutral transition-colors'>Read More</Link>
                     </div>
 
                     {/*  */}

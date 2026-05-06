@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import bgImage from "../assets/footer.png"
+import Logo from './ui/Logo'
 
 export default function Footer() {
     return (
@@ -10,17 +11,18 @@ export default function Footer() {
             <div className="px-4 pt-16 md:pt-28 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl ">
                 <div className="grid gap-10 row-gap-6 mb-8 sm:grid-cols-2 lg:grid-cols-4">
                     <div className="sm:col-span-2" data-aos="fade-up">
-                        <a
+                        <div
                             href="/"
                             aria-label="Go home"
                             title="Company"
                             className="inline-flex items-center"
                         >
 
-                            <span className="ml-2 text-xl font-bold tracking-wide uppercase">
+                            {/* <span className="ml-2 text-xl font-bold tracking-wide uppercase">
                                 Company
-                            </span>
-                        </a>
+                            </span> */}
+                            <Logo />
+                        </div>
                         <div className="mt-6 lg:max-w-sm">
                             <p className=" leading-6">
                                 We are everything a traditional financial institution is not. We set out to give investors better, simpler and more profitable ways to become financially successful and secure.
@@ -46,12 +48,12 @@ export default function Footer() {
                         <div className="flex">
                             <p className="mr-1">Email:</p>
                             <a
-                                href="mailto:info@lorem.mail"
+                                href="mailto:support@glassdoorholding.com"
                                 aria-label="Our email"
                                 title="Our email"
                                 className="transition-colors duration-300 text-deep-purple-accent-400 hover:text-d"
                             >
-                                info@lorem.mail
+                                support@glassdoorholding.com
                             </a>
                         </div>
                         <div className="flex">

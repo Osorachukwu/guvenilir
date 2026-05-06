@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Users, UserCheck, DollarSign } from 'lucide-react'
 import axios from 'axios'
+import { BASE_URL, BIZ, DOMAIN_KEY } from '../../utils/constants'
 
 export default function Referals() {
     const [referralData, setReferralData] = useState(null)
@@ -17,10 +18,10 @@ export default function Referals() {
         const fetchReferralData = async () => {
             try {
                 setLoading(true);
-                const response = await axios.post("https://invest.esbatech.org/refstat.php", {
+                const response = await axios.post(`${BASE_URL}/refstat.php`, {
                     username,
-                    domainKey: "254342",
-                    biz: "bank"
+                    domainKey: DOMAIN_KEY,
+                    biz: BIZ
                 });
                 console.log(response.data);
                 setReferralData(response.data);

@@ -5,6 +5,7 @@ import { Home, Eye, EyeClosed, User, Mail, KeyRound, Lock, FileText } from 'luci
 import ThemeSwitcher from '../components/ui/ThemeSwitcher';
 import Logo from '../components/ui/Logo';
 import TimedAlert from '../components/ui/TimedAlert';
+import { BASE_URL, BIZ, DOMAIN_KEY } from '../utils/constants';
 
 export default function Register() {
     const navigate = useNavigate();
@@ -67,13 +68,13 @@ export default function Register() {
         setIsLoading(true)
 
         try {
-            const response = await axios.post("https://invest.esbatech.org/signup.php", {
+            const response = await axios.post(`${BASE_URL}/signup.php`, {
                 fullname: formData.fullname.trim(),
                 username: formData.username.trim(),
                 email: formData.email.trim().toLowerCase(),
                 password: formData.password,
-                biz: "bank",
-                domainKey: "254342",
+                biz: BIZ,
+                domainKey: DOMAIN_KEY,
                 referrer: ""
             })
 

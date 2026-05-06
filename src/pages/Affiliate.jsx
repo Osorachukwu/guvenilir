@@ -5,7 +5,7 @@ export default function Affiliate() {
   return (
     <div>
       <Banner title="Affiliate" />
-      <div className='mx-auto max-w-5xl py-10 md:py-16'>
+      <div className='mx-auto max-w-5xl py-10 md:py-16 px-4'>
         <p className='text-lg font-bold mb-4'>AFFILIATE</p>
         <p className='mb-4 text-lg'>Glassdoor Holdingsings Limited</p>
 

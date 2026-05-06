@@ -9,7 +9,7 @@ function PricingCrad({ title, gain, duration, minInvestment, maxInvestment }) {
             <div className="bg-gradient-to-r from-purple-500 to-indigo-600 p-6 text-white">
                 <h3 className="text-xl font-bold">{title}</h3>
                 <div className="mt-4 flex items-baseline">
-                    <span className="text-4xl font-bold">{gain}</span>
+                    <span className="text-4xl font-bold">{gain}%</span>
                     <span className="ml-1">/ {duration}</span>
                 </div>
             </div>

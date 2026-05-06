@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { User, Lock, Mail, Calendar, Wallet, Save, Key, AlertCircle } from 'lucide-react'
 import TimedAlert from '../../components/ui/TimedAlert'
+import { BASE_URL, BIZ } from '../../utils/constants'
 
 export default function Account() {
     const [loading, setLoading] = useState(true)
@@ -96,10 +97,10 @@ export default function Account() {
 
         try {
             setSaving(true)
-            const response = await axios.post("https://invest.esbatech.org/updateaccount.php", {
+            const response = await axios.post(`${BASE_URL}/updateaccount.php`, {
                 username: username,
                 fullname: profileData.fullname,
-                biz: "bank"
+                biz: BIZ
             })
             console.log(profileData.fullname)
             console.log("Update fullname response:", response.data)
@@ -151,11 +152,11 @@ export default function Account() {
 
         try {
             setSaving(true)
-            const response = await axios.post("https://invest.esbatech.org/updateaccount.php", {
+            const response = await axios.post(`${BASE_URL}/updateaccount.php`, {
                 username,
                 oldPassword: passwordData.oldPassword,
                 password: passwordData.newPassword,
-                biz: "bank"
+                biz: BIZ
             })
             
             console.log("Update password response:", response.data)
@@ -179,7 +180,7 @@ export default function Account() {
         
         try {
             setSaving(true)
-            const response = await axios.post("https://invest.esbatech.org/updatewallets.php", {
+            const response = await axios.post(`${BASE_URL}/updatewallets.php`, {
                 username,
                 btcAd: profileData.btcAd,
                 ethAd: profileData.ethAd,
@@ -187,7 +188,7 @@ export default function Account() {
                 bnbAd: profileData.bnbAd,
                 usdtTrcAd: profileData.usdtTrcAd,
                 usdtErcAd: profileData.usdtErcAd,
-                biz: "bank"
+                biz: BIZ
             })
 
             console.log("Update wallets response:", response.data)

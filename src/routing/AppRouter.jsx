@@ -40,12 +40,15 @@ import Referals from './user/Referals'
 import AdminLayout from './admin/AdminLayout'
 import { ProtectedAdminRoute, ProtectedUserRoute } from '../components/ProtectedRoute'
 import ThemeSwitcher from '../components/ui/ThemeSwitcher'
+import InvestmentPlans from '../pages/InvestmentPlans'
+import WhatsAppWidget from '../components/WhatsAppWidget'
 
 export default function AppRouter() {
     let currentPath = useLocation().pathname;
     // console.log(currentPath)
 
     const hideNavBarPaths = [
+        "*",
         "/login",
         "/register",
         "/forgot-password",
@@ -59,13 +62,13 @@ export default function AppRouter() {
         "/admin/test1",
         "/admin/test2",
         "/contact",
-        "*",
         "/user/account",
         "/user/deposit",
         "/user/withdraw",
         "/user/active-deposit",
         "/user/profile",
         "/admin",
+        "/new-a",
         "/account",
         "/account/confirm-deposit",
         "/account/deposit",
@@ -79,23 +82,25 @@ export default function AppRouter() {
         <>
             {/* {currentPath != "/login" && currentPath != "/register" && <NavBar />} */}
             {!hideNavBarPaths.includes(currentPath) && <NavBar />}
-            <div className='flex justify-between items-center py-1 px-4 md:px-4 bg-base-100 border-b border-base-300 pb-2'>
+            {/* <div className='flex justify-between items-center py-1 px-4 md:px-4 bg-base-100 border-b border-base-300 pb-2'>
                 <div className='pt-2'><GoogleTranslateSwitcher /></div>
                 <div><ThemeSwitcher /></div>
-            </div>
+            </div> */}
             {/* <div className='hidden md:block'> */}
             {/* <GoogleTranslateSwitcher /> */}
             {/* </div> */}
             <ScrollToTop />
+            <WhatsAppWidget />
             <Routes>
                 <Route path='*' element={<NotFound />} />
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
-                <Route path="/contact" element={<Contact />} />
+                {/* <Route path="/contact" element={<Contact />} /> */}
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/faqs" element={<FAQs />} />
                 <Route path="/support" element={<Support />} />
+                <Route path="/plans" element={<InvestmentPlans />} />
                 <Route path="/affiliate" element={<Affiliate />} />
                 <Route path="/bitcoin" element={<Bitcoin />} />
                 <Route path="/oil-and-gas" element={<OilAndGas />} />

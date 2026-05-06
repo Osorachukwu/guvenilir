@@ -5,6 +5,7 @@ import { CopyableText } from '../../components/ui/CopyableText'
 import currentBalIcon from "../../assets/current_bal_icon.png"
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import { BASE_URL, BIZ } from '../../utils/constants'
 
 export default function Dashboard() {
     const [accountData, setAccountData] = useState(null)
@@ -23,9 +24,9 @@ export default function Dashboard() {
         const fetchData = async () => {
             try {
                 setLoading(true);
-                const response = await axios.post("https://invest.esbatech.org/getaccount.php", {
+                const response = await axios.post(`${BASE_URL}/getaccount.php`, {
                     username,
-                    biz: "bank"
+                    biz: BIZ
                 });
                 console.log(response.data);
                 setAccountData(response.data);
@@ -151,13 +152,13 @@ export default function Dashboard() {
 
             {/* Balance & Quick Info */}
             <div className='flex flex-col md:flex-row justify-between gap-6'>
-                <div className='flex gap-6 items-cente bg-gradient-to-br from-base-200 via-base-200 to-base-300 md:w-3/2 p-6 rounded-2xl border border-base-300/50 shadow-lg hover:shadow-xl transition-all duration-300'>
+                <div className='flex gap-6 items-cente bg-gradient-to-br from-base-200 via-base-200 to-base-300 md:w-3/2 p-6 rounded-2xl border border-base-300/50 shadow-lg hover:shadow-xl hover:border-primary/30 transition-all duration-300 group'>
                     <div className='bg-primary/10 p-5 rounded-2xl ring-1 ring-primary/20 flex items-center'>
                         <Wallet className="h-10 w-10 text-primary" />
                     </div>
                     <div>
                         <p className='text-sm font-medium text-base-content/70 uppercase tracking-wider'>Current Balance</p>
-                        <p className='text-3xl font-bold text-base-content mt-1'>
+                        <p className='text-3xl font-bold text-base-content mt-1 group-hover:text-primary transition-colors duration-300'>
                             ${accountData?.currentBalance?.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) || '0.00'}
                             <span className='text-sm font-normal text-base-content/60 ml-1'>USD</span>
                         </p>

@@ -5,13 +5,17 @@ import {
     X, Check, Clock, AlertTriangle, Settings, Key, Lock, Save, Eye, EyeClosed,
     ArrowUp,
     ArrowDown,
-    Ban
+    Ban,
+    TrendingUp
 } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import CurrentDate from '../../components/ui/CurrentDate'
 import LogoutButton from '../../components/LogoutButton'
 import TimedAlert from '../../components/ui/TimedAlert'
+import useInactivityLogout from '../../hooks/useInactivityLogout'
+import { BASE_URL, BIZ, DOMAIN_KEY } from '../../utils/constants'
+import PlansManager from './PlansManager'
 
 // ──────────────────────────────────────────────
 // Helper Functions
@@ -134,49 +138,52 @@ const UserCard = ({ user, onClick }) => (
 // AdminLayout Component
 // ──────────────────────────────────────────────
 export default function AdminLayout() {
+    // Auto logout after 15 minutes of inactivity
+    useInactivityLogout();
+
     const [activeTab, setActiveTab] = useState("overview");
     const [search, setSearch] = useState("");
     const [confirmModal, setConfirmModal] = useState(null);
     const [alert, setAlert] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [accountData, setAccoutData] =useState({
+    const [accountData, setAccoutData] = useState({
         tid: "",
         action: "",
         whichAction: "",
-        domainKey: "254342"
+        domainKey: DOMAIN_KEY
     });
     // COllect admin acctions
-    const handleAccountAction =(e)=> {
+    const handleAccountAction = (e) => {
         let btnId = e.currentTarget.id
         let btnIdSplite = btnId.split("_")
         let whichActionData = btnIdSplite[0] //eg suspended
         let tidData = btnIdSplite[1]
-        
+
         dashboardData.userList.map((data) => {
             if (data.id == tidData) {
                 setConfirmModal(data)
             }
         })
-        setAccoutData({...accountData, tid:tidData, action: "account", whichAction:whichActionData})
+        setAccoutData({ ...accountData, tid: tidData, action: "account", whichAction: whichActionData })
     }
 
     //Submt account data from modal
     const handleSubmiteAccountAction = async () => {
         try {
-            const response = await axios.post("https://invest.esbatech.org/action.php", accountData);
+            const response = await axios.post(`${BASE_URL}/action.php`, accountData);
             if (response.status === 200) {
                 setActionValue("true")
                 setConfirmModal(null)
                 setTimeout(() => {
                     setActionValue("false");
-                },300)
+                }, 300)
             }
             else {
                 setActionValue("false");
-                
+
                 //ADD ALERT FOR FAILED ACTION
             }
-        } catch(err) {
+        } catch (err) {
             setActionValue("false");
             //ADD ALERT FOR FAILED ACTION
         }
@@ -220,8 +227,8 @@ export default function AdminLayout() {
     const fetchDashboardData = async () => {
         try {
             setLoading(true);
-            const response = await axios.post("https://invest.esbatech.org/admindata.php", {
-                domainKey: "254342"
+            const response = await axios.post(`${BASE_URL}/admindata.php`, {
+                domainKey: DOMAIN_KEY
             });
             console.log("Dashboard data:", response.data);
             if (response.data) {
@@ -260,26 +267,26 @@ export default function AdminLayout() {
             tid: id,
             action: "deposit",
             whichAction: status,
-            domainKey: "254342"
+            domainKey: DOMAIN_KEY
         }
 
         try {
-            const response = await axios.post("https://invest.esbatech.org/action.php", backendData);
+            const response = await axios.post(`${BASE_URL}g/action.php`, backendData);
             // console.log(response.data);
             if (response.status === 200) {
                 setActionValue("true");
                 setTimeout(() => {
                     setActionValue("false");
-                },300)
+                }, 300)
             }
             else {
                 setActionValue("false");
                 //ADD ALERT FOR FAILED ACTION
             }
-        } catch(err) {
+        } catch (err) {
             setActionValue("false");
             //ADD ALERT FOR FAILED ACTION
-        }   
+        }
     };
 
     const handleWithdrawalAction = async (id, status) => {
@@ -289,25 +296,25 @@ export default function AdminLayout() {
             tid: id,
             action: "withdraw",
             whichAction: status,
-            domainKey: "254342"
+            domainKey: DOMAIN_KEY
         }
 
         try {
-            const response = await axios.post("https://invest.esbatech.org/action.php", backendData);
+            const response = await axios.post(`${BASE_URL}/action.php`, backendData);
             if (response.status === 200) {
                 setActionValue("true");
                 setTimeout(() => {
                     setActionValue("false");
-                },300)
+                }, 300)
             }
             else {
                 setActionValue("false");
                 //ADD ALERT FOR FAILED ACTION
             }
-        } catch(err) {
+        } catch (err) {
             setActionValue("false");
             //ADD ALERT FOR FAILED ACTION
-        }    
+        }
     };
 
     const handleSuspendUser = (user) => {
@@ -348,11 +355,11 @@ export default function AdminLayout() {
 
         try {
             setSaving(true);
-            const response = await axios.post("https://invest.esbatech.org/updateadminpassword.php", {
+            const response = await axios.post(`${BASE_URL}/updateadminpassword.php`, {
                 username,
                 oldPassword: passwordData.oldPassword,
                 password: passwordData.newPassword,
-                biz: "bank"
+                biz: BIZ
             });
             console.log("Password update:", response.data);
 
@@ -380,6 +387,7 @@ export default function AdminLayout() {
         { id: "users", label: "Users", icon: Users },
         { id: "deposits", label: "Deposits", icon: BanknoteArrowDown },
         { id: "withdrawals", label: "Withdrawals", icon: BanknoteArrowUp },
+        { id: "plans", label: "Plans", icon: TrendingUp },
     ];
 
     // Loading state
@@ -645,7 +653,7 @@ export default function AdminLayout() {
                                         userName={d.username}
                                         type="deposit"
                                         onAction={(status) => handleDepositAction(d.id, status)}
-                                        // onAction={handleDepositAction}
+                                    // onAction={handleDepositAction}
                                     />
                                 ))}
                             </div>
@@ -748,6 +756,9 @@ export default function AdminLayout() {
                             </div>
                         </div>
                     )}
+
+                    {/* ────────── PLANS TAB ────────── */}
+                    {activeTab === "plans" && <PlansManager />}
 
                     {/* ────────── SETTINGS TAB ────────── */}
                     {activeTab === "settings" && (
@@ -860,7 +871,7 @@ export default function AdminLayout() {
                 </main>
             </div>
 
-            {/* ────────── Sidebar ────────── */}
+            {/* ────────── Sidebar 💥 ────────── */}
             <div className="drawer-side z-50">
                 <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
                 <div className="flex min-h-full flex-col bg-gradient-to-b from-base-200 to-base-300 border-r border-base-300/50 shadow-xl w-64">

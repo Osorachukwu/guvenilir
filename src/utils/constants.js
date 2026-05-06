@@ -1,0 +1,5 @@
+// export const BASE_URL = "https://invest.esbatech.org"
+export const BASE_URL = "https://glassdoorholding.com"
+export const BIZ = "bank"
+export const DOMAIN_KEY = "254342"
+export const APP_NAME = "Your App Name"

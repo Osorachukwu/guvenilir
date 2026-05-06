@@ -8,7 +8,7 @@ import { Shield, ShieldCheck, UserCheck } from 'lucide-react'
 export default function About() {
   return (
     <div>
-      <Banner />
+      <Banner title="About Us" />
       <AboutSection />
 
       <div className='bg-base-300 py-16'>
@@ -50,30 +50,28 @@ export default function About() {
           </div>
         </div>
       </div>
+
       {/*  */}
-      <div className='grid grid-cols-1 md:grid-cols-3  w-full mx-auto px-4 sm:px-0'>
+      <div className='grid grid-cols-1 md:grid-cols-3 py-10 sm:py-20 w-full mx-auto px-4 sm:px-0'>
         {[
           {
             title: "OUR MISSION",
             desc: "Empowering investors by providing them an avenue for controlling their financial future by providing outstanding service, innovation, and expertise in the custody of alternative and traditional assets. Glassdoor Holdingsings Limited is dedicated to helping investors around the world reach their desired investment goals and broaden their financial horizons. We provide investment products and solutions to our clients across the world. Our breadth of investment capabilities is extensive and among the most innovative within the market.",
-            // icon: <Users2Icon size={50} />
           },
           {
             title: "Investor-first focus.",
             desc: "Our plan is to not only protect the value of your assets but to increase them with our trading desk. Involving professional traders that manage money in high risk markets. This is achieved by strict standards of risk management through technical and fundamental analysis. Our trading operations are online and around the clock to ensure immediate reaction to movements in the market.",
-            // icon: <Upload size={50} />
           },
           {
             title: "Our Values",
             desc: "Our values are based on three tenets: reliability, security, and performance. With our deep understanding of technology, economics, and finance, and by applying knowledge and innovation, we have created one of the most sophisticated and technologically advanced trading platforms in the industry. Our vision extends also to be an innovative partner for investors to achieve their wealth goals.",
-            // icon: <Wallet size={50} />
-          }].map((step, i) => (
-            <div key={i} className={`h-96 ${i === 0 ? "bg-neutral/70" : i === 1 ? "bg-neutral/50" : "bg-neutral/20"} space-y-4 py-8 md:py-12 px-4 md:px-10 group w-full transition-all duration-200 ease-in-out`}>
-              {/* {step.icon} */}
-              <p className='text-3xl font-semibold'>{step.title}</p>
-              <p className='text-base-content/70'>{step.desc}</p>
-            </div>
-          ))}
+          }
+        ].map((step, i) => (
+          <div key={i} className={`${i === 0 ? "bg-neutral/70" : i === 1 ? "bg-neutral/50" : "bg-neutral/20"} space-y-4 py-8 md:py-12 px-4 md:px-10 group w-full transition-all duration-200 ease-in-out min-h-[24rem]`}>
+            <p className='text-3xl font-semibold'>{step.title}</p>
+            <p className='text-base-content/70'>{step.desc}</p>
+          </div>
+        ))}
       </div>
       {/*  */}
       <div className='h-[65vh] bg-red-300'>

@@ -3,10 +3,11 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { CopyableText } from '../../components/ui/CopyableText';
 import TimedAlert from '../../components/ui/TimedAlert';
+import { BASE_URL, BIZ, DOMAIN_KEY } from '../../utils/constants';
 
-const DEPOSIT_URL = "https://invest.esbatech.org/deposit.php";
-const BIZ = "bank";
-const DOMAIN_KEY = "254342";
+const DEPOSIT_URL = `${BASE_URL}/deposit.php`;
+// const BIZ = BIZ;
+// const DOMAIN_KEY = DOMAIN_KEY;
 
 const profitMap = {
     "Plan A": "15.00%",

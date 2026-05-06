@@ -5,7 +5,7 @@ import Banner from '../components/ui/Banner'
 export default function FAQs() {
     return (
       <div>
-        <Banner />
+        <Banner title="FAQ's" />
          <Faqs />
       </div>
     )

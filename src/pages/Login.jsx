@@ -5,13 +5,14 @@ import { CheckCircle, CheckCircle2, ChevronLeft, Eye, EyeClosed, KeyRound, Mail,
 import TimedAlert from '../components/ui/TimedAlert'
 import ThemeSwitcher from '../components/ui/ThemeSwitcher'
 import Logo from '../components/ui/Logo'
+import { BASE_URL, BIZ } from '../utils/constants'
 
 export default function Login() {
     const navigate = useNavigate();
     const location = useLocation();
-    
+
     const [passwordVisible, setPasswordVisible] = useState(false)
-    const [alert, setAlert] = useState(null) // { text, type }
+    const [alert, setAlert] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
 
     const [formData, setFormData] = useState({
@@ -19,30 +20,28 @@ export default function Login() {
         password: "",
     })
 
-    // Check if already logged in
-    const token = localStorage.getItem("token")
-    const userRole = localStorage.getItem("userRole")
-
-    // Handle redirects based on existing session
+    // Check if already logged in on mount
     useEffect(() => {
-        if (token && userRole === "admin") {
-            navigate("/new-a")
-        } else if (token && userRole === "user") {
-            navigate("/account")
-        }
-    }, [token, userRole, navigate])
+        const token = localStorage.getItem("token")
+        const userRole = localStorage.getItem("userRole")
 
-    // Registration success alert from location state
+        if (token && userRole === "admin") {
+            navigate("/new-a", { replace: true })
+        } else if (token && userRole === "user") {
+            navigate("/account", { replace: true })
+        }
+    }, [navigate])
+
+    // Show registration success message if coming from register
     useEffect(() => {
         if (location.state?.message) {
             setAlert({
                 text: location.state.message,
                 type: location.state.type || 'success'
-            });
-            // Clear the location state to prevent showing again on refresh
+            })
             window.history.replaceState({}, document.title)
         }
-    }, [location]);
+    }, [location])
 
     const handleChange = (e) => {
         const { name, value } = e.target
@@ -55,6 +54,7 @@ export default function Login() {
         e.preventDefault()
         setAlert(null)
 
+        // Validation
         if (!formData.username.trim()) {
             setAlert({ text: "Username is required.", type: "error" })
             return
@@ -67,56 +67,59 @@ export default function Login() {
         setIsLoading(true)
 
         try {
-            const response = await axios.post("https://invest.esbatech.org/login.php", {
+            const response = await axios.post(`${BASE_URL}/login.php`, {
                 userData: formData.username.trim(),
                 password: formData.password,
-                biz: "bank"
+                biz: BIZ
             })
 
             const data = response.data
             const code = String(data?.code ?? "").trim()
             const msg = data?.msg
 
-            if (code === "200" && typeof msg === "object") {
+            if (code === "200" && typeof msg === "object" && msg.token) {
+                // SUCCESS - has token in msg object
                 const { token, user } = msg
-                // Store common data
+
                 localStorage.setItem("token", token)
-                localStorage.setItem("userRole", user.who) 
+                localStorage.setItem("userRole", user.who)
                 localStorage.setItem("username", user.username)
                 localStorage.setItem("fullname", user.fullname)
                 localStorage.setItem("email", user.email)
-                localStorage.setItem("regDate", user.date)
-                localStorage.setItem("btcAd", user.btcAd)
-                localStorage.setItem("ethAd", user.ethAd)
-                localStorage.setItem("bnbSmartAd", user.bnbSmartAd)
-                localStorage.setItem("bnbAd", user.bnbAd)
-                localStorage.setItem("usdtTrcAd", user.usdtTrcAd)
-                localStorage.setItem("usdtErcAd", user.usdtErcAd)
+                localStorage.setItem("date", user.date)
+                localStorage.setItem("btcAd", user.btcAd || "")
+                localStorage.setItem("ethAd", user.ethAd || "")
+                localStorage.setItem("bnbSmartAd", user.bnbSmartAd || "")
+                localStorage.setItem("bnbAd", user.bnbAd || "")
+                localStorage.setItem("usdtTrcAd", user.usdtTrcAd || "")
+                localStorage.setItem("usdtErcAd", user.usdtErcAd || "")
 
                 setAlert({ text: "Login successful! Redirecting...", type: "success" })
 
                 setTimeout(() => {
-                    // Redirect based on user role
                     if (user.who === "admin") {
-                        navigate("/new-a")
+                        navigate("/new-a", { replace: true })
                     } else {
-                        navigate("/account")
+                        navigate("/account", { replace: true })
                     }
-                }, 2000)
-
-            } else if (code === "202") {
-                // Keep this as fallback for any legacy response format
-                const userId = data?.note
-                localStorage.setItem("adminData", userId)
-                navigate("/new-a")
+                }, 1000)
 
             } else {
-                setAlert({ text: typeof msg === "string" ? msg : "Login failed. Please try again.", type: "error" })
+                // ANY other code (202, 404, 401, etc.) = ERROR
+                setAlert({
+                    text: typeof msg === "string"
+                        ? msg
+                        : msg?.msg || "Login failed. Please try again.",
+                    type: "error"
+                })
             }
 
         } catch (err) {
             console.error("Login error:", err)
-            setAlert({ text: "Network error. Please check your connection and try again.", type: "error" })
+            setAlert({
+                text: err.response?.data?.msg || "Network error. Please check your connection and try again.",
+                type: "error"
+            })
         } finally {
             setIsLoading(false)
         }
@@ -132,11 +135,11 @@ export default function Login() {
                 <TimedAlert
                     text={alert.text}
                     type={alert.type}
-                    duration={5000}
+                    duration={alert.type === 'success' ? 3000 : 6000}
                     onClose={() => setAlert(null)}
                 />
             )}
-            
+
             {/* Video Background */}
             <video
                 autoPlay
@@ -148,9 +151,9 @@ export default function Login() {
                 <source src="/auth-vid.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
-            
+
             {/* Overlay */}
-            <div className='bg-base-300/20 backdrop-blu absolute inset-0 w-full h-full'></div>
+            <div className='bg-base-300/20 backdrop-blur absolute inset-0 w-full h-full'></div>
 
             <div className='relative px-2 sm:px-3 w-full max-w-lg'>
                 <form
@@ -167,7 +170,7 @@ export default function Login() {
                         </p>
                     </div>
 
-                    {/* Username Field (changed from email) */}
+                    {/* Username Field */}
                     <label className="input validator w-full">
                         <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2.5" fill="none" stroke="currentColor">
@@ -193,7 +196,7 @@ export default function Login() {
                         Must be 3 to 30 characters containing only letters, numbers or dash
                     </p>
 
-                    {/* Password Field with visibility toggle */}
+                    {/* Password Field */}
                     <label className="input w-full validator">
                         <KeyRound size={17} className='text-base-content/60' />
                         <input
@@ -208,8 +211,8 @@ export default function Login() {
                             value={formData.password}
                             onChange={handleChange}
                         />
-                        <button 
-                            type="button" 
+                        <button
+                            type="button"
                             className='text-base-content/50 hover:text-base-content transition-colors'
                             onClick={handlePasswordVisible}
                         >

@@ -3,6 +3,7 @@ import axios from 'axios'
 import { Wallet, ArrowUpCircle, AlertTriangle, CheckCircle, X, ChevronDown } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import TimedAlert from '../../components/ui/TimedAlert'
+import { BASE_URL, BIZ } from '../../utils/constants'
 
 export default function Withdraw() {
     const [balances, setBalances] = useState([])
@@ -43,9 +44,9 @@ export default function Withdraw() {
 
         try {
             setLoading(true)
-            const response = await axios.post("https://invest.esbatech.org/withdrawstat.php", {
+            const response = await axios.post(`${BASE_URL}/withdrawstat.php`, {
                 username,
-                biz: "bank"
+                biz: BIZ
             })
 
             console.log("Balance data:", response.data)
@@ -139,14 +140,14 @@ export default function Withdraw() {
 
         try {
             setWithdrawing(true)
-            const response = await axios.post("https://invest.esbatech.org/withdraw.php", {
+            const response = await axios.post(`${BASE_URL}/withdraw.php`, {
                 username,
                 amount: amount,
                 walletAddress: address.trim(),
                 token: token,
                 plan: "A",
                 payMethod: currencyInfo.symbol,
-                biz: "bank"
+                biz: BIZ
             })
 
             console.log("Withdraw response:", response.data)
