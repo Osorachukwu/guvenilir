@@ -3,7 +3,7 @@ import Banner from '../components/ui/Banner'
 
 export default function OilAndGas() {
   return (
-    <div>
+    <div className='w-full overflow-x-hidden'>
       <Banner />
 
       <div className='mx-auto max-w-7xl'>

@@ -36,13 +36,13 @@ export const CopyableText = ({ text, label, mainStyle, btnStyle }) => {
                 <span className="text-sm font-medium text-gray-600">{label}</span>
             )}
             {/* pl-3 py-1 shadow border-base-200 border pass the padding and bg props */}
-            <div className={`${mainStyle} flex items-center justify-between rounded-lg`} title={text}>
-                <span className="font-mono text-sm truncate">{text}</span>
+            <div className={`${mainStyle} flex items-center justify-between overflow-hidden`} title={text}>
+                <span className="font-mono text-sm truncate px-1">{text}</span>
                 <div className='tooltip tooltip-bottom' data-tip="Copy">
                     {/* btn-sm pass bth styles size */}
                     <button
                         onClick={handleCopy}
-                        className={`${copied && "text-success"} ${btnStyle} btn btn-neutral btn-square mr-1 rounded shadow text-base-content text-xs font-bold transition-all duration-300 ease-in-out`}
+                        className={`${copied && "text-success"} ${btnStyle} btn btn-neutral btn-square rounded-none  shadow text-base-content text-xs font-bold transition-all duration-300 ease-in-out`}
                         // title={copied ? "Copied!" : "Copy to clipboard"}
                     >
                         {copied ? (

@@ -4,7 +4,7 @@ import Banner from '../components/ui/Banner'
 
 export default function FAQs() {
     return (
-      <div>
+      <div className='w-full overflow-x-hidden'>
         <Banner title="FAQ's" />
          <Faqs />
       </div>

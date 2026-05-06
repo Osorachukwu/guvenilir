@@ -4,7 +4,7 @@ import { Mail, MailOpen, MapPin, Phone } from 'lucide-react'
 
 export default function Support() {
   return (
-    <div>
+    <div className='w-full overflow-x-hidden'>
       <Banner title="Support" />
       <div class="grid lg:grid-cols-2 items-start gap-16 p-6 mx-2 sm:mx-auto max-w-5xl max-lg:max-w-2xl bg-base-300 rounded-md my-20 shadow-md">
         <div>

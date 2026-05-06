@@ -119,7 +119,7 @@ export default function Register() {
     }
 
     return (
-        <div className='relative min-h-screen flex justify-center items-center'>
+        <div className='relative min-h-screen flex justify-center items-center overflow-x-hidden w-full'>
             <div className='hidden'>
                 <ThemeSwitcher />
             </div>

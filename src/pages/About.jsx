@@ -7,7 +7,7 @@ import { Shield, ShieldCheck, UserCheck } from 'lucide-react'
 
 export default function About() {
   return (
-    <div>
+    <div className='w-full overflow-x-hidden'>
       <Banner title="About Us" />
       <AboutSection />
 

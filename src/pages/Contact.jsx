@@ -3,7 +3,7 @@ import React from 'react'
 
 export default function Contact() {
   return (
-    <div>
+    <div className='w-full overflow-x-hidden'>
       {/* <p className='Text-4xl font-semibold bg-gray-600 py-4 absolute z-50 w-full'>Welcom Admin</p> */}
       {/* Modal */}
       <dialog id="my_modal_1" className="modal">

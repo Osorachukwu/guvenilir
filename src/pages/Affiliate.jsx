@@ -3,7 +3,7 @@ import Banner from '../components/ui/Banner'
 
 export default function Affiliate() {
   return (
-    <div>
+    <div className='w-full overflow-x-hidden'>
       <Banner title="Affiliate" />
       <div className='mx-auto max-w-5xl py-10 md:py-16 px-4'>
         <p className='text-lg font-bold mb-4'>AFFILIATE</p>

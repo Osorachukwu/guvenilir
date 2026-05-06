@@ -18,14 +18,14 @@ const profitMap = {
 };
 
 const wallets = [
-    { wallet: "Bitcoin",      payMethod: "btc",  walletAddress: "bc1qmnhg0lrdqv2ut96ly6rt8pdqzqa7ltkzmj82j5" },
-    { wallet: "Ethereum",     payMethod: "eth",  walletAddress: "0x56AEB5C4aF0319E125f1BdAa9127A5e2Cd61d1A6" },
-    { wallet: "USDT(TRC20)",  payMethod: "usdt", walletAddress: "TM4RUeSht9jY9QZGWfSqc4NBJHfdiCEQyf" },
-    { wallet: "SOLANA",       payMethod: "sol",  walletAddress: "21AfzRjwtHpf2pkvJ6o9xspStxhCFv1dM5CnLrWjnZqm" },
-    { wallet: "XRP",          payMethod: "xrp",  walletAddress: "0rp4RnrX2qKUtwFCoQs2xPioBx63c4yHCGp" },
-    { wallet: "TRX",          payMethod: "trx",  walletAddress: "TM4RUeSht9jY9QZGWfSqc4NBJHfdiCEQyf" },
-    { wallet: "LTC",          payMethod: "ltc",  walletAddress: "ltc1qf8dm2g7306t3a5exx42pe55x3tks0kmdyzex65" },
-    { wallet: "Dogecoin",     payMethod: "doge", walletAddress: "DHBbbqNJHEHUif8MZeN1TDqs2S5BZGKuSp5" },
+    { wallet: "Bitcoin", payMethod: "btc", walletAddress: "bc1qmnhg0lrdqv2ut96ly6rt8pdqzqa7ltkzmj82j5" },
+    { wallet: "Ethereum", payMethod: "eth", walletAddress: "0x56AEB5C4aF0319E125f1BdAa9127A5e2Cd61d1A6" },
+    { wallet: "USDT(TRC20)", payMethod: "usdt", walletAddress: "TM4RUeSht9jY9QZGWfSqc4NBJHfdiCEQyf" },
+    { wallet: "SOLANA", payMethod: "sol", walletAddress: "21AfzRjwtHpf2pkvJ6o9xspStxhCFv1dM5CnLrWjnZqm" },
+    { wallet: "XRP", payMethod: "xrp", walletAddress: "0rp4RnrX2qKUtwFCoQs2xPioBx63c4yHCGp" },
+    { wallet: "TRX", payMethod: "trx", walletAddress: "TM4RUeSht9jY9QZGWfSqc4NBJHfdiCEQyf" },
+    { wallet: "LTC", payMethod: "ltc", walletAddress: "ltc1qf8dm2g7306t3a5exx42pe55x3tks0kmdyzex65" },
+    { wallet: "Dogecoin", payMethod: "doge", walletAddress: "DHBbbqNJHEHUif8MZeN1TDqs2S5BZGKuSp5" },
 ];
 
 export default function ConfirmDeposit() {
@@ -33,16 +33,16 @@ export default function ConfirmDeposit() {
     const navigate = useNavigate();
 
     // Expect these passed via location.state from the previous page
-    const plan        = location.state?.plan;          // e.g. "A"
-    const amount      = location.state?.amount;        // e.g. "1.6"
-    const payMethod   = location.state?.payMethod;     // e.g. "btc"
+    const plan = location.state?.plan;          // e.g. "A"
+    const amount = location.state?.amount;        // e.g. "1.6"
+    const payMethod = location.state?.payMethod;     // e.g. "btc"
     console.log(plan)
     console.log(amount)
     console.log(payMethod)
 
     const [loading, setLoading] = useState(false);
-    const [saved, setSaved]     = useState(false);
-    const [alert, setAlert]     = useState(null);
+    const [saved, setSaved] = useState(false);
+    const [alert, setAlert] = useState(null);
 
     // Match wallet entry by payMethod shortcode
     const selectedWallet = wallets.find(
@@ -56,7 +56,7 @@ export default function ConfirmDeposit() {
         setAlert(null);
 
         const username = localStorage.getItem("username");
-        const token    = localStorage.getItem("token");
+        const token = localStorage.getItem("token");
 
         if (!username || !token) {
             setAlert({ text: "Session expired. Please log in again.", type: "error" });
@@ -107,13 +107,13 @@ export default function ConfirmDeposit() {
                 </p>
 
                 <p className="mb-4">STEPS TO MAKE DEPOSIT:</p>
-                <ol className="list-decimal list-inside space-y-1 mb-8">
+                <ol className="list-decimal list-inside space-y-1 mb-6">
                     <li>Copy the company wallet address below.</li>
                     <li>Go to your wallet app and send the exact amount.</li>
                     <li>Come back and click the Save button below.</li>
                 </ol>
 
-                <div className="py-5 my-8 border-y border-base-300">
+                {/* <div className="py-5 my-8 border-y border-base-300">
                     <p className="mb-5">WALLET ADDRESS:</p>
                     {selectedWallet ? (
                         <div className="mb-4">
@@ -129,6 +129,12 @@ export default function ConfirmDeposit() {
                     ) : (
                         <p className="text-base-content/50">No wallet address found for the selected payment method.</p>
                     )}
+                </div> */}
+                <div className='flex'>
+                    <CopyableText text="1NKHxQSbuAnFSCP7UCYhVUrSLmAeLwU6Jr" 
+                    mainStyle="borde bg-base-300" 
+                    btnStyle="btn-sm" 
+                    />
                 </div>
 
                 <p className="my-6">AFTER PAYMENT COME BACK AND HIT THE SAVE BUTTON</p>

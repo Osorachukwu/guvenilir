@@ -5,7 +5,7 @@ import Faqs from '../components/Faqs'
 
 export default function Bitcoin() {
   return (
-    <div>
+    <div className='w-full overflow-x-hidden'>
       <Banner />
       <div className='bg-base-300'>
         <Plans />

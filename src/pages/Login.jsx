@@ -126,7 +126,7 @@ export default function Login() {
     }
 
     return (
-        <div className='relative min-h-screen flex justify-center items-center'>
+        <div className='relative min-h-screen flex justify-center items-center w-full overflow-x-hidden'>
             <div className='hidden'>
                 <ThemeSwitcher />
             </div>
