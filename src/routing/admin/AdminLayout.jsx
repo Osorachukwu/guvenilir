@@ -271,7 +271,7 @@ export default function AdminLayout() {
         }
 
         try {
-            const response = await axios.post(`${BASE_URL}g/action.php`, backendData);
+            const response = await axios.post(`${BASE_URL}/action.php`, backendData);
             // console.log(response.data);
             if (response.status === 200) {
                 setActionValue("true");

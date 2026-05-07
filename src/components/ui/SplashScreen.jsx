@@ -61,7 +61,7 @@ export default function SplashScreen({ onComplete }) {
         {/* Logo */}
         <div className="splash-logo">
           {/* <span className="splash-logo-text">YourApp</span> */}
-          <Logo />
+          <Logo logoSize="200" />
         </div>
 
         {/* Tagline */}
