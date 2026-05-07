@@ -21,19 +21,19 @@ export default function SplashScreen() {
                     clearInterval(progressInterval)
                     return 100
                 }
-                return prev + 0.45  // ← Slower: +0.45 every 40ms ≈ 8.9 seconds to reach 100%
+                return prev + 2
             })
         }, 40)
 
         // Start exit animation and redirect
         const exitTimer = setTimeout(() => {
             setIsExiting(true)
-        }, 9300)
+        }, 4500)
 
         const redirectTimer = setTimeout(() => {
             // Use window.location instead of navigate
             window.location.href = '/'
-        }, 9800)
+        }, 5000)
 
         return () => {
             clearInterval(progressInterval)
@@ -70,13 +70,13 @@ export default function SplashScreen() {
             {/* Logo with glow */}
             <div className="relative mb-8">
                 {/* Glow ring */}
-                <div className="absolute inset-0 rounded-full bg-primary/20 animate-ping scale-150"
+                <div className="absolute inset-0 rounded-full bg-primary/20 animate-ping scale-150" 
                     style={{ animationDuration: '3s' }}
                 />
-                <div className="absolute inset-0 rounded-full bg-primary/10 animate-pulse scale-125"
+                <div className="absolute inset-0 rounded-full bg-primary/10 animate-pulse scale-125" 
                     style={{ animationDuration: '2s' }}
                 />
-
+                
                 {/* Logo container */}
                 <div className={`
                     relative bg-base-100/80 backdrop-blur-sm rounded-3xl p-8
