@@ -1,19 +1,27 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import AppRouter from './routing/AppRouter'
 import { BrowserRouter } from 'react-router-dom'
 import AOS from 'aos'
+import SplashScreen from './components/ui/SplashScreen'
 
 export default function App() {
+  const [showSplash, setShowSplash] = useState(true)
+
   useEffect(() => {
-    // Refresh AOS on component mount and route changes
+    // Check if splash was already shown this session
+    const splashShown = sessionStorage.getItem('splashShown')
+    if (splashShown) {
+      setShowSplash(false)
+    } else {
+      sessionStorage.setItem('splashShown', 'true')
+    }
+
     AOS.refresh()
   }, [])
 
   return (
     <BrowserRouter>
-      <AppRouter />
+      {showSplash ? <SplashScreen /> : <AppRouter />}
     </BrowserRouter>
-
   )
 }
-// w-full overflow-x-hidden

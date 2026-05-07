@@ -14,7 +14,7 @@ export default function WhatsAppWidget() {
     return (
         <button 
             onClick={handleWhatsAppClick}
-            className='btn bg-[#4DC247] border-0 rounded-full fixed bottom-56 text-white text-lg z-50 flex items-center gap-2'
+            className='btn bg-[#4DC247] border-0 rounded-full fixed bottom-10 text-white text-lg z-50 flex items-center gap-2'
         >
            <img src={whatsappIcon} alt="whatsapp" width={28} /> 
            Chat Us

@@ -1,5 +1,6 @@
 Stack 
 src/ui/TimedAlert.jsx
+src/ui/SplashScreen.jsx
 src/utils/constants.js
 src/utils/logout.js
 src/hooks/useActiviyLogout.js
