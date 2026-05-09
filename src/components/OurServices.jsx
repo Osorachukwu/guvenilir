@@ -46,9 +46,9 @@ export default function OurServices() {
 
             <div className='max-w-6xl px-1 sm:px-4 shadow-2xl mx-auto py-20 bg-base-300' data-aos="fade-up">
                 <h2
-                    class="mt-1 text-3xl md:text-4xl font-bold text-center mb-4 sm:tracking-tight">
+                    className="mt-1 text-3xl md:text-4xl font-bold text-center mb-4 sm:tracking-tight">
                     Our
-                    <span class="px-2 py-1 relative inline-block"><svg class="stroke-current bottom-0 absolute text-primary -translate-x-2" viewBox="0 0 410 18" xmlns="http://www.w3.org/2000/svg"><path d="M6 6.4c16.8 16.8 380.8-11.2 397.6 5.602" stroke-width="12" fill="none" fill-rule="evenodd" stroke-linecap="round"></path></svg><span class="relative">Services</span></span>
+                    <span className="px-2 py-1 relative inline-block"><svg className="stroke-current bottom-0 absolute text-primary -translate-x-2" viewBox="0 0 410 18" xmlns="http://www.w3.org/2000/svg"><path d="M6 6.4c16.8 16.8 380.8-11.2 397.6 5.602" stroke-width="12" fill="none" fill-rule="evenodd" stroke-linecap="round"></path></svg><span className="relative">Services</span></span>
                 </h2>
                 <div className='grid sm:grid-cols-2 gap-4 md:gap-2 lg:gap-4 px-4'>
                     {[

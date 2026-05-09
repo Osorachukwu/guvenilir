@@ -352,6 +352,7 @@ export default function PlansManager() {
                                         className="input input-bordered w-full"
                                         placeholder="e.g., 15"
                                         min="0"
+                                        step="any"
                                     />
                                 </div>
 

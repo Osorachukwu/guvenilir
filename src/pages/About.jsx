@@ -12,36 +12,36 @@ export default function About() {
       <AboutSection />
 
       <div className='bg-base-300 py-16'>
-        <div class="max-w-screen-xl max-lg:max-w-screen-sm mx-auto p-4">
-          <div class="grid lg:grid-cols-2 gap-x-8 gap-y-16 items-center">
-            <div class="max-lg:-order-1">
-              <div class="w-full aspect-4/3">
-                {/* <img src="https://readymadeui.com/images/about-us-img.svg" class="w-full h-full object-contain rounded-md" /> */}
-                <img src="https://readymadeui.com/images/about-image-1.webp" class="w-full h-full object-contain rounded-md" />
+        <div className="max-w-screen-xl max-lg:max-w-screen-sm mx-auto p-4">
+          <div className="grid lg:grid-cols-2 gap-x-8 gap-y-16 items-center">
+            <div className="max-lg:-order-1">
+              <div className="w-full aspect-4/3">
+                {/* <img src="https://readymadeui.com/images/about-us-img.svg" className="w-full h-full object-contain rounded-md" /> */}
+                <img src="https://readymadeui.com/images/about-image-1.webp" className="w-full h-full object-contain rounded-md" />
               </div>
             </div>
 
             <div>
-              <div class="max-lg:text-center">
-                <h2 class="md:text-4xl text-3xl font-bold md:!leading-[45px] leading-[40px]">Why choose Us?</h2>
-                <p class="text-[15px] mt-6 leading-relaxed text-base-content/70">We are an international financial company engaged in investment activities, which are related to trading on financial markets and cryptocurrency exchanges, Oil & Gas investment, stock and gold. All performed by qualified professional traders.</p>
+              <div className="max-lg:text-center">
+                <h2 className="md:text-4xl text-3xl font-bold md:!leading-[45px] leading-[40px]">Why choose Us?</h2>
+                <p className="text-[15px] mt-6 leading-relaxed text-base-content/70">We are an international financial company engaged in investment activities, which are related to trading on financial markets and cryptocurrency exchanges, Oil & Gas investment, stock and gold. All performed by qualified professional traders.</p>
               </div>
 
-              <hr class="my-10 border-gray-800" />
+              <hr className="my-10 border-gray-800" />
 
-              <div class="grid sm:grid-cols-2 gap-x-6 gap-y-10 max-lg:text-center">
+              <div className="grid sm:grid-cols-2 gap-x-6 gap-y-10 max-lg:text-center">
                 <div className='text-center flex justify-center flex-col items-center'>
                   <UserCheck className='md:h-8 md:w-8 text-primary' />
 
-                  <h3 class="text-base font-semibold my-3">Our Legality</h3>
-                  <p class="text-[15px] leading-relaxed text-base-content/70">
+                  <h3 className="text-base font-semibold my-3">Our Legality</h3>
+                  <p className="text-[15px] leading-relaxed text-base-content/70">
                     Our company conducts absolutely legal activities in the legal field. We are certified to operate investment business, we are legal and safe.</p>
                 </div>
 
                 <div className='text-center flex justify-center flex-col items-center'>
                   <ShieldCheck className='md:h-8 md:w-8 text-primary' />
-                  <h3 class="text-base font-semibold my-3">Our Reliability</h3>
-                  <p class="text-[15px] leading-relaxed text-base-content/70">
+                  <h3 className="text-base font-semibold my-3">Our Reliability</h3>
+                  <p className="text-[15px] leading-relaxed text-base-content/70">
                     We are trusted by a huge number of people. We are working hard constantly to improve the level of our security system and minimize possible risks..</p>
                 </div>
 
@@ -75,12 +75,12 @@ export default function About() {
       </div>
       {/*  */}
       <div className='h-[65vh] bg-red-300'>
-        <div class="relative before:absolute before:w-full h-full before:h-full before:inset-0 before:bg-black before:opacity-50 before:z-10">
-          <img src="https://readymadeui.com/cardImg.webp" alt="Banner Image" class="absolute inset-0 w-full h-full object-cover" />
+        <div className="relative before:absolute before:w-full h-full before:h-full before:inset-0 before:bg-black before:opacity-50 before:z-10">
+          <img src="https://readymadeui.com/cardImg.webp" alt="Banner Image" className="absolute inset-0 w-full h-full object-cover" />
 
-          <div class="min-h-[350px] relative z-50 h-full max-w-4xl mx-auto flex flex-col justify-center items-center text-center p-6">
-            <h2 class="md:text-4xl text-3xl font-semibold mb-6">Our Certificate</h2>
-            <p class="md:text-lg text-base text-center">Legally Registered in New Zealand with company number NZ:6049008</p>
+          <div className="min-h-[350px] relative z-50 h-full max-w-4xl mx-auto flex flex-col justify-center items-center text-center p-6">
+            <h2 className="md:text-4xl text-3xl font-semibold mb-6">Our Certificate</h2>
+            <p className="md:text-lg text-base text-center">Legally Registered in New Zealand with company number NZ:6049008</p>
 
             <button className='btn btn-xl btn-outline mt-12 text-lg'>Register</button>
           </div>

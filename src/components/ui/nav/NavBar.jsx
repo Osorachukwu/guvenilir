@@ -3,6 +3,7 @@ import React, { useState, useRef, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import ThemeSwitcher from '../ThemeSwitcher';
 import Logo from '../Logo';
+import { useAuth } from '../../../context/AuthContext';
 
 // Desktop Dropdown Component (Hover-based)
 const DesktopDropdown = ({ trigger, children }) => {
@@ -91,6 +92,8 @@ const MobileDropdown = ({ trigger, children, onItemClick }) => {
 };
 
 export function NavBar() {
+  const { isLoggedIn } =useAuth();
+
   let currentLocation = useLocation().pathname;
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -179,7 +182,7 @@ export function NavBar() {
             </div>
             <div className='pl-6 border-l border-base-content/20'>
               <Link to="/login" className='btn btn-primary btn-sm'>
-                Login
+                {isLoggedIn ? "Account" : "Login"}
               </Link>
             </div>
           </div>

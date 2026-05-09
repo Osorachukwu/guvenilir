@@ -3,6 +3,7 @@ import AppRouter from './routing/AppRouter'
 import { BrowserRouter } from 'react-router-dom'
 import AOS from 'aos'
 import SplashScreen from './components/ui/SplashScreen'
+import { AuthProvider } from './context/AuthContext'
 
 export default function App() {
   // Initialise synchronously from sessionStorage — no flicker on first paint
@@ -20,13 +21,15 @@ export default function App() {
   }
 
   return (
-    <BrowserRouter>
-      {!splashDone && <SplashScreen onComplete={handleSplashComplete} />}
-      {/* Keep AppRouter mounted but hidden while splash plays — prevents flash */}
-      <div style={{ visibility: splashDone ? 'visible' : 'hidden' }}>
-        <AppRouter />
-      </div>
-    </BrowserRouter>
+    <AuthProvider>
+      <BrowserRouter>
+        {!splashDone && <SplashScreen onComplete={handleSplashComplete} />}
+        {/* Keep AppRouter mounted but hidden while splash plays — prevents flash */}
+        <div style={{ visibility: splashDone ? 'visible' : 'hidden' }}>
+          <AppRouter />
+        </div>
+      </BrowserRouter>
+    </AuthProvider>
   )
 }
 // w-full overflow-x-hidden

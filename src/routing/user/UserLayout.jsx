@@ -9,10 +9,13 @@ import LogoutButton from '../../components/LogoutButton'
 import CurrentDate from '../../components/ui/CurrentDate'
 import Icon from './Icon'
 import useInactivityLogout from '../../hooks/useInactivityLogout'
+import { useAuth } from '../../context/AuthContext'
 
 export default function UserLayout() {
     // Auto logout after 15 minutes of inactivity
     useInactivityLogout();
+
+    const { user } =useAuth();
 
     const drawerToggleRef = useRef(null);
     const location = useLocation();
@@ -68,10 +71,12 @@ export default function UserLayout() {
                                         <span className="text-sm font-bold">J</span>
                                     </div>
                                 </div>
-                                <p>Hi, Username</p>
+                                <p>Hi, {user?.username}</p>
                             </div>
                         </Link>
-                        <LogoutButton confirmLogout={true} />
+                        <div className='hidden md:block'>
+                            <LogoutButton confirmLogout={true} />
+                        </div>
                     </div>
                 </nav>
                 {/* Page content here */}

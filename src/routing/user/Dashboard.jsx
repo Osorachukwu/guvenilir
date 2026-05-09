@@ -153,7 +153,7 @@ export default function Dashboard() {
             {/* Balance & Quick Info */}
             <div className='flex flex-col md:flex-row justify-between gap-6'>
                 <div className='flex gap-6 items-cente bg-gradient-to-br from-base-200 via-base-200 to-base-300 md:w-3/2 p-6 rounded-2xl border border-base-300/50 shadow-lg hover:shadow-xl hover:border-primary/30 transition-all duration-300 group'>
-                    <div className='bg-primary/10 p-5 rounded-2xl ring-1 ring-primary/20 flex items-center'>
+                    <div className='bg-primary/10 p-5 md:px-10 rounded-2xl ring-1 ring-primary/20 flex items-center'>
                         <Wallet className="h-10 w-10 text-primary" />
                     </div>
                     <div>

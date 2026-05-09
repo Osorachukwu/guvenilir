@@ -116,7 +116,7 @@ export function Plans() {
     return (
         <div>
             {/* <p>Investment Plans</p> */}
-            <div className='section-wrapper py-16 md:py-20'>
+            <div className='section-wrapper py-16 md:py-20 font-'>
                 <div className='text-center max-w-2xl mb-8 mx-auto' data-aos="fade-up">
                     <p className='text-2xl sm:text-4xl mb-2'>Consistent Returns | {plans.length} Offering{plans.length !== 1 ? 's' : ''}</p>
                     <p>Offering financial planning and wealth management services to help our clients manage their finances and achieve their long-term financial goals.</p>
@@ -127,6 +127,7 @@ export function Plans() {
                             <div key={plan.id || index} data-aos="zoom-in" data-aos-delay={index * 100}>
                                 <PricingCrad
                                     title={`Plan ${plan.plan}`}
+                                    planName={plan.planName}
                                     gain={plan.dailyProfit}
                                     duration={formatDuration(plan.maturity)}
                                     minInvestment={formatCurrency(plan.minVal)}

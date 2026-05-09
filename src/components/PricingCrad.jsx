@@ -1,16 +1,17 @@
 import { Check, CheckCircle, CheckCircle2 } from 'lucide-react'
 import React from 'react'
-import { useAuth } from '../hooks/useAuth';
+import { useAuth } from '../context/AuthContext'
 
-function PricingCrad({ title, gain, duration, minInvestment, maxInvestment }) {
-    const { token } = useAuth();
+function PricingCrad({ title, planName, gain, duration, minInvestment, maxInvestment }) {
+    const { isLoggedIn } =useAuth();
     return (
         <div className="w-full group overflow-hidden rounded-lg shadow hover:scale-y-105 transition-all ease-in-out duration-200">
             <div className="bg-gradient-to-r from-purple-500 to-indigo-600 p-6 text-white">
-                <h3 className="text-xl font-bold">{title}</h3>
+                {/* <h3 className="text-xl font-bold">{title}</h3> */}
+                <h3 className="text-xl font-bold">{planName}</h3>
                 <div className="mt-4 flex items-baseline">
                     <span className="text-4xl font-bold">{gain}%</span>
-                    <span className="ml-1">/ {duration}</span>
+                    <span className="ml-1 font-semibold">/ {duration}</span>
                 </div>
             </div>
             <div className="bg-gray-100 p-6">
@@ -51,7 +52,7 @@ function PricingCrad({ title, gain, duration, minInvestment, maxInvestment }) {
                 text-white"
                 >
                     {/* btn-block */}
-                    {token ? "Invest" : "Sign Up"}
+                    {isLoggedIn ? "Invest" : "Sign Up"}
                 </button>
             </div>
         </div>
