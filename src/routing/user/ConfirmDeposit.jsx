@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { CopyableText } from '../../components/ui/CopyableText';
 import TimedAlert from '../../components/ui/TimedAlert';
-import { BASE_URL, BIZ, DOMAIN_KEY } from '../../utils/constants';
+import { BASE_URL, BIZ, COMPANY_DETAILS, DOMAIN_KEY } from '../../utils/constants';
 import { ArrowLeft, Wallet, CheckCircle, AlertTriangle } from 'lucide-react';
 
 const DEPOSIT_URL = `${BASE_URL}/deposit.php`;
@@ -108,7 +108,7 @@ export default function ConfirmDeposit() {
             if (data.code === "200" || data.code === 200) {
                 setSaved(true);
                 setAlert({ text: data.msg || "Deposit submitted successfully! Redirecting...", type: "success" });
-                setTimeout(() => navigate("/account/your-deposit"), 2000);
+                setTimeout(() => navigate("/account"), 2000);
             } else {
                 setAlert({ text: data.msg || "Something went wrong. Please try again.", type: "error" });
             }
@@ -261,7 +261,7 @@ export default function ConfirmDeposit() {
                         {selectedWallet ? (
                             <div className="space-y-3">
                                 <CopyableText 
-                                    text="1NKHxQSbuAnFSCP7UCYhVUrSLmAeLwU6Jr" 
+                                    text={COMPANY_DETAILS.WALLET_ADDRESS} 
                                     mainStyle="bg-base-100 font-mono text-sm" 
                                     btnStyle="btn-sm" 
                                 />
