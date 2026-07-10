@@ -51,7 +51,7 @@ const Dropdown = ({ trigger, children }) => {
       {/* Dropdown Menu */}
       {isOpen && (
         <div
-          className="absolute left-0 mt-1 w-48 bg-white rounded-md shadow-lg border border-gray-100 py-1 z-50"
+          className="absolute left-0 mt-1 w-48 bg-white rounded shadow-lg border border-gray-100 py-1 z-50"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >

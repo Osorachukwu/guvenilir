@@ -55,7 +55,7 @@ export default function Support() {
           <input type="email" className="input sm:input-lg validator w-full text-sm" required placeholder="Enter Email" />
           <p className="validator-hint hidden -mt-3">Enter valid email address</p>
 
-          <textarea className="textarea sm:textarea-md w-full" rows={9} placeholder="Bio" required></textarea>
+          <textarea className="textarea sm:textarea-md w-full" rows={9} placeholder="Message" required></textarea>
           <button type='button'
             className="btn btn-bloc text-base btn-primary">Send message</button>
         </form>

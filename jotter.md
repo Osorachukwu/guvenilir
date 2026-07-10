@@ -10,7 +10,8 @@ src/utils/logout.js
 src/components/LogOutButton.jsx
 src/components/WhatsAppWidget.jsx
 
-src/hooks/useActiviyLogout.js
+src/hooks/useInactivityLogout
+call the useInactivityLogout in the UserLayout & AdminLayout components
 src/hooks/useAuth.js
 
 src/routing/admin

@@ -12,6 +12,7 @@ import atmCard from "../assets/card.png"
 // import CryptoPrices from './CryptoPrices'
 import atmCard2 from "../assets/atm-card-2.jpg"
 import { Link } from 'react-router-dom'
+import { ChevronLeft, Menu } from 'lucide-react'
 
 
 

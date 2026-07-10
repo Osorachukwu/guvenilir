@@ -24,7 +24,7 @@ export default function App() {
     <AuthProvider>
       <BrowserRouter>
         {!splashDone && <SplashScreen onComplete={handleSplashComplete} />}
-        {/* Keep AppRouter mounted but hidden while splash plays — prevents flash */}
+        {/* Keep AppRouter mounted but hidden while splash plays — prevents flash */} 
         <div style={{ visibility: splashDone ? 'visible' : 'hidden' }}>
           <AppRouter />
         </div>

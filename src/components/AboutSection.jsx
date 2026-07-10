@@ -1,16 +1,17 @@
 import React, { useEffect, useRef, useState } from 'react';
+import CountUp from 'react-countup';
 
 const AboutSection = () => {
-  const [counters, setCounters] = useState({ investors: 0, transactions: 0, partners: 0 });
   const sectionRef = useRef(null);
-  const [hasAnimated, setHasAnimated] = useState(false);
+  const [shouldAnimate, setShouldAnimate] = useState(false);
+  const [animationKey, setAnimationKey] = useState(0);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !hasAnimated) {
-          setHasAnimated(true);
-          animateCounters();
+        if (entry.isIntersecting) {
+          setShouldAnimate(true);
+          setAnimationKey(prev => prev + 1);
         }
       },
       { threshold: 0.3 }
@@ -18,33 +19,12 @@ const AboutSection = () => {
 
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
-  }, [hasAnimated]);
-
-  const animateCounters = () => {
-    const duration = 2000;
-    const steps = 60;
-    const interval = duration / steps;
-
-    let step = 0;
-    const timer = setInterval(() => {
-      step++;
-      const progress = step / steps;
-      const easeOut = 1 - Math.pow(1 - progress, 3);
-
-      setCounters({
-        investors: Math.floor(49666 * easeOut),
-        transactions: Math.floor(7.2 * easeOut * 10) / 10,
-        partners: Math.floor(32 * easeOut),
-      });
-
-      if (step >= steps) clearInterval(timer);
-    }, interval);
-  };
+  }, []);
 
   const stats = [
-    { value: `${counters.investors.toLocaleString()}+`, label: 'Investors' },
-    { value: `${counters.transactions} M+`, label: 'Transactions' },
-    { value: `${counters.partners}+`, label: 'Partners' },
+    { end: 49666, label: 'Investors', suffix: '+', decimals: 0 },
+    { end: 7.2, label: 'Transactions', suffix: ' M+', decimals: 1 },
+    { end: 32, label: 'Partners', suffix: '+', decimals: 0 },
   ];
 
   return (
@@ -76,9 +56,23 @@ const AboutSection = () => {
             {/* Stats Grid */}
             <div className="mb-10 grid grid-cols-3 gap-4 sm:gap-8">
               {stats.map((stat, index) => (
-                <div key={index} className="text-center sm:text-left">
+                <div key={`${animationKey}-${index}`} className="text-center sm:text-left">
                   <div className="text-2xl font-bold sm:text-3xl lg:text-4xl">
-                    {stat.value}
+                    {shouldAnimate ? (
+                      <>
+                        <CountUp
+                          key={animationKey}
+                          end={stat.end}
+                          duration={2}
+                          decimals={stat.decimals}
+                          separator=","
+                          preserveValue
+                        />
+                        {stat.suffix}
+                      </>
+                    ) : (
+                      `0${stat.suffix}`
+                    )}
                   </div>
                   <div className="mt-1 text-xs font-medium uppercase tracking-wider text-base-content/60 sm:text-sm">
                     {stat.label}

@@ -135,7 +135,7 @@ export function NavBar() {
   const navItems = [
     { navItem: "Home", navUrl: "/" },
     // { navItem: "About", navUrl: "/about" },
-    { navItem: "Investments", navUrl: "/investments", hasDropdown: true },
+    { navItem: "Company", navUrl: "", hasDropdown: true },
     // { navItem: "FAQS", navUrl: "/faqs" },
     // { navItem: "Support", navUrl: "/support" },
     { navItem: "Our Services", navUrl: "/services" },
