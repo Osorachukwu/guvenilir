@@ -85,7 +85,7 @@ export default function AppRouter() {
                 <div><ThemeSwitcher /></div>
             </div> */}
             {/* <div className='hidden md:block'> */}
-            {/* <GoogleTranslateSwitcher /> */}
+            <GoogleTranslateSwitcher />
             {/* </div> */}
             <ScrollToTop />
             <WhatsAppWidget />

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Search } from 'lucide-react'
+import { Search, Trash2 } from 'lucide-react'
 import axios from 'axios'
 import StatusBadge from './StatusBadge'
 import { BASE_URL, DOMAIN_KEY } from '../../utils/constants'
@@ -17,7 +17,7 @@ const formatDate = (dateString) => {
     }
 };
 
-const UserCard = ({ user, onClick }) => (
+const UserCard = ({ user, onSuspend, onDelete }) => (
     <div className="card bg-base-100 border border-base-300 shadow-sm">
         <div className="card-body p-4">
             <div className="flex items-center gap-3 mb-3">
@@ -35,14 +35,24 @@ const UserCard = ({ user, onClick }) => (
                 <p>ID: {user.id} · Biz: {user.biz}</p>
                 <p>Joined: {formatDate(user.date_created)}</p>
             </div>
-            <button
-                onClick={onClick}
-                id={`${user.userStatus === "suspended" ? "active_" + user.id : "suspended_" + user.id}`}
-                className={`btn btn-xs w-full ${user.userStatus === "suspended" ? "btn-outline btn-success" : "btn-outline btn-error"}`}
-                type="button"
-            >
-                {user.userStatus === "suspended" ? "Unsuspend" : "Suspend User"}
-            </button>
+            <div className="flex gap-2">
+                <button
+                    onClick={onSuspend}
+                    id={`${user.userStatus === "suspended" ? "active_" + user.id : "suspended_" + user.id}`}
+                    className={`btn btn-xs flex-1 ${user.userStatus === "suspended" ? "btn-outline btn-success" : "btn-outline btn-error"}`}
+                    type="button"
+                >
+                    {user.userStatus === "suspended" ? "Unsuspend" : "Suspend"}
+                </button>
+                <button
+                    onClick={onDelete}
+                    className="btn btn-xs btn-outline btn-error flex-1"
+                    type="button"
+                >
+                    <Trash2 size={12} />
+                    Delete
+                </button>
+            </div>
         </div>
     </div>
 );
@@ -50,7 +60,9 @@ const UserCard = ({ user, onClick }) => (
 export default function UsersTab({ users, onRefresh }) {
     const [search, setSearch] = useState("");
     const [confirmModal, setConfirmModal] = useState(null);
+    const [deleteModal, setDeleteModal] = useState(null);
     const [alert, setAlert] = useState(null);
+    const [deleting, setDeleting] = useState(false);
     const [accountData, setAccountData] = useState({
         tid: "",
         action: "",
@@ -64,6 +76,7 @@ export default function UsersTab({ users, onRefresh }) {
         (u.email || '').toLowerCase().includes(search.toLowerCase())
     );
 
+    // ────────── Suspend/Unsuspend ──────────
     const handleAccountAction = (e) => {
         let btnId = e.currentTarget.id;
         let btnIdSplite = btnId.split("_");
@@ -82,10 +95,43 @@ export default function UsersTab({ users, onRefresh }) {
             const response = await axios.post(`${BASE_URL}/action.php`, accountData);
             if (response.status === 200) {
                 setConfirmModal(null);
+                setAlert({ text: "User status updated successfully", type: "success" });
                 onRefresh();
             }
         } catch (err) {
             setAlert({ text: "Failed to update user status", type: "error" });
+        }
+    };
+
+    // ────────── Delete User ──────────
+    const handleDeleteAction = (user) => {
+        setDeleteModal(user);
+    };
+
+    const handleSubmitDelete = async () => {
+        if (!deleteModal) return;
+
+        try {
+            setDeleting(true);
+            const response = await axios.post(`${BASE_URL}/deleteuser.php`, {
+                username: deleteModal.username,
+                domainKey: DOMAIN_KEY
+            });
+
+            console.log("Delete response:", response.data);
+
+            if (response.data.code === "200" || response.data.code === 200) {
+                setAlert({ text: response.data.msg || "User deleted successfully", type: "success" });
+                setDeleteModal(null);
+                onRefresh();
+            } else {
+                setAlert({ text: response.data.msg || "Failed to delete user", type: "error" });
+            }
+        } catch (err) {
+            console.error("Error deleting user:", err);
+            setAlert({ text: "Failed to delete user. Please try again.", type: "error" });
+        } finally {
+            setDeleting(false);
         }
     };
 
@@ -113,7 +159,12 @@ export default function UsersTab({ users, onRefresh }) {
                     <div className="text-center py-12 text-base-content/30 text-sm">No users found</div>
                 ) : (
                     filteredUsers.map((user) => (
-                        <UserCard key={user.id} user={user} onClick={handleAccountAction} />
+                        <UserCard
+                            key={user.id}
+                            user={user}
+                            onSuspend={handleAccountAction}
+                            onDelete={() => handleDeleteAction(user)}
+                        />
                     ))
                 )}
             </div>
@@ -148,14 +199,23 @@ export default function UsersTab({ users, onRefresh }) {
                                     <td className="text-xs text-base-content/50">{formatDate(user.date_created)}</td>
                                     <td><StatusBadge status={user.userStatus} /></td>
                                     <td>
-                                        <button
-                                            id={`${user.userStatus === "suspended" ? "active_" + user.id : "suspended_" + user.id}`}
-                                            onClick={handleAccountAction}
-                                            className={`btn btn-xs ${user.userStatus === "suspended" ? "btn-outline btn-success" : "btn-outline btn-error"}`}
-                                            type="button"
-                                        >
-                                            {user.userStatus === "suspended" ? "Unsuspend" : "Suspend"}
-                                        </button>
+                                        <div className="flex gap-1">
+                                            <button
+                                                id={`${user.userStatus === "suspended" ? "active_" + user.id : "suspended_" + user.id}`}
+                                                onClick={handleAccountAction}
+                                                className={`btn btn-xs ${user.userStatus === "suspended" ? "btn-outline btn-success" : "btn-outline btn-error"}`}
+                                                type="button"
+                                            >
+                                                {user.userStatus === "suspended" ? "Unsuspend" : "Suspend"}
+                                            </button>
+                                            <button
+                                                onClick={() => handleDeleteAction(user)}
+                                                className="btn btn-xs btn-outline btn-error"
+                                                type="button"
+                                            >
+                                                <Trash2 size={12} />
+                                            </button>
+                                        </div>
                                     </td>
                                 </tr>
                             ))}
@@ -164,7 +224,7 @@ export default function UsersTab({ users, onRefresh }) {
                 </div>
             </div>
 
-            {/* Confirm Modal */}
+            {/* ────────── Suspend/Unsuspend Confirm Modal ────────── */}
             {confirmModal && (
                 <dialog className="modal modal-open">
                     <div className="modal-box">
@@ -185,6 +245,73 @@ export default function UsersTab({ users, onRefresh }) {
                     </div>
                     <form method="dialog" className="modal-backdrop">
                         <button onClick={() => setConfirmModal(null)} type="button">close</button>
+                    </form>
+                </dialog>
+            )}
+
+            {/* ────────── Delete Confirm Modal ────────── */}
+            {deleteModal && (
+                <dialog className="modal modal-open">
+                    <div className="modal-box">
+                        <div className="flex items-center gap-3 mb-2">
+                            <div className="bg-error/10 p-2 rounded-xl">
+                                <Trash2 className="h-5 w-5 text-error" />
+                            </div>
+                            <h3 className="font-bold text-lg">Delete User</h3>
+                        </div>
+                        <p className="text-sm text-base-content/60 mb-4">This action cannot be undone.</p>
+
+                        {/* User Info */}
+                        <div className="bg-base-100/50 rounded-xl p-4 mb-4 space-y-2">
+                            <div className="flex justify-between">
+                                <span className="text-sm text-base-content/60">Name</span>
+                                <span className="font-semibold">{deleteModal.fullname}</span>
+                            </div>
+                            <div className="flex justify-between">
+                                <span className="text-sm text-base-content/60">Username</span>
+                                <span className="font-mono font-semibold">@{deleteModal.username}</span>
+                            </div>
+                            <div className="flex justify-between">
+                                <span className="text-sm text-base-content/60">Email</span>
+                                <span className="text-sm">{deleteModal.email}</span>
+                            </div>
+                            <div className="flex justify-between">
+                                <span className="text-sm text-base-content/60">Status</span>
+                                <StatusBadge status={deleteModal.userStatus} />
+                            </div>
+                        </div>
+
+                        <p className="text-sm text-error font-medium mb-4">
+                            Are you sure you want to permanently delete <strong>{deleteModal.fullname}</strong>?
+                            All associated data will be removed.
+                        </p>
+
+                        <div className="modal-action mt-0">
+                            <button
+                                className="btn btn-ghost"
+                                onClick={() => setDeleteModal(null)}
+                                type="button"
+                                disabled={deleting}
+                            >
+                                Cancel
+                            </button>
+                            <button
+                                className="btn btn-error"
+                                onClick={handleSubmitDelete}
+                                type="button"
+                                disabled={deleting}
+                            >
+                                {deleting ? (
+                                    <span className="loading loading-spinner loading-sm"></span>
+                                ) : (
+                                    <Trash2 size={16} />
+                                )}
+                                Delete User
+                            </button>
+                        </div>
+                    </div>
+                    <form method="dialog" className="modal-backdrop">
+                        <button onClick={() => setDeleteModal(null)} type="button">close</button>
                     </form>
                 </dialog>
             )}
