@@ -273,8 +273,8 @@ export default function GoogleTranslateSwitcher() {
     <>
       <div id="google_translate_element" style={{ display: 'none' }}></div>
 
-      <div className="text-xs inline-block z-50 fixed top-[5.2rem] md:top-28 ">
-        {/* bottom-8 left-0 md:top-4 md:right-5 */}
+      <div className="text-xs inline-block z-50 relative top-0">
+        {/* fixed top-[5.2rem] md:top-28 */}
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="btn btn-sm btn-base text-sm"

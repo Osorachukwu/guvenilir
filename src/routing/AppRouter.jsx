@@ -79,13 +79,14 @@ export default function AppRouter() {
     return (
         <>
             {/* {currentPath != "/login" && currentPath != "/register" && <NavBar />} */}
+            
             {!hideNavBarPaths.includes(currentPath) && <NavBar />}
+            {!hideNavBarPaths.includes(currentPath) && <GoogleTranslateSwitcher />}
             {/* <div className='flex justify-between items-center py-1 px-4 md:px-4 bg-base-100 border-b border-base-300 pb-2'>
                 <div className='pt-2'><GoogleTranslateSwitcher /></div>
                 <div><ThemeSwitcher /></div>
             </div> */}
             {/* <div className='hidden md:block'> */}
-            <GoogleTranslateSwitcher />
             {/* </div> */}
             <ScrollToTop />
             <WhatsAppWidget />

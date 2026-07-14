@@ -1,4 +1,5 @@
-Stack React.js + Tailwindcss + Luicde icons + Daisyui + Embla carousel + React-router + Axios
+Stack : 
+React.js + Tailwindcss + Luicde icons + Daisyui + Embla carousel + React-router + React-hot-toast + Axios
 
 src/ui/TimedAlert.jsx
 src/ui/SplashScreen.jsx

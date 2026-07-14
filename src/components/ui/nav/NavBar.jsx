@@ -156,7 +156,7 @@ export function NavBar() {
   return (
     <div className='relative'>
       {/* Top Bar - Desktop Only */}
-      <div className='py-6 hidden md:block z-50 relative'>
+      <div className='pb-6 hidden md:block z-50 relative'>
         <div className='flex justify-between items-center max-w-6xl mx-auto px-4'>
           {/* <Link to="/" className="btn btn-ghost text-xl font-bold"> */}
           <Logo />
